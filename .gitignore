@@ -1,0 +1,23 @@
+.annotation_platform.json
+.uv-cache/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+frontend/node_modules/
+frontend/dist/
+
+backend/__pycache__/
+scripts/__pycache__/
+
+Input text/
+annotations/
+exports/
+annotation_backups/
+annotation_import_audit.json
+seed-workspace/run_status.jsonl
+
+Main.java
+test.py

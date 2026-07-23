@@ -1,0 +1,4495 @@
+{
+  "meta": {
+    "source_type": "patent",
+    "source_id": "010fe165-0ac5-4270-8484-55785541dadc",
+    "status": "Completed"
+  },
+  "substances": [
+    {
+      "node_no": 1,
+      "substance_name": "Zn",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "5.0 to 25.0 mass % of Zn",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "5.0 to 25.0 mass % of Zn",
+          "start": 93,
+          "end": 117,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 2,
+      "substance_name": "Bi",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "4.2 to 10.0 mass % of Bi",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "4.2 to 10.0 mass % of Bi",
+          "start": 119,
+          "end": 143,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 3,
+      "substance_name": "Mn",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "2.0 to 7.0 mass % of Mn",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "2.0 to 7.0 mass % of Mn",
+          "start": 145,
+          "end": 168,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 4,
+      "substance_name": "Si",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "1.0 to 3.0 mass % of Si",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "1.0 to 3.0 mass % of Si",
+          "start": 170,
+          "end": 193,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 5,
+      "substance_name": "Sn",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "0.1 to 2.0 mass % of Sn",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "0.1 to 2.0 mass % of Sn",
+          "start": 195,
+          "end": 218,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 6,
+      "substance_name": "Cu",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "the balance being Cu and unavoidable impurities",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "the balance being Cu and unavoidable impurities",
+          "start": 224,
+          "end": 271,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 7,
+      "substance_name": "impurities",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "unavoidable impurities",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "unavoidable impurities",
+          "start": 249,
+          "end": 271,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 8,
+      "substance_name": "Mn-Si compound",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "a Mn-Si compound (3)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "a Mn-Si compound (3)",
+          "start": 360,
+          "end": 380,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 9,
+      "substance_name": "oil",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "oil supply to a floating bush is stopped",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "oil supply to a floating bush is stopped",
+          "start": 1353,
+          "end": 1393,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 10,
+      "substance_name": "Pb",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "5 to 18% of Pb",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "5 to 18% of Pb",
+          "start": 2082,
+          "end": 2096,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 11,
+      "substance_name": "copper-based alloy",
+      "substance_type": "raw",
+      "physical_form": "alloy",
+      "manufacturer": "-",
+      "evidence_text": "In the copper-based alloy disclosed in JP-A-2004-137512",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "In the copper-based alloy disclosed in JP-A-2004-137512",
+          "start": 3571,
+          "end": 3626,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 12,
+      "substance_name": "Bi-Sn hypoeutectic alloy",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "to form a Bi-Sn hypoeutectic alloy at their interface",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "to form a Bi-Sn hypoeutectic alloy at their interface",
+          "start": 8215,
+          "end": 8268,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 13,
+      "substance_name": "Mn5Si3",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "such as Mn-Si compounds (mainly Mn 5 Si 3 )",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "such as Mn-Si compounds (mainly Mn 5 Si 3 )",
+          "start": 10500,
+          "end": 10543,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "compositions": [
+    {
+      "node_no": 14,
+      "composition_name": "copper-based sliding material",
+      "composition_type": "composition",
+      "physical_form": "-",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 5.0,
+          "amount_upper_value": 25.0,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 2,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 4.2,
+          "amount_upper_value": 10.0,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 3,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 2.0,
+          "amount_upper_value": 7.0,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 4,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 1.0,
+          "amount_upper_value": 3.0,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 5,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 0.1,
+          "amount_upper_value": 2.0,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 6,
+          "constituent_status": "included",
+          "amount_comparator": "balance",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 7,
+          "constituent_status": "included",
+          "amount_comparator": "balance",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        }
+      ],
+      "evidence_text": "A copper-based sliding material consisting of: 5.0 to 25.0 mass % of Zn; 4.2 to 10.0 mass % of Bi; 2.0 to 7.0 mass % of Mn; 1.0 to 3.0 mass % of Si; 0.1 to 2.0 mass % of Sn; and the balance being Cu and unavoidable impurities is provided.",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "A copper-based sliding material consisting of: 5.0 to 25.0 mass % of Zn; 4.2 to 10.0 mass % of Bi; 2.0 to 7.0 mass % of Mn; 1.0 to 3.0 mass % of Si; 0.1 to 2.0 mass % of Sn; and the balance being Cu and unavoidable impurities is provided.",
+          "start": 46,
+          "end": 284,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 15,
+      "composition_name": "JP-A-03-215642 high-strength brass",
+      "composition_type": "alloy",
+      "physical_form": "-",
+      "constituents": [
+        {
+          "constituent_ref": 3,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "%",
+          "amount_lower_value": 1.0,
+          "amount_upper_value": 3.5,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 4,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "%",
+          "amount_lower_value": 0.3,
+          "amount_upper_value": 1.5,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "%",
+          "amount_lower_value": 10.0,
+          "amount_upper_value": 25.0,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 10,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "%",
+          "amount_lower_value": 5.0,
+          "amount_upper_value": 18.0,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 6,
+          "constituent_status": "included",
+          "amount_comparator": "balance",
+          "amount_value": "-",
+          "amount_unit": "%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 7,
+          "constituent_status": "included",
+          "amount_comparator": "balance",
+          "amount_value": "-",
+          "amount_unit": "%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        }
+      ],
+      "evidence_text": "JP-A-03-215642 | high-strength brass composed of, by mass percent, 1 to 3.5% of Mn, 0.3 to 1.5% of Si, 10 to 25% of Zn, 5 to 18% of Pb, and the balance being Cu and unavoidable impurities",
+      "evidence_spans": [
+        {
+          "field": "evidence_text",
+          "text": "JP-A-03-215642",
+          "start": 1901,
+          "end": 1915,
+          "primary": false
+        },
+        {
+          "field": "composition_name",
+          "text": "high-strength brass composed of, by mass percent, 1 to 3.5% of Mn, 0.3 to 1.5% of Si, 10 to 25% of Zn, 5 to 18% of Pb, and the balance being Cu and unavoidable impurities",
+          "start": 1979,
+          "end": 2149,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 16,
+      "composition_name": "JP-A-9-316570 manganese silicide high-strength brass",
+      "composition_type": "alloy",
+      "physical_form": "-",
+      "constituents": [
+        {
+          "constituent_ref": 3,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 0.3,
+          "amount_upper_value": 5.0,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 4,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 0.3,
+          "amount_upper_value": 3.0,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 15.0,
+          "amount_upper_value": 37.0,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 2,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 0.3,
+          "amount_upper_value": 4.0,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 6,
+          "constituent_status": "included",
+          "amount_comparator": "balance",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 7,
+          "constituent_status": "included",
+          "amount_comparator": "balance",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        }
+      ],
+      "evidence_text": "JP-A-9-316570 discloses a manganese silicide high-strength brass | The manganese silicide high-strength brass is composed of, by mass percent, 0.3 to 5% of Mn, 0.3 to 3% of Si, 15 to 37% of Zn, 0.3 to 4% of Bi, and the balance being Cu and unavoidable impurities.",
+      "evidence_spans": [
+        {
+          "field": "evidence_text",
+          "text": "JP-A-9-316570 discloses a manganese silicide high-strength brass",
+          "start": 2280,
+          "end": 2344,
+          "primary": false
+        },
+        {
+          "field": "composition_name",
+          "text": "The manganese silicide high-strength brass is composed of, by mass percent, 0.3 to 5% of Mn, 0.3 to 3% of Si, 15 to 37% of Zn, 0.3 to 4% of Bi, and the balance being Cu and unavoidable impurities.",
+          "start": 2479,
+          "end": 2675,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 17,
+      "composition_name": "JP-A-2004-137512 copper-based sliding material",
+      "composition_type": "alloy",
+      "physical_form": "-",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "%",
+          "amount_lower_value": 15.0,
+          "amount_upper_value": 25.0,
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 2,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "%",
+          "amount_lower_value": 4.2,
+          "amount_upper_value": 10.0,
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 3,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "%",
+          "amount_lower_value": 2.0,
+          "amount_upper_value": 7.0,
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 4,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "%",
+          "amount_lower_value": 1.0,
+          "amount_upper_value": 3.0,
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 6,
+          "constituent_status": "included",
+          "amount_comparator": "balance",
+          "amount_value": "-",
+          "amount_unit": "%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        }
+      ],
+      "evidence_text": "-",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "JP-A-2004-137512 proposes a copper-based sliding material consisting of, by mass percent, 15 to 25% of Zn, 4.2 to 10% of Bi, 2 to 7% of Mn, 1 to 3% of Si, and the balance being Cu",
+          "start": 3160,
+          "end": 3339,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 18,
+      "composition_name": "copper-based sliding material",
+      "composition_type": "alloy",
+      "physical_form": "-",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 15.0,
+          "amount_upper_value": 25.0,
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 2,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 4.2,
+          "amount_upper_value": 10.0,
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 3,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 2.0,
+          "amount_upper_value": 7.0,
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 4,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 1.0,
+          "amount_upper_value": 3.0,
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 5,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": 0.1,
+          "amount_upper_value": 2.0,
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 6,
+          "constituent_status": "included",
+          "amount_comparator": "balance",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 7,
+          "constituent_status": "included",
+          "amount_comparator": "balance",
+          "amount_value": "-",
+          "amount_unit": "mass %",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "-",
+          "key_reason": "-"
+        }
+      ],
+      "evidence_text": "-",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "copper-based sliding material consisting of 15.0 to 25.0 mass % of Zn, 4.2 to 10.0 mass % of Bi, 2.0 to 7.0 mass % of Mn, 1.0 to 3.0 mass % of Si, 0.1 to 2.0 mass % Sn, and the balance being Cu and unavoidable impurities",
+          "start": 6128,
+          "end": 6348,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 19,
+      "composition_name": "Bi-Sn eutectic composition",
+      "composition_type": "alloy",
+      "physical_form": "-",
+      "constituents": [
+        {
+          "constituent_ref": 5,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 43.0,
+          "amount_unit": "mass %",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "explicit eutectic composition given as Bi-43 mass % Sn"
+        },
+        {
+          "constituent_ref": 2,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "composition named as Bi-Sn eutectic composition"
+        }
+      ],
+      "evidence_text": "the Bi-Sn eutectic composition (Bi-43 mass % Sn having a melting point at about 140°C)",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "the Bi-Sn eutectic composition (Bi-43 mass % Sn having a melting point at about 140°C)",
+          "start": 8321,
+          "end": 8407,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 20,
+      "composition_name": "Fig. 1 copper-based sliding material",
+      "composition_type": "alloy",
+      "physical_form": "-",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 20.0,
+          "amount_unit": "mass %",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "explicitly quantified constituent of the material"
+        },
+        {
+          "constituent_ref": 3,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 3.5,
+          "amount_unit": "mass %",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "explicitly quantified constituent of the material"
+        },
+        {
+          "constituent_ref": 4,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 1.5,
+          "amount_unit": "mass %",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "explicitly quantified constituent of the material"
+        },
+        {
+          "constituent_ref": 2,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 6.5,
+          "amount_unit": "mass %",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "explicitly quantified constituent of the material"
+        },
+        {
+          "constituent_ref": 5,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 0.47,
+          "amount_unit": "mass %",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "explicitly quantified constituent of the material"
+        }
+      ],
+      "evidence_text": "The copper-based sliding material shown in Fig. 1 contains 20.0 mass % of Zn, 3.5 mass % of Mn, 1.5 mass % of Si, 6.5 mass % of Bi, and 0.47 mass % of Sn.",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "The copper-based sliding material shown in Fig. 1 contains 20.0 mass % of Zn, 3.5 mass % of Mn, 1.5 mass % of Si, 6.5 mass % of Bi, and 0.47 mass % of Sn.",
+          "start": 13768,
+          "end": 13922,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "node_no": 21,
+      "property_name": "phase constitution",
+      "property_type": "intrinsic",
+      "target_ref": 14,
+      "evidence_text": "The copper-based sliding material includes a single α-phase matrix (1, 2), a Mn-Si compound (3) and a Bi-particle phase (4). The Mn-Si compound (3) and the Bi-particle phase (4) are dispersed in the single α-phase matrix (1, 2).",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "The copper-based sliding material includes a single α-phase matrix (1, 2), a Mn-Si compound (3) and a Bi-particle phase (4). The Mn-Si compound (3) and the Bi-particle phase (4) are dispersed in the single α-phase matrix (1, 2).",
+          "start": 285,
+          "end": 513,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 22,
+      "property_name": "mass ratio of Sn to Bi",
+      "property_type": "intrinsic",
+      "target_ref": 14,
+      "evidence_text": "The mass ratio of Sn to Bi is 0.024 to 0.200, preferably 0.050 to 0.140.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "The mass ratio of Sn to Bi is 0.024 to 0.200, preferably 0.050 to 0.140.",
+          "start": 514,
+          "end": 586,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 23,
+      "property_name": "temperature",
+      "property_type": "extrinsic",
+      "target_ref": 0,
+      "evidence_text": "the temperature of the floating bush is elevated to higher than 300°C by heat conduction from a turbine casing",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "the temperature of the floating bush is elevated to higher than 300°C by heat conduction from a turbine casing",
+          "start": 1403,
+          "end": 1513,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 24,
+      "property_name": "rotation speed",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "the turbine immediately approaches the highest rotation as high as 100,000 rpm",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "the turbine immediately approaches the highest rotation as high as 100,000 rpm",
+          "start": 1557,
+          "end": 1635,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 25,
+      "property_name": "Pb dispersion",
+      "property_type": "intrinsic",
+      "target_ref": 15,
+      "evidence_text": "Pb is uniformly dispersed in the whole structure",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Pb is uniformly dispersed in the whole structure",
+          "start": 2157,
+          "end": 2205,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 26,
+      "property_name": "matrix phase",
+      "property_type": "intrinsic",
+      "target_ref": 15,
+      "evidence_text": "the matrix consists of a single α-phase",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "the matrix consists of a single α-phase",
+          "start": 2210,
+          "end": 2249,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 27,
+      "property_name": "β-phase",
+      "property_type": "intrinsic",
+      "target_ref": 16,
+      "evidence_text": "has a metal structure including β-phase controlled to be not more than 30% so that it can be subjected to cold plastic working",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "has a metal structure including β-phase controlled to be not more than 30% so that it can be subjected to cold plastic working",
+          "start": 2351,
+          "end": 2477,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 28,
+      "property_name": "cold plastic working",
+      "property_type": "performance",
+      "target_ref": 16,
+      "evidence_text": "has a metal structure including β-phase controlled to be not more than 30% so that it can be subjected to cold plastic working",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "has a metal structure including β-phase controlled to be not more than 30% so that it can be subjected to cold plastic working",
+          "start": 2351,
+          "end": 2477,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 29,
+      "property_name": "resistance to seizing",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "The former sliding material has favorable performances in resistance to seizing and abrasion.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "The former sliding material has favorable performances in resistance to seizing and abrasion.",
+          "start": 2684,
+          "end": 2777,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 30,
+      "property_name": "abrasion resistance",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "The former sliding material has favorable performances in resistance to seizing and abrasion.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "The former sliding material has favorable performances in resistance to seizing and abrasion.",
+          "start": 2684,
+          "end": 2777,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 31,
+      "property_name": "abrasion resistance",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "The latter sliding material includes a hard β-phase in the matrix, and thus the resistance to abrasion is improved.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "The latter sliding material includes a hard β-phase in the matrix, and thus the resistance to abrasion is improved.",
+          "start": 2868,
+          "end": 2983,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 32,
+      "property_name": "resistance to seizing",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "When it is used under severe conditions, such as a floating bush for a turbocharger, problems is still left in resistance to seizing.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "When it is used under severe conditions, such as a floating bush for a turbocharger, problems is still left in resistance to seizing.",
+          "start": 2984,
+          "end": 3117,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 33,
+      "property_name": "resistance to seizing",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "[0005] In the copper-based alloy disclosed in JP-A-2004-137512, a Bi-particle phase is dispersed in the matrix of single α-phase by adding a large quantity of Bi. If the copper-based alloy is manufactured by a continuous casting method or the like suited to mass production, cracks possibly generate due to the stress during the drawing from the mold. When the stress during the drawing is applied to the copper-based alloy, it is considered that shear generates at the interface between the α-phase and the Bi-particle phase since the quantity of deformation differs between the α-phase having a high ductility and the Bi-particle phase having little ductility. The shear becomes the starting point of the cracking. Although the alloy cracking can be reduced by lowering the drawing rate, the productivity lowers, and therefore there is no advantage to adopt the continuous casting method for mass production. Furthermore, if the Zn content is increased to make the matrix of the copper-based alloy be composed of the α-phase and β-phase structure, the strength of the matrix is increased and the ductility thereof is lowered. Thus, the cracking of the copper-based alloy unlikely occurs. However, it is not preferable as the sliding material for supporting a shaft rotating at a high speed in a high-temperature atmosphere such as for a turbocharger, since the strength of the copper-based alloy becomes excessively high, and resistance to seizing and conformability (which is such property that the alloy deforms by itself, while it contacts the counter shaft, to reduce stress generated by the contact) are lowered.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "[0005] In the copper-based alloy disclosed in JP-A-2004-137512, a Bi-particle phase is dispersed in the matrix of single α-phase by adding a large quantity of Bi. If the copper-based alloy is manufactured by a continuous casting method or the like suited to mass production, cracks possibly generate due to the stress during the drawing from the mold. When the stress during the drawing is applied to the copper-based alloy, it is considered that shear generates at the interface between the α-phase and the Bi-particle phase since the quantity of deformation differs between the α-phase having a high ductility and the Bi-particle phase having little ductility. The shear becomes the starting point of the cracking. Although the alloy cracking can be reduced by lowering the drawing rate, the productivity lowers, and therefore there is no advantage to adopt the continuous casting method for mass production. Furthermore, if the Zn content is increased to make the matrix of the copper-based alloy be composed of the α-phase and β-phase structure, the strength of the matrix is increased and the ductility thereof is lowered. Thus, the cracking of the copper-based alloy unlikely occurs. However, it is not preferable as the sliding material for supporting a shaft rotating at a high speed in a high-temperature atmosphere such as for a turbocharger, since the strength of the copper-based alloy becomes excessively high, and resistance to seizing and conformability (which is such property that the alloy deforms by itself, while it contacts the counter shaft, to reduce stress generated by the contact) are lowered.",
+          "start": 3564,
+          "end": 5183,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 34,
+      "property_name": "conformability",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "[0005] In the copper-based alloy disclosed in JP-A-2004-137512, a Bi-particle phase is dispersed in the matrix of single α-phase by adding a large quantity of Bi. If the copper-based alloy is manufactured by a continuous casting method or the like suited to mass production, cracks possibly generate due to the stress during the drawing from the mold. When the stress during the drawing is applied to the copper-based alloy, it is considered that shear generates at the interface between the α-phase and the Bi-particle phase since the quantity of deformation differs between the α-phase having a high ductility and the Bi-particle phase having little ductility. The shear becomes the starting point of the cracking. Although the alloy cracking can be reduced by lowering the drawing rate, the productivity lowers, and therefore there is no advantage to adopt the continuous casting method for mass production. Furthermore, if the Zn content is increased to make the matrix of the copper-based alloy be composed of the α-phase and β-phase structure, the strength of the matrix is increased and the ductility thereof is lowered. Thus, the cracking of the copper-based alloy unlikely occurs. However, it is not preferable as the sliding material for supporting a shaft rotating at a high speed in a high-temperature atmosphere such as for a turbocharger, since the strength of the copper-based alloy becomes excessively high, and resistance to seizing and conformability (which is such property that the alloy deforms by itself, while it contacts the counter shaft, to reduce stress generated by the contact) are lowered.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "[0005] In the copper-based alloy disclosed in JP-A-2004-137512, a Bi-particle phase is dispersed in the matrix of single α-phase by adding a large quantity of Bi. If the copper-based alloy is manufactured by a continuous casting method or the like suited to mass production, cracks possibly generate due to the stress during the drawing from the mold. When the stress during the drawing is applied to the copper-based alloy, it is considered that shear generates at the interface between the α-phase and the Bi-particle phase since the quantity of deformation differs between the α-phase having a high ductility and the Bi-particle phase having little ductility. The shear becomes the starting point of the cracking. Although the alloy cracking can be reduced by lowering the drawing rate, the productivity lowers, and therefore there is no advantage to adopt the continuous casting method for mass production. Furthermore, if the Zn content is increased to make the matrix of the copper-based alloy be composed of the α-phase and β-phase structure, the strength of the matrix is increased and the ductility thereof is lowered. Thus, the cracking of the copper-based alloy unlikely occurs. However, it is not preferable as the sliding material for supporting a shaft rotating at a high speed in a high-temperature atmosphere such as for a turbocharger, since the strength of the copper-based alloy becomes excessively high, and resistance to seizing and conformability (which is such property that the alloy deforms by itself, while it contacts the counter shaft, to reduce stress generated by the contact) are lowered.",
+          "start": 3564,
+          "end": 5183,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 35,
+      "property_name": "ductility",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "the α-phase having a high ductility",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "the α-phase having a high ductility",
+          "start": 4140,
+          "end": 4175,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 36,
+      "property_name": "ductility",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "the Bi-particle phase having little ductility",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "the Bi-particle phase having little ductility",
+          "start": 4180,
+          "end": 4225,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 37,
+      "property_name": "matrix strength",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "the strength of the matrix is increased",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "the strength of the matrix is increased",
+          "start": 4614,
+          "end": 4653,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 38,
+      "property_name": "matrix ductility",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "the ductility thereof is lowered",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "the ductility thereof is lowered",
+          "start": 4658,
+          "end": 4690,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 39,
+      "property_name": "cracking occurrence",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "Thus, the cracking of the copper-based alloy unlikely occurs",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Thus, the cracking of the copper-based alloy unlikely occurs",
+          "start": 4692,
+          "end": 4752,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 40,
+      "property_name": "strength",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "the strength of the copper-based alloy becomes excessively high",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "the strength of the copper-based alloy becomes excessively high",
+          "start": 4923,
+          "end": 4986,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 41,
+      "property_name": "resistance to seizing",
+      "property_type": "performance",
+      "target_ref": 14,
+      "evidence_text": "has improved resistance to seizing",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "has improved resistance to seizing",
+          "start": 5742,
+          "end": 5776,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 42,
+      "property_name": "abrasion resistance",
+      "property_type": "performance",
+      "target_ref": 14,
+      "evidence_text": "has improved resistance to seizing, abrasion and friction",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "has improved resistance to seizing, abrasion and friction",
+          "start": 5742,
+          "end": 5799,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 43,
+      "property_name": "friction",
+      "property_type": "performance",
+      "target_ref": 14,
+      "evidence_text": "has improved resistance to seizing, abrasion and friction",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "has improved resistance to seizing, abrasion and friction",
+          "start": 5742,
+          "end": 5799,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 44,
+      "property_name": "conformability",
+      "property_type": "performance",
+      "target_ref": 14,
+      "evidence_text": "improved resistance to seizing, abrasion and friction and conformability",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "improved resistance to seizing, abrasion and friction and conformability",
+          "start": 5746,
+          "end": 5818,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 45,
+      "property_name": "productivity",
+      "property_type": "performance",
+      "target_ref": 14,
+      "evidence_text": "as well as improved productivity",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "as well as improved productivity",
+          "start": 5819,
+          "end": 5851,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 46,
+      "property_name": "matrix phase",
+      "property_type": "intrinsic",
+      "target_ref": 14,
+      "evidence_text": "includes a single α-phase matrix",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "includes a single α-phase matrix",
+          "start": 6384,
+          "end": 6416,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 47,
+      "property_name": "dispersed phase",
+      "property_type": "intrinsic",
+      "target_ref": 14,
+      "evidence_text": "a single α-phase matrix in which a Mn-Si compound and a Bi-particle phase are dispersed",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "a single α-phase matrix in which a Mn-Si compound and a Bi-particle phase are dispersed",
+          "start": 6393,
+          "end": 6480,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 48,
+      "property_name": "ductility order",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "The ductility of each phase in the copper-based alloy structure is in the order of: α-phase > \"Sn-containing α-phase\" > Bi-particle phase.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "The ductility of each phase in the copper-based alloy structure is in the order of: α-phase > \"Sn-containing α-phase\" > Bi-particle phase.",
+          "start": 6806,
+          "end": 6944,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 49,
+      "property_name": "melting point",
+      "property_type": "intrinsic",
+      "target_ref": 19,
+      "evidence_text": "Bi-Sn eutectic composition (Bi-43 mass % Sn having a melting point at about 140°C)",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Bi-Sn eutectic composition (Bi-43 mass % Sn having a melting point at about 140°C)",
+          "start": 8325,
+          "end": 8407,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 50,
+      "property_name": "melting point",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "the Bi-particle phase, of which melting point is lowest in the copper-based alloy structure (the melting point is about 270°C), is fully solidified",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "the Bi-particle phase, of which melting point is lowest in the copper-based alloy structure (the melting point is about 270°C), is fully solidified",
+          "start": 8642,
+          "end": 8789,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 51,
+      "property_name": "high-temperature strength",
+      "property_type": "performance",
+      "target_ref": 14,
+      "evidence_text": "The reason why a Mn-Si compound is dispersed in the single α-phase matrix in the copper-based sliding material is because the high-temperature strength of the material increases.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "The reason why a Mn-Si compound is dispersed in the single α-phase matrix in the copper-based sliding material is because the high-temperature strength of the material increases.",
+          "start": 9210,
+          "end": 9388,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 52,
+      "property_name": "strength",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "Although the strength of the copper-based alloy is lowered with the elevation of temperature",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Although the strength of the copper-based alloy is lowered with the elevation of temperature",
+          "start": 9568,
+          "end": 9660,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 53,
+      "property_name": "high-temperature strength",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "the high-temperature strength of the copper-based alloy can be increased by dispersing a Mn-Si compound whose strength is not lowered even at the high temperature.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "the high-temperature strength of the copper-based alloy can be increased by dispersing a Mn-Si compound whose strength is not lowered even at the high temperature.",
+          "start": 9662,
+          "end": 9825,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 54,
+      "property_name": "strength",
+      "property_type": "intrinsic",
+      "target_ref": 14,
+      "evidence_text": "If the quantity is more than 10 mass %, the strength of the copper-based sliding material is lowered.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "If the quantity is more than 10 mass %, the strength of the copper-based sliding material is lowered.",
+          "start": 10289,
+          "end": 10390,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 55,
+      "property_name": "improves strength of the matrix",
+      "property_type": "performance",
+      "target_ref": 3,
+      "evidence_text": "Mn improves the strength of the matrix.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Mn improves the strength of the matrix.",
+          "start": 10399,
+          "end": 10438,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 56,
+      "property_name": "hardness",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "It forms hard compounds",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "It forms hard compounds",
+          "start": 10439,
+          "end": 10462,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 57,
+      "property_name": "sliding properties",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "It forms hard compounds having excellent sliding properties, such as Mn-Si compounds",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "It forms hard compounds having excellent sliding properties, such as Mn-Si compounds",
+          "start": 10439,
+          "end": 10523,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 58,
+      "property_name": "resistance to abrasion",
+      "property_type": "performance",
+      "target_ref": 3,
+      "evidence_text": "and contributes to improve the resistance to abrasion and seizing",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "and contributes to improve the resistance to abrasion and seizing",
+          "start": 10545,
+          "end": 10610,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 59,
+      "property_name": "resistance to seizing",
+      "property_type": "performance",
+      "target_ref": 3,
+      "evidence_text": "and contributes to improve the resistance to abrasion and seizing",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "and contributes to improve the resistance to abrasion and seizing",
+          "start": 10545,
+          "end": 10610,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 60,
+      "property_name": "friction properties",
+      "property_type": "performance",
+      "target_ref": 3,
+      "evidence_text": "and contributes to improve the resistance to abrasion and seizing, friction properties, and strength at a high temperature.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "and contributes to improve the resistance to abrasion and seizing, friction properties, and strength at a high temperature.",
+          "start": 10545,
+          "end": 10668,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 61,
+      "property_name": "strength at a high temperature",
+      "property_type": "performance",
+      "target_ref": 3,
+      "evidence_text": "and contributes to improve the resistance to abrasion and seizing, friction properties, and strength at a high temperature.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "and contributes to improve the resistance to abrasion and seizing, friction properties, and strength at a high temperature.",
+          "start": 10545,
+          "end": 10668,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 62,
+      "property_name": "added quantity threshold for effect",
+      "property_type": "performance",
+      "target_ref": 3,
+      "evidence_text": "If the quantity of the added Mn is less than 2.0 mass %, the effect cannot be obtained.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "If the quantity of the added Mn is less than 2.0 mass %, the effect cannot be obtained.",
+          "start": 10669,
+          "end": 10756,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 63,
+      "property_name": "added quantity threshold affecting usefulness of Zn addition",
+      "property_type": "performance",
+      "target_ref": 3,
+      "evidence_text": "If the quantity is more than 7.0 mass %, the addition of Zn described below becomes hardly useful.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "If the quantity is more than 7.0 mass %, the addition of Zn described below becomes hardly useful.",
+          "start": 10757,
+          "end": 10855,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 64,
+      "property_name": "mass ratio of Mn to Si",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "The compound is formed when the mass ratio of Mn to Si is 1:0.3.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "The compound is formed when the mass ratio of Mn to Si is 1:0.3.",
+          "start": 11139,
+          "end": 11203,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 65,
+      "property_name": "Si content",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "Therefore, the content of Si may be at least 0.6 mass %.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Therefore, the content of Si may be at least 0.6 mass %.",
+          "start": 11204,
+          "end": 11260,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 66,
+      "property_name": "minimum quantity of added Si",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "However, since all Si does not form a compound with Mn, the minimum quantity of added Si in the present invention is determined to be 1.0 mass %.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "However, since all Si does not form a compound with Mn, the minimum quantity of added Si in the present invention is determined to be 1.0 mass %.",
+          "start": 11261,
+          "end": 11406,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 67,
+      "property_name": "Si quantity threshold",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "If the quantity exceeds 3.0 mass %, the quantity of free Si becomes excessive and causes the copper-based sliding material brittle.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "If the quantity exceeds 3.0 mass %, the quantity of free Si becomes excessive and causes the copper-based sliding material brittle.",
+          "start": 11407,
+          "end": 11538,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 68,
+      "property_name": "improves strength of the matrix",
+      "property_type": "performance",
+      "target_ref": 1,
+      "evidence_text": "Zn improves the strength of the matrix, resistance to abrasion, and corrosion resistance to lubricants.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Zn improves the strength of the matrix, resistance to abrasion, and corrosion resistance to lubricants.",
+          "start": 11547,
+          "end": 11650,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 69,
+      "property_name": "resistance to abrasion",
+      "property_type": "performance",
+      "target_ref": 1,
+      "evidence_text": "Zn improves the strength of the matrix, resistance to abrasion, and corrosion resistance to lubricants.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Zn improves the strength of the matrix, resistance to abrasion, and corrosion resistance to lubricants.",
+          "start": 11547,
+          "end": 11650,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 70,
+      "property_name": "corrosion resistance to lubricants",
+      "property_type": "performance",
+      "target_ref": 1,
+      "evidence_text": "Zn improves the strength of the matrix, resistance to abrasion, and corrosion resistance to lubricants.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Zn improves the strength of the matrix, resistance to abrasion, and corrosion resistance to lubricants.",
+          "start": 11547,
+          "end": 11650,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 71,
+      "property_name": "phase",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "According to the Cu-Zn binary phase diagram, if the quantity of Zn is not more than 38.0 mass %, the matrix becomes a single α-phase",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "According to the Cu-Zn binary phase diagram, if the quantity of Zn is not more than 38.0 mass %, the matrix becomes a single α-phase",
+          "start": 11699,
+          "end": 11831,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 72,
+      "property_name": "structure of the matrix",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "However, when a third element dissolved in the α-phase or the β-phase, such as Mn and Si in the present invention, is added, Mn and Si change the structure of the matrix as if the quantity of the added Zn were increased.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "However, when a third element dissolved in the α-phase or the β-phase, such as Mn and Si in the present invention, is added, Mn and Si change the structure of the matrix as if the quantity of the added Zn were increased.",
+          "start": 11900,
+          "end": 12120,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 73,
+      "property_name": "phase",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "Therefore, the quantity of the added Zn is determined to be at most 25.0 mass % in consideration of the contents of Mn and Si. Thus, the matrix can be made to be a single α-phase.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Therefore, the quantity of the added Zn is determined to be at most 25.0 mass % in consideration of the contents of Mn and Si. Thus, the matrix can be made to be a single α-phase.",
+          "start": 12121,
+          "end": 12300,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 74,
+      "property_name": "resistance to abrasion and corrosion to lubricants",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "However, if the content of Zn is less than 15.0 mass %, the effect of the resistance to abrasion and corrosion to lubricants is degraded.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "However, if the content of Zn is less than 15.0 mass %, the effect of the resistance to abrasion and corrosion to lubricants is degraded.",
+          "start": 12301,
+          "end": 12438,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 75,
+      "property_name": "mass ratio of Sn to Bi",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "[0020] On the other hand, all of Comparative Examples 21 to 25 are out of the scope of the present invention. Comparative Examples 21 and 22 and Comparative Examples 23 and 24 adopted \"the mass ratio of Sn to Bi\" to be lower than lower limit and higher than upper limit, respectively. Comparative Example 25 does not contain Sn, which is the feature of the present invention.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "[0020] On the other hand, all of Comparative Examples 21 to 25 are out of the scope of the present invention. Comparative Examples 21 and 22 and Comparative Examples 23 and 24 adopted \"the mass ratio of Sn to Bi\" to be lower than lower limit and higher than upper limit, respectively. Comparative Example 25 does not contain Sn, which is the feature of the present invention.",
+          "start": 16353,
+          "end": 16728,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 76,
+      "property_name": "mass ratio of Sn to Bi",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "[0020] On the other hand, all of Comparative Examples 21 to 25 are out of the scope of the present invention. Comparative Examples 21 and 22 and Comparative Examples 23 and 24 adopted \"the mass ratio of Sn to Bi\" to be lower than lower limit and higher than upper limit, respectively. Comparative Example 25 does not contain Sn, which is the feature of the present invention.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "[0020] On the other hand, all of Comparative Examples 21 to 25 are out of the scope of the present invention. Comparative Examples 21 and 22 and Comparative Examples 23 and 24 adopted \"the mass ratio of Sn to Bi\" to be lower than lower limit and higher than upper limit, respectively. Comparative Example 25 does not contain Sn, which is the feature of the present invention.",
+          "start": 16353,
+          "end": 16728,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 77,
+      "property_name": "alloy cracking",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "since the mass ratio of Sn to Bi was low in Comparative Examples 21 and 22, alloy cracking generated",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "since the mass ratio of Sn to Bi was low in Comparative Examples 21 and 22, alloy cracking generated",
+          "start": 18607,
+          "end": 18707,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 78,
+      "property_name": "alloy cracking",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "alloy cracking occurred in the Comparative Examples 23 and 24, since the mass ratio of Sn to Bi is high",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "alloy cracking occurred in the Comparative Examples 23 and 24, since the mass ratio of Sn to Bi is high",
+          "start": 19062,
+          "end": 19165,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 79,
+      "property_name": "mass ratio of Sn to Bi",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "When the mass ratio of Sn to Bi is not more than 0.200",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "When the mass ratio of Sn to Bi is not more than 0.200",
+          "start": 19532,
+          "end": 19586,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 80,
+      "property_name": "copper alloy cracking",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "When the mass ratio of Sn to Bi is not more than 0.200, it is considered that little or no Bi-Sn hypoeutectic alloy is formed and the copper alloy cracking was prevented.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "When the mass ratio of Sn to Bi is not more than 0.200, it is considered that little or no Bi-Sn hypoeutectic alloy is formed and the copper alloy cracking was prevented.",
+          "start": 19532,
+          "end": 19702,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 81,
+      "property_name": "same effect as the effect of Examples",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "the inventors have confirmed that copper-based alloy compositions within the scope of the present invention also have the same effect as the effect of Examples.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "the inventors have confirmed that copper-based alloy compositions within the scope of the present invention also have the same effect as the effect of Examples.",
+          "start": 20501,
+          "end": 20661,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "measurements": [
+    {
+      "node_no": 82,
+      "measurement_type": "qualitative",
+      "property_ref": 21,
+      "value": [
+        "single α-phase matrix",
+        "Mn-Si compound",
+        "Bi-particle phase"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "includes these phases; Mn-Si compound and Bi-particle phase are dispersed in the single α-phase matrix"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "The copper-based sliding material includes a single α-phase matrix (1, 2), a Mn-Si compound (3) and a Bi-particle phase (4). The Mn-Si compound (3) and the Bi-particle phase (4) are dispersed in the single α-phase matrix (1, 2).",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "The copper-based sliding material includes a single α-phase matrix (1, 2), a Mn-Si compound (3) and a Bi-particle phase (4). The Mn-Si compound (3) and the Bi-particle phase (4) are dispersed in the single α-phase matrix (1, 2).",
+          "start": 285,
+          "end": 513,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 83,
+      "measurement_type": "quantitative",
+      "property_ref": 22,
+      "value": [],
+      "comparator": "range",
+      "unit": [],
+      "lower_value": 0.024,
+      "upper_value": 0.2,
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "preferably 0.050 to 0.140"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "The mass ratio of Sn to Bi is 0.024 to 0.200, preferably 0.050 to 0.140.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "The mass ratio of Sn to Bi is 0.024 to 0.200, preferably 0.050 to 0.140.",
+          "start": 514,
+          "end": 586,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 84,
+      "measurement_type": "quantitative",
+      "property_ref": 23,
+      "value": [
+        300.0
+      ],
+      "comparator": ">",
+      "unit": [
+        "°C"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "when the engine is rotated at a high speed and then stopped immediately; oil supply to the floating bush is stopped; elevated by heat conduction from a turbine casing"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "the temperature of the floating bush is elevated to higher than 300°C by heat conduction from a turbine casing",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the temperature of the floating bush is elevated to higher than 300°C by heat conduction from a turbine casing",
+          "start": 1403,
+          "end": 1513,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 85,
+      "measurement_type": "quantitative",
+      "property_ref": 24,
+      "value": [
+        100000.0
+      ],
+      "comparator": "approx",
+      "unit": [
+        "rpm"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "if the engine is restarted in this state, the turbine immediately approaches the highest rotation"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "the turbine immediately approaches the highest rotation as high as 100,000 rpm",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the turbine immediately approaches the highest rotation as high as 100,000 rpm",
+          "start": 1557,
+          "end": 1635,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 86,
+      "measurement_type": "qualitative",
+      "property_ref": 25,
+      "value": [
+        "uniformly dispersed"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "in the whole structure"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "Pb is uniformly dispersed in the whole structure",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Pb is uniformly dispersed in the whole structure",
+          "start": 2157,
+          "end": 2205,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 87,
+      "measurement_type": "qualitative",
+      "property_ref": 26,
+      "value": [
+        "single α-phase"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "the matrix consists of a single α-phase",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the matrix consists of a single α-phase",
+          "start": 2210,
+          "end": 2249,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 88,
+      "measurement_type": "quantitative",
+      "property_ref": 27,
+      "value": [
+        30.0
+      ],
+      "comparator": "<=",
+      "unit": [
+        "%"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "metal structure; controlled so that it can be subjected to cold plastic working"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "has a metal structure including β-phase controlled to be not more than 30% so that it can be subjected to cold plastic working",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "has a metal structure including β-phase controlled to be not more than 30% so that it can be subjected to cold plastic working",
+          "start": 2351,
+          "end": 2477,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 89,
+      "measurement_type": "qualitative",
+      "property_ref": 28,
+      "value": [
+        "can be subjected"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "β-phase controlled to be not more than 30%"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "has a metal structure including β-phase controlled to be not more than 30% so that it can be subjected to cold plastic working",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "has a metal structure including β-phase controlled to be not more than 30% so that it can be subjected to cold plastic working",
+          "start": 2351,
+          "end": 2477,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 90,
+      "measurement_type": "qualitative",
+      "property_ref": 29,
+      "value": [
+        "favorable"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "The former sliding material has favorable performances in resistance to seizing and abrasion.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "The former sliding material has favorable performances in resistance to seizing and abrasion.",
+          "start": 2684,
+          "end": 2777,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 91,
+      "measurement_type": "qualitative",
+      "property_ref": 30,
+      "value": [
+        "favorable"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "The former sliding material has favorable performances in resistance to seizing and abrasion.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "The former sliding material has favorable performances in resistance to seizing and abrasion.",
+          "start": 2684,
+          "end": 2777,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 92,
+      "measurement_type": "qualitative",
+      "property_ref": 31,
+      "value": [
+        "improved"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "The latter sliding material includes a hard β-phase in the matrix, and thus the resistance to abrasion is improved.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "The latter sliding material includes a hard β-phase in the matrix, and thus the resistance to abrasion is improved.",
+          "start": 2868,
+          "end": 2983,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 93,
+      "measurement_type": "qualitative",
+      "property_ref": 32,
+      "value": [
+        "problems still left"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "when used under severe conditions, such as a floating bush for a turbocharger"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "When it is used under severe conditions, such as a floating bush for a turbocharger, problems is still left in resistance to seizing.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "When it is used under severe conditions, such as a floating bush for a turbocharger, problems is still left in resistance to seizing.",
+          "start": 2984,
+          "end": 3117,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 94,
+      "measurement_type": "qualitative",
+      "property_ref": 33,
+      "value": [
+        "lowered"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "as sliding material for supporting a shaft rotating at a high speed in a high-temperature atmosphere such as for a turbocharger"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "[0005] In the copper-based alloy disclosed in JP-A-2004-137512, a Bi-particle phase is dispersed in the matrix of single α-phase by adding a large quantity of Bi. If the copper-based alloy is manufactured by a continuous casting method or the like suited to mass production, cracks possibly generate due to the stress during the drawing from the mold. When the stress during the drawing is applied to the copper-based alloy, it is considered that shear generates at the interface between the α-phase and the Bi-particle phase since the quantity of deformation differs between the α-phase having a high ductility and the Bi-particle phase having little ductility. The shear becomes the starting point of the cracking. Although the alloy cracking can be reduced by lowering the drawing rate, the productivity lowers, and therefore there is no advantage to adopt the continuous casting method for mass production. Furthermore, if the Zn content is increased to make the matrix of the copper-based alloy be composed of the α-phase and β-phase structure, the strength of the matrix is increased and the ductility thereof is lowered. Thus, the cracking of the copper-based alloy unlikely occurs. However, it is not preferable as the sliding material for supporting a shaft rotating at a high speed in a high-temperature atmosphere such as for a turbocharger, since the strength of the copper-based alloy becomes excessively high, and resistance to seizing and conformability (which is such property that the alloy deforms by itself, while it contacts the counter shaft, to reduce stress generated by the contact) are lowered.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "[0005] In the copper-based alloy disclosed in JP-A-2004-137512, a Bi-particle phase is dispersed in the matrix of single α-phase by adding a large quantity of Bi. If the copper-based alloy is manufactured by a continuous casting method or the like suited to mass production, cracks possibly generate due to the stress during the drawing from the mold. When the stress during the drawing is applied to the copper-based alloy, it is considered that shear generates at the interface between the α-phase and the Bi-particle phase since the quantity of deformation differs between the α-phase having a high ductility and the Bi-particle phase having little ductility. The shear becomes the starting point of the cracking. Although the alloy cracking can be reduced by lowering the drawing rate, the productivity lowers, and therefore there is no advantage to adopt the continuous casting method for mass production. Furthermore, if the Zn content is increased to make the matrix of the copper-based alloy be composed of the α-phase and β-phase structure, the strength of the matrix is increased and the ductility thereof is lowered. Thus, the cracking of the copper-based alloy unlikely occurs. However, it is not preferable as the sliding material for supporting a shaft rotating at a high speed in a high-temperature atmosphere such as for a turbocharger, since the strength of the copper-based alloy becomes excessively high, and resistance to seizing and conformability (which is such property that the alloy deforms by itself, while it contacts the counter shaft, to reduce stress generated by the contact) are lowered.",
+          "start": 3564,
+          "end": 5183,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 95,
+      "measurement_type": "qualitative",
+      "property_ref": 34,
+      "value": [
+        "lowered"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "as sliding material for supporting a shaft rotating at a high speed in a high-temperature atmosphere such as for a turbocharger"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "[0005] In the copper-based alloy disclosed in JP-A-2004-137512, a Bi-particle phase is dispersed in the matrix of single α-phase by adding a large quantity of Bi. If the copper-based alloy is manufactured by a continuous casting method or the like suited to mass production, cracks possibly generate due to the stress during the drawing from the mold. When the stress during the drawing is applied to the copper-based alloy, it is considered that shear generates at the interface between the α-phase and the Bi-particle phase since the quantity of deformation differs between the α-phase having a high ductility and the Bi-particle phase having little ductility. The shear becomes the starting point of the cracking. Although the alloy cracking can be reduced by lowering the drawing rate, the productivity lowers, and therefore there is no advantage to adopt the continuous casting method for mass production. Furthermore, if the Zn content is increased to make the matrix of the copper-based alloy be composed of the α-phase and β-phase structure, the strength of the matrix is increased and the ductility thereof is lowered. Thus, the cracking of the copper-based alloy unlikely occurs. However, it is not preferable as the sliding material for supporting a shaft rotating at a high speed in a high-temperature atmosphere such as for a turbocharger, since the strength of the copper-based alloy becomes excessively high, and resistance to seizing and conformability (which is such property that the alloy deforms by itself, while it contacts the counter shaft, to reduce stress generated by the contact) are lowered.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "[0005] In the copper-based alloy disclosed in JP-A-2004-137512, a Bi-particle phase is dispersed in the matrix of single α-phase by adding a large quantity of Bi. If the copper-based alloy is manufactured by a continuous casting method or the like suited to mass production, cracks possibly generate due to the stress during the drawing from the mold. When the stress during the drawing is applied to the copper-based alloy, it is considered that shear generates at the interface between the α-phase and the Bi-particle phase since the quantity of deformation differs between the α-phase having a high ductility and the Bi-particle phase having little ductility. The shear becomes the starting point of the cracking. Although the alloy cracking can be reduced by lowering the drawing rate, the productivity lowers, and therefore there is no advantage to adopt the continuous casting method for mass production. Furthermore, if the Zn content is increased to make the matrix of the copper-based alloy be composed of the α-phase and β-phase structure, the strength of the matrix is increased and the ductility thereof is lowered. Thus, the cracking of the copper-based alloy unlikely occurs. However, it is not preferable as the sliding material for supporting a shaft rotating at a high speed in a high-temperature atmosphere such as for a turbocharger, since the strength of the copper-based alloy becomes excessively high, and resistance to seizing and conformability (which is such property that the alloy deforms by itself, while it contacts the counter shaft, to reduce stress generated by the contact) are lowered.",
+          "start": 3564,
+          "end": 5183,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 96,
+      "measurement_type": "qualitative",
+      "property_ref": 35,
+      "value": [
+        "high"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "the α-phase having a high ductility",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the α-phase having a high ductility",
+          "start": 4140,
+          "end": 4175,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 97,
+      "measurement_type": "qualitative",
+      "property_ref": 36,
+      "value": [
+        "little"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "the Bi-particle phase having little ductility",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the Bi-particle phase having little ductility",
+          "start": 4180,
+          "end": 4225,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 98,
+      "measurement_type": "qualitative",
+      "property_ref": 37,
+      "value": [
+        "increased"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "Zn content increased; matrix composed of α-phase and β-phase structure"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "the strength of the matrix is increased",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the strength of the matrix is increased",
+          "start": 4614,
+          "end": 4653,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 99,
+      "measurement_type": "qualitative",
+      "property_ref": 38,
+      "value": [
+        "lowered"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "Zn content increased; matrix composed of α-phase and β-phase structure"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "the ductility thereof is lowered",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the ductility thereof is lowered",
+          "start": 4658,
+          "end": 4690,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 100,
+      "measurement_type": "qualitative",
+      "property_ref": 39,
+      "value": [
+        "unlikely occurs"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "Zn content increased; matrix composed of α-phase and β-phase structure"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "Thus, the cracking of the copper-based alloy unlikely occurs",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Thus, the cracking of the copper-based alloy unlikely occurs",
+          "start": 4692,
+          "end": 4752,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 101,
+      "measurement_type": "qualitative",
+      "property_ref": 40,
+      "value": [
+        "excessively high"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "as sliding material for supporting a shaft rotating at a high speed in a high-temperature atmosphere such as for a turbocharger"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "the strength of the copper-based alloy becomes excessively high",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the strength of the copper-based alloy becomes excessively high",
+          "start": 4923,
+          "end": 4986,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 102,
+      "measurement_type": "qualitative",
+      "property_ref": 41,
+      "value": [
+        "improved"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "used under severe conditions under which it is rotated at a high speed in a high-temperature atmosphere, such as a floating bush for a turbocharger for motor vehicles"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "has improved resistance to seizing",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "has improved resistance to seizing",
+          "start": 5742,
+          "end": 5776,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 103,
+      "measurement_type": "qualitative",
+      "property_ref": 42,
+      "value": [
+        "improved"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "used under severe conditions under which it is rotated at a high speed in a high-temperature atmosphere, such as a floating bush for a turbocharger for motor vehicles"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "has improved resistance to seizing, abrasion and friction",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "has improved resistance to seizing, abrasion and friction",
+          "start": 5742,
+          "end": 5799,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 104,
+      "measurement_type": "qualitative",
+      "property_ref": 43,
+      "value": [
+        "improved"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "used under severe conditions under which it is rotated at a high speed in a high-temperature atmosphere, such as a floating bush for a turbocharger for motor vehicles"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "has improved resistance to seizing, abrasion and friction",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "has improved resistance to seizing, abrasion and friction",
+          "start": 5742,
+          "end": 5799,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 105,
+      "measurement_type": "qualitative",
+      "property_ref": 44,
+      "value": [
+        "improved"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "used under severe conditions under which it is rotated at a high speed in a high-temperature atmosphere, such as a floating bush for a turbocharger for motor vehicles"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "improved resistance to seizing, abrasion and friction and conformability",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "improved resistance to seizing, abrasion and friction and conformability",
+          "start": 5746,
+          "end": 5818,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 106,
+      "measurement_type": "qualitative",
+      "property_ref": 45,
+      "value": [
+        "improved"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "used under severe conditions under which it is rotated at a high speed in a high-temperature atmosphere, such as a floating bush for a turbocharger for motor vehicles"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "as well as improved productivity",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "as well as improved productivity",
+          "start": 5819,
+          "end": 5851,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 107,
+      "measurement_type": "qualitative",
+      "property_ref": 46,
+      "value": [
+        "single α-phase matrix"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "includes a single α-phase matrix",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "includes a single α-phase matrix",
+          "start": 6384,
+          "end": 6416,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 108,
+      "measurement_type": "qualitative",
+      "property_ref": 47,
+      "value": [
+        "Mn-Si compound",
+        "Bi-particle phase"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "in the single α-phase matrix"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "a single α-phase matrix in which a Mn-Si compound and a Bi-particle phase are dispersed",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "a single α-phase matrix in which a Mn-Si compound and a Bi-particle phase are dispersed",
+          "start": 6393,
+          "end": 6480,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 109,
+      "measurement_type": "qualitative",
+      "property_ref": 48,
+      "value": [
+        "α-phase > Sn-containing α-phase > Bi-particle phase"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "in the copper-based alloy structure"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "The ductility of each phase in the copper-based alloy structure is in the order of: α-phase > \"Sn-containing α-phase\" > Bi-particle phase.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "The ductility of each phase in the copper-based alloy structure is in the order of: α-phase > \"Sn-containing α-phase\" > Bi-particle phase.",
+          "start": 6806,
+          "end": 6944,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 110,
+      "measurement_type": "quantitative",
+      "property_ref": 49,
+      "value": [
+        140.0
+      ],
+      "comparator": "approx",
+      "unit": [
+        "°C"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "Bi-Sn eutectic composition (Bi-43 mass % Sn having a melting point at about 140°C)",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Bi-Sn eutectic composition (Bi-43 mass % Sn having a melting point at about 140°C)",
+          "start": 8325,
+          "end": 8407,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 111,
+      "measurement_type": "quantitative",
+      "property_ref": 50,
+      "value": [
+        270.0
+      ],
+      "comparator": "approx",
+      "unit": [
+        "°C"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "in the copper-based alloy structure"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "the Bi-particle phase, of which melting point is lowest in the copper-based alloy structure (the melting point is about 270°C), is fully solidified",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the Bi-particle phase, of which melting point is lowest in the copper-based alloy structure (the melting point is about 270°C), is fully solidified",
+          "start": 8642,
+          "end": 8789,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 112,
+      "measurement_type": "qualitative",
+      "property_ref": 51,
+      "value": [
+        "increases"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "when Mn-Si compound is dispersed in the single α-phase matrix"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "The reason why a Mn-Si compound is dispersed in the single α-phase matrix in the copper-based sliding material is because the high-temperature strength of the material increases.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "The reason why a Mn-Si compound is dispersed in the single α-phase matrix in the copper-based sliding material is because the high-temperature strength of the material increases.",
+          "start": 9210,
+          "end": 9388,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 113,
+      "measurement_type": "qualitative",
+      "property_ref": 52,
+      "value": [
+        "lowered"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "with elevation of temperature"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "Although the strength of the copper-based alloy is lowered with the elevation of temperature",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Although the strength of the copper-based alloy is lowered with the elevation of temperature",
+          "start": 9568,
+          "end": 9660,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 114,
+      "measurement_type": "qualitative",
+      "property_ref": 53,
+      "value": [
+        "increased"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "by dispersing a Mn-Si compound whose strength is not lowered even at the high temperature"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "the high-temperature strength of the copper-based alloy can be increased by dispersing a Mn-Si compound whose strength is not lowered even at the high temperature.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the high-temperature strength of the copper-based alloy can be increased by dispersing a Mn-Si compound whose strength is not lowered even at the high temperature.",
+          "start": 9662,
+          "end": 9825,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 115,
+      "measurement_type": "qualitative",
+      "property_ref": 41,
+      "value": [
+        "insufficient"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "Bi quantity less than 4.2 mass %; support of shaft rotating at a high speed in a high-temperature atmosphere"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "If the quantity of the added Bi is less than 4.2 mass %, the effect to increase the resistance to seizing is insufficient for the copper-based sliding material to support the shaft rotating at a high speed in a high-temperature atmosphere.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "If the quantity of the added Bi is less than 4.2 mass %, the effect to increase the resistance to seizing is insufficient for the copper-based sliding material to support the shaft rotating at a high speed in a high-temperature atmosphere.",
+          "start": 10049,
+          "end": 10288,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 116,
+      "measurement_type": "qualitative",
+      "property_ref": 54,
+      "value": [
+        "lowered"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "Bi quantity more than 10 mass %"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "If the quantity is more than 10 mass %, the strength of the copper-based sliding material is lowered.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "If the quantity is more than 10 mass %, the strength of the copper-based sliding material is lowered.",
+          "start": 10289,
+          "end": 10390,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 117,
+      "measurement_type": "qualitative",
+      "property_ref": 55,
+      "value": [
+        "improves"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "Mn improves the strength of the matrix.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Mn improves the strength of the matrix.",
+          "start": 10399,
+          "end": 10438,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 118,
+      "measurement_type": "qualitative",
+      "property_ref": 56,
+      "value": [
+        "hard"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "It forms hard compounds",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "It forms hard compounds",
+          "start": 10439,
+          "end": 10462,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 119,
+      "measurement_type": "qualitative",
+      "property_ref": 57,
+      "value": [
+        "excellent"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "It forms hard compounds having excellent sliding properties, such as Mn-Si compounds",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "It forms hard compounds having excellent sliding properties, such as Mn-Si compounds",
+          "start": 10439,
+          "end": 10523,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 120,
+      "measurement_type": "qualitative",
+      "property_ref": 58,
+      "value": [
+        "improve"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "through formation of Mn-Si compounds"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "and contributes to improve the resistance to abrasion and seizing",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "and contributes to improve the resistance to abrasion and seizing",
+          "start": 10545,
+          "end": 10610,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 121,
+      "measurement_type": "qualitative",
+      "property_ref": 59,
+      "value": [
+        "improve"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "through formation of Mn-Si compounds"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "and contributes to improve the resistance to abrasion and seizing",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "and contributes to improve the resistance to abrasion and seizing",
+          "start": 10545,
+          "end": 10610,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 122,
+      "measurement_type": "qualitative",
+      "property_ref": 60,
+      "value": [
+        "improve"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "through formation of Mn-Si compounds"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "and contributes to improve the resistance to abrasion and seizing, friction properties, and strength at a high temperature.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "and contributes to improve the resistance to abrasion and seizing, friction properties, and strength at a high temperature.",
+          "start": 10545,
+          "end": 10668,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 123,
+      "measurement_type": "qualitative",
+      "property_ref": 61,
+      "value": [
+        "improve"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "through formation of Mn-Si compounds"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "and contributes to improve the resistance to abrasion and seizing, friction properties, and strength at a high temperature.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "and contributes to improve the resistance to abrasion and seizing, friction properties, and strength at a high temperature.",
+          "start": 10545,
+          "end": 10668,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 124,
+      "measurement_type": "quantitative",
+      "property_ref": 62,
+      "value": [
+        2.0
+      ],
+      "comparator": "<",
+      "unit": [
+        "mass %"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "if less than this quantity, the effect cannot be obtained"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "If the quantity of the added Mn is less than 2.0 mass %, the effect cannot be obtained.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "If the quantity of the added Mn is less than 2.0 mass %, the effect cannot be obtained.",
+          "start": 10669,
+          "end": 10756,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 125,
+      "measurement_type": "quantitative",
+      "property_ref": 63,
+      "value": [
+        7.0
+      ],
+      "comparator": ">",
+      "unit": [
+        "mass %"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "if more than this quantity, the addition of Zn described below becomes hardly useful"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "If the quantity is more than 7.0 mass %, the addition of Zn described below becomes hardly useful.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "If the quantity is more than 7.0 mass %, the addition of Zn described below becomes hardly useful.",
+          "start": 10757,
+          "end": 10855,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 126,
+      "measurement_type": "quantitative",
+      "property_ref": 64,
+      "value": [
+        "1:0.3"
+      ],
+      "comparator": "=",
+      "unit": [
+        "ratio"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "The compound is formed when the mass ratio of Mn to Si is 1:0.3.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "The compound is formed when the mass ratio of Mn to Si is 1:0.3.",
+          "start": 11139,
+          "end": 11203,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 127,
+      "measurement_type": "quantitative",
+      "property_ref": 65,
+      "value": [
+        0.6
+      ],
+      "comparator": ">=",
+      "unit": [
+        "mass %"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "Therefore, based on composition of the Mn-Si compound"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "Therefore, the content of Si may be at least 0.6 mass %.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Therefore, the content of Si may be at least 0.6 mass %.",
+          "start": 11204,
+          "end": 11260,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 128,
+      "measurement_type": "quantitative",
+      "property_ref": 66,
+      "value": [
+        1.0
+      ],
+      "comparator": "=",
+      "unit": [
+        "mass %"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "since all Si does not form a compound with Mn"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "However, since all Si does not form a compound with Mn, the minimum quantity of added Si in the present invention is determined to be 1.0 mass %.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "However, since all Si does not form a compound with Mn, the minimum quantity of added Si in the present invention is determined to be 1.0 mass %.",
+          "start": 11261,
+          "end": 11406,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 129,
+      "measurement_type": "quantitative",
+      "property_ref": 67,
+      "value": [
+        3.0
+      ],
+      "comparator": ">",
+      "unit": [
+        "mass %"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "above this, free Si becomes excessive and causes brittleness in the copper-based sliding material"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "If the quantity exceeds 3.0 mass %, the quantity of free Si becomes excessive and causes the copper-based sliding material brittle.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "If the quantity exceeds 3.0 mass %, the quantity of free Si becomes excessive and causes the copper-based sliding material brittle.",
+          "start": 11407,
+          "end": 11538,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 130,
+      "measurement_type": "qualitative",
+      "property_ref": 68,
+      "value": [
+        "improves"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "in the matrix"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "Zn improves the strength of the matrix, resistance to abrasion, and corrosion resistance to lubricants.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Zn improves the strength of the matrix, resistance to abrasion, and corrosion resistance to lubricants.",
+          "start": 11547,
+          "end": 11650,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 131,
+      "measurement_type": "qualitative",
+      "property_ref": 69,
+      "value": [
+        "improves"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "in the matrix"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "Zn improves the strength of the matrix, resistance to abrasion, and corrosion resistance to lubricants.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Zn improves the strength of the matrix, resistance to abrasion, and corrosion resistance to lubricants.",
+          "start": 11547,
+          "end": 11650,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 132,
+      "measurement_type": "qualitative",
+      "property_ref": 70,
+      "value": [
+        "improves"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "in the matrix"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "Zn improves the strength of the matrix, resistance to abrasion, and corrosion resistance to lubricants.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Zn improves the strength of the matrix, resistance to abrasion, and corrosion resistance to lubricants.",
+          "start": 11547,
+          "end": 11650,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 133,
+      "measurement_type": "qualitative",
+      "property_ref": 71,
+      "value": [
+        "single α-phase"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "Zn not more than 38.0 mass % according to the Cu-Zn binary phase diagram"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "According to the Cu-Zn binary phase diagram, if the quantity of Zn is not more than 38.0 mass %, the matrix becomes a single α-phase",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "According to the Cu-Zn binary phase diagram, if the quantity of Zn is not more than 38.0 mass %, the matrix becomes a single α-phase",
+          "start": 11699,
+          "end": 11831,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 134,
+      "measurement_type": "qualitative",
+      "property_ref": 71,
+      "value": [
+        "β-phase appears"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "Zn exceeds 38.0 mass % according to the Cu-Zn binary phase diagram"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "if the quantity of Zn exceeds 38.0 mass %, a β- phase appears.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "if the quantity of Zn exceeds 38.0 mass %, a β- phase appears.",
+          "start": 11837,
+          "end": 11899,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 135,
+      "measurement_type": "qualitative",
+      "property_ref": 72,
+      "value": [
+        "changed as if the quantity of the added Zn were increased"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "when a third element dissolved in the α-phase or the β-phase, such as Mn and Si, is added"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "However, when a third element dissolved in the α-phase or the β-phase, such as Mn and Si in the present invention, is added, Mn and Si change the structure of the matrix as if the quantity of the added Zn were increased.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "However, when a third element dissolved in the α-phase or the β-phase, such as Mn and Si in the present invention, is added, Mn and Si change the structure of the matrix as if the quantity of the added Zn were increased.",
+          "start": 11900,
+          "end": 12120,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 136,
+      "measurement_type": "qualitative",
+      "property_ref": 73,
+      "value": [
+        "single α-phase"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "Zn at most 25.0 mass % in consideration of the contents of Mn and Si"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "Therefore, the quantity of the added Zn is determined to be at most 25.0 mass % in consideration of the contents of Mn and Si. Thus, the matrix can be made to be a single α-phase.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Therefore, the quantity of the added Zn is determined to be at most 25.0 mass % in consideration of the contents of Mn and Si. Thus, the matrix can be made to be a single α-phase.",
+          "start": 12121,
+          "end": 12300,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 137,
+      "measurement_type": "qualitative",
+      "property_ref": 74,
+      "value": [
+        "degraded"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "if the content of Zn is less than 15.0 mass %"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "However, if the content of Zn is less than 15.0 mass %, the effect of the resistance to abrasion and corrosion to lubricants is degraded.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "However, if the content of Zn is less than 15.0 mass %, the effect of the resistance to abrasion and corrosion to lubricants is degraded.",
+          "start": 12301,
+          "end": 12438,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 138,
+      "measurement_type": "qualitative",
+      "property_ref": 75,
+      "value": [
+        "lower than lower limit"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "[0020] On the other hand, all of Comparative Examples 21 to 25 are out of the scope of the present invention. Comparative Examples 21 and 22 and Comparative Examples 23 and 24 adopted \"the mass ratio of Sn to Bi\" to be lower than lower limit and higher than upper limit, respectively. Comparative Example 25 does not contain Sn, which is the feature of the present invention.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "[0020] On the other hand, all of Comparative Examples 21 to 25 are out of the scope of the present invention. Comparative Examples 21 and 22 and Comparative Examples 23 and 24 adopted \"the mass ratio of Sn to Bi\" to be lower than lower limit and higher than upper limit, respectively. Comparative Example 25 does not contain Sn, which is the feature of the present invention.",
+          "start": 16353,
+          "end": 16728,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 139,
+      "measurement_type": "qualitative",
+      "property_ref": 76,
+      "value": [
+        "higher than upper limit"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "[0020] On the other hand, all of Comparative Examples 21 to 25 are out of the scope of the present invention. Comparative Examples 21 and 22 and Comparative Examples 23 and 24 adopted \"the mass ratio of Sn to Bi\" to be lower than lower limit and higher than upper limit, respectively. Comparative Example 25 does not contain Sn, which is the feature of the present invention.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "[0020] On the other hand, all of Comparative Examples 21 to 25 are out of the scope of the present invention. Comparative Examples 21 and 22 and Comparative Examples 23 and 24 adopted \"the mass ratio of Sn to Bi\" to be lower than lower limit and higher than upper limit, respectively. Comparative Example 25 does not contain Sn, which is the feature of the present invention.",
+          "start": 16353,
+          "end": 16728,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 140,
+      "measurement_type": "qualitative",
+      "property_ref": 75,
+      "value": [
+        "low"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "since the mass ratio of Sn to Bi was low in Comparative Examples 21 and 22",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "since the mass ratio of Sn to Bi was low in Comparative Examples 21 and 22",
+          "start": 18607,
+          "end": 18681,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 141,
+      "measurement_type": "qualitative",
+      "property_ref": 77,
+      "value": [
+        "generated"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "since the mass ratio of Sn to Bi was low in Comparative Examples 21 and 22, alloy cracking generated",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "since the mass ratio of Sn to Bi was low in Comparative Examples 21 and 22, alloy cracking generated",
+          "start": 18607,
+          "end": 18707,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 142,
+      "measurement_type": "qualitative",
+      "property_ref": 78,
+      "value": [
+        "occurred"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "since the mass ratio of Sn to Bi is high"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "alloy cracking occurred in the Comparative Examples 23 and 24, since the mass ratio of Sn to Bi is high",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "alloy cracking occurred in the Comparative Examples 23 and 24, since the mass ratio of Sn to Bi is high",
+          "start": 19062,
+          "end": 19165,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 143,
+      "measurement_type": "quantitative",
+      "property_ref": 79,
+      "value": [
+        0.2
+      ],
+      "comparator": "<=",
+      "unit": [],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "When the mass ratio of Sn to Bi is not more than 0.200",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "When the mass ratio of Sn to Bi is not more than 0.200",
+          "start": 19532,
+          "end": 19586,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 144,
+      "measurement_type": "qualitative",
+      "property_ref": 80,
+      "value": [
+        "prevented"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "when the mass ratio of Sn to Bi is not more than 0.200"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "When the mass ratio of Sn to Bi is not more than 0.200, it is considered that little or no Bi-Sn hypoeutectic alloy is formed and the copper alloy cracking was prevented.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "When the mass ratio of Sn to Bi is not more than 0.200, it is considered that little or no Bi-Sn hypoeutectic alloy is formed and the copper alloy cracking was prevented.",
+          "start": 19532,
+          "end": 19702,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 145,
+      "measurement_type": "qualitative",
+      "property_ref": 35,
+      "value": [
+        "high"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "in the single α-phase matrix"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "the α-phase having a high ductility in the single α-phase matrix",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the α-phase having a high ductility in the single α-phase matrix",
+          "start": 19862,
+          "end": 19926,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 146,
+      "measurement_type": "qualitative",
+      "property_ref": 36,
+      "value": [
+        "little"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [],
+      "evidence_text": "the Bi-particle phase having little ductility",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the Bi-particle phase having little ductility",
+          "start": 19931,
+          "end": 19976,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 147,
+      "measurement_type": "qualitative",
+      "property_ref": 81,
+      "value": [
+        "same"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "within the scope of the present invention"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "the inventors have confirmed that copper-based alloy compositions within the scope of the present invention also have the same effect as the effect of Examples.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the inventors have confirmed that copper-based alloy compositions within the scope of the present invention also have the same effect as the effect of Examples.",
+          "start": 20501,
+          "end": 20661,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 148,
+      "measurement_type": "quantitative",
+      "property_ref": 22,
+      "value": [
+        "0.050 to 0.140"
+      ],
+      "comparator": "=",
+      "unit": [
+        "ratio"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "according to claim 1; claim 2"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "<seg-con>1. A copper-based sliding material </seg-con><seg-trans>consisting of: </seg-trans><seg-refi>15.0 to 25.0 mass % of Zn, 4.2 to 10.0 mass % of Bi, 2.0 to 7.0 mass % of Mn, 1.0 to 3.0 mass % of Si, 0.1 to 2.0 mass % of Sn, and the balance being Cu and unavoidable impurities, the copper-based sliding material including a single a-phase matrix (1, 2), a Mn-Si compound (3) and a Bi-particle phase (4), the Mn-Si compound (3) and the Bi-particle phase (4) being dispersed in the single α-phase matrix (1, 2), and the mass ratio of Sn to Bi being 0.024 to 0.200.</seg-refi>\n<seg-con>2. The copper-based sliding material according to claim 1, </seg-con><seg-trans>wherein </seg-trans><seg-refi>the mass ratio of Sn to Bi is 0.050 to 0.140.</seg-refi>",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "<seg-con>1. A copper-based sliding material </seg-con><seg-trans>consisting of: </seg-trans><seg-refi>15.0 to 25.0 mass % of Zn, 4.2 to 10.0 mass % of Bi, 2.0 to 7.0 mass % of Mn, 1.0 to 3.0 mass % of Si, 0.1 to 2.0 mass % of Sn, and the balance being Cu and unavoidable impurities, the copper-based sliding material including a single a-phase matrix (1, 2), a Mn-Si compound (3) and a Bi-particle phase (4), the Mn-Si compound (3) and the Bi-particle phase (4) being dispersed in the single α-phase matrix (1, 2), and the mass ratio of Sn to Bi being 0.024 to 0.200.</seg-refi>\n<seg-con>2. The copper-based sliding material according to claim 1, </seg-con><seg-trans>wherein </seg-trans><seg-refi>the mass ratio of Sn to Bi is 0.050 to 0.140.</seg-refi>",
+          "start": 21016,
+          "end": 21770,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 149,
+      "measurement_type": "quantitative",
+      "property_ref": 22,
+      "value": [
+        "0.024 to 0.200"
+      ],
+      "comparator": "=",
+      "unit": [
+        "ratio"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "claim 1"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "the mass ratio of Sn to Bi being 0.024 to 0.200",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "the mass ratio of Sn to Bi being 0.024 to 0.200",
+          "start": 21535,
+          "end": 21582,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "graph_layout": {
+    "s-1": {
+      "x": 60.0,
+      "y": 80.0
+    },
+    "s-2": {
+      "x": 60.0,
+      "y": 164.0
+    },
+    "s-3": {
+      "x": 60.0,
+      "y": 248.0
+    },
+    "s-4": {
+      "x": 60.0,
+      "y": 332.0
+    },
+    "s-5": {
+      "x": 60.0,
+      "y": 416.0
+    },
+    "s-6": {
+      "x": 60.0,
+      "y": 500.0
+    },
+    "s-8": {
+      "x": 60.0,
+      "y": 584.0
+    },
+    "s-7": {
+      "x": 60.0,
+      "y": 836.0
+    },
+    "s-9": {
+      "x": 60.0,
+      "y": 1004.0
+    },
+    "s-10": {
+      "x": 60.0,
+      "y": 1172.0
+    },
+    "s-11": {
+      "x": 60.0,
+      "y": 1424.0
+    },
+    "s-12": {
+      "x": 60.0,
+      "y": 1760.0
+    },
+    "s-13": {
+      "x": 60.0,
+      "y": 2096.0
+    },
+    "c-14": {
+      "x": 490.0,
+      "y": 80.0
+    },
+    "c-15": {
+      "x": 490.0,
+      "y": 332.0
+    },
+    "c-16": {
+      "x": 490.0,
+      "y": 416.0
+    },
+    "c-19": {
+      "x": 490.0,
+      "y": 1004.0
+    },
+    "c-20": {
+      "x": 490.0,
+      "y": 1424.0
+    },
+    "p-21": {
+      "x": 920.0,
+      "y": 80.0
+    },
+    "p-22": {
+      "x": 920.0,
+      "y": 164.0
+    },
+    "p-23": {
+      "x": 920.0,
+      "y": 248.0
+    },
+    "p-24": {
+      "x": 920.0,
+      "y": 332.0
+    },
+    "p-25": {
+      "x": 920.0,
+      "y": 416.0
+    },
+    "p-26": {
+      "x": 920.0,
+      "y": 500.0
+    },
+    "p-27": {
+      "x": 920.0,
+      "y": 584.0
+    },
+    "p-28": {
+      "x": 920.0,
+      "y": 668.0
+    },
+    "p-29": {
+      "x": 920.0,
+      "y": 752.0
+    },
+    "p-30": {
+      "x": 920.0,
+      "y": 836.0
+    },
+    "p-31": {
+      "x": 920.0,
+      "y": 920.0
+    },
+    "p-32": {
+      "x": 920.0,
+      "y": 1004.0
+    },
+    "p-35": {
+      "x": 920.0,
+      "y": 1088.0
+    },
+    "p-36": {
+      "x": 920.0,
+      "y": 1172.0
+    },
+    "p-37": {
+      "x": 920.0,
+      "y": 1256.0
+    },
+    "p-38": {
+      "x": 920.0,
+      "y": 1340.0
+    },
+    "p-39": {
+      "x": 920.0,
+      "y": 1424.0
+    },
+    "p-40": {
+      "x": 920.0,
+      "y": 1508.0
+    },
+    "p-33": {
+      "x": 920.0,
+      "y": 1592.0
+    },
+    "p-34": {
+      "x": 920.0,
+      "y": 1676.0
+    },
+    "p-41": {
+      "x": 920.0,
+      "y": 1760.0
+    },
+    "p-42": {
+      "x": 920.0,
+      "y": 1844.0
+    },
+    "p-43": {
+      "x": 920.0,
+      "y": 1928.0
+    },
+    "p-44": {
+      "x": 920.0,
+      "y": 2012.0
+    },
+    "p-45": {
+      "x": 920.0,
+      "y": 2096.0
+    },
+    "p-46": {
+      "x": 920.0,
+      "y": 2180.0
+    },
+    "p-47": {
+      "x": 920.0,
+      "y": 2264.0
+    },
+    "p-48": {
+      "x": 920.0,
+      "y": 2348.0
+    },
+    "p-49": {
+      "x": 920.0,
+      "y": 2432.0
+    },
+    "p-50": {
+      "x": 920.0,
+      "y": 2516.0
+    },
+    "p-51": {
+      "x": 920.0,
+      "y": 2600.0
+    },
+    "p-52": {
+      "x": 920.0,
+      "y": 2684.0
+    },
+    "p-53": {
+      "x": 920.0,
+      "y": 2768.0
+    },
+    "p-54": {
+      "x": 920.0,
+      "y": 2852.0
+    },
+    "p-55": {
+      "x": 920.0,
+      "y": 2936.0
+    },
+    "p-56": {
+      "x": 920.0,
+      "y": 3020.0
+    },
+    "p-57": {
+      "x": 920.0,
+      "y": 3104.0
+    },
+    "p-58": {
+      "x": 920.0,
+      "y": 3188.0
+    },
+    "p-59": {
+      "x": 920.0,
+      "y": 3272.0
+    },
+    "p-60": {
+      "x": 920.0,
+      "y": 3356.0
+    },
+    "p-61": {
+      "x": 920.0,
+      "y": 3440.0
+    },
+    "p-62": {
+      "x": 920.0,
+      "y": 3524.0
+    },
+    "p-63": {
+      "x": 920.0,
+      "y": 3608.0
+    },
+    "p-64": {
+      "x": 920.0,
+      "y": 3692.0
+    },
+    "p-65": {
+      "x": 920.0,
+      "y": 3776.0
+    },
+    "p-66": {
+      "x": 920.0,
+      "y": 3860.0
+    },
+    "p-67": {
+      "x": 920.0,
+      "y": 3944.0
+    },
+    "p-68": {
+      "x": 920.0,
+      "y": 4028.0
+    },
+    "p-69": {
+      "x": 920.0,
+      "y": 4112.0
+    },
+    "p-70": {
+      "x": 920.0,
+      "y": 4196.0
+    },
+    "p-71": {
+      "x": 920.0,
+      "y": 4280.0
+    },
+    "p-72": {
+      "x": 920.0,
+      "y": 4364.0
+    },
+    "p-73": {
+      "x": 920.0,
+      "y": 4448.0
+    },
+    "p-74": {
+      "x": 920.0,
+      "y": 4532.0
+    },
+    "p-75": {
+      "x": 920.0,
+      "y": 4616.0
+    },
+    "p-76": {
+      "x": 920.0,
+      "y": 4700.0
+    },
+    "p-77": {
+      "x": 920.0,
+      "y": 4784.0
+    },
+    "p-79": {
+      "x": 920.0,
+      "y": 4868.0
+    },
+    "p-78": {
+      "x": 920.0,
+      "y": 4952.0
+    },
+    "p-80": {
+      "x": 920.0,
+      "y": 5036.0
+    },
+    "p-81": {
+      "x": 920.0,
+      "y": 5120.0
+    },
+    "m-82": {
+      "x": 1350.0,
+      "y": 80.0
+    },
+    "m-83": {
+      "x": 1350.0,
+      "y": 164.0
+    },
+    "m-84": {
+      "x": 1350.0,
+      "y": 248.0
+    },
+    "m-85": {
+      "x": 1350.0,
+      "y": 332.0
+    },
+    "m-86": {
+      "x": 1350.0,
+      "y": 416.0
+    },
+    "m-87": {
+      "x": 1350.0,
+      "y": 500.0
+    },
+    "m-88": {
+      "x": 1350.0,
+      "y": 584.0
+    },
+    "m-89": {
+      "x": 1350.0,
+      "y": 668.0
+    },
+    "m-90": {
+      "x": 1350.0,
+      "y": 752.0
+    },
+    "m-91": {
+      "x": 1350.0,
+      "y": 836.0
+    },
+    "m-92": {
+      "x": 1350.0,
+      "y": 920.0
+    },
+    "m-93": {
+      "x": 1350.0,
+      "y": 1004.0
+    },
+    "m-96": {
+      "x": 1350.0,
+      "y": 1088.0
+    },
+    "m-97": {
+      "x": 1350.0,
+      "y": 1172.0
+    },
+    "m-98": {
+      "x": 1350.0,
+      "y": 1256.0
+    },
+    "m-99": {
+      "x": 1350.0,
+      "y": 1340.0
+    },
+    "m-100": {
+      "x": 1350.0,
+      "y": 1424.0
+    },
+    "m-101": {
+      "x": 1350.0,
+      "y": 1508.0
+    },
+    "m-94": {
+      "x": 1350.0,
+      "y": 1592.0
+    },
+    "m-95": {
+      "x": 1350.0,
+      "y": 1676.0
+    },
+    "m-102": {
+      "x": 1350.0,
+      "y": 1760.0
+    },
+    "m-103": {
+      "x": 1350.0,
+      "y": 1844.0
+    },
+    "m-104": {
+      "x": 1350.0,
+      "y": 1928.0
+    },
+    "m-105": {
+      "x": 1350.0,
+      "y": 2012.0
+    },
+    "m-106": {
+      "x": 1350.0,
+      "y": 2096.0
+    },
+    "m-107": {
+      "x": 1350.0,
+      "y": 2264.0
+    },
+    "m-108": {
+      "x": 1350.0,
+      "y": 2348.0
+    },
+    "m-109": {
+      "x": 1350.0,
+      "y": 2432.0
+    },
+    "m-110": {
+      "x": 1350.0,
+      "y": 2516.0
+    },
+    "m-111": {
+      "x": 1350.0,
+      "y": 2600.0
+    },
+    "m-112": {
+      "x": 1350.0,
+      "y": 2684.0
+    },
+    "m-113": {
+      "x": 1350.0,
+      "y": 2768.0
+    },
+    "m-114": {
+      "x": 1350.0,
+      "y": 2852.0
+    },
+    "m-115": {
+      "x": 1350.0,
+      "y": 2936.0
+    },
+    "m-116": {
+      "x": 1350.0,
+      "y": 3020.0
+    },
+    "m-117": {
+      "x": 1350.0,
+      "y": 3104.0
+    },
+    "m-118": {
+      "x": 1350.0,
+      "y": 3188.0
+    },
+    "m-119": {
+      "x": 1350.0,
+      "y": 3272.0
+    },
+    "m-120": {
+      "x": 1350.0,
+      "y": 3356.0
+    },
+    "m-121": {
+      "x": 1350.0,
+      "y": 3440.0
+    },
+    "m-122": {
+      "x": 1350.0,
+      "y": 3524.0
+    },
+    "m-123": {
+      "x": 1350.0,
+      "y": 3608.0
+    },
+    "m-124": {
+      "x": 1350.0,
+      "y": 3692.0
+    },
+    "m-125": {
+      "x": 1350.0,
+      "y": 3776.0
+    },
+    "m-126": {
+      "x": 1350.0,
+      "y": 3860.0
+    },
+    "m-127": {
+      "x": 1350.0,
+      "y": 3944.0
+    },
+    "m-128": {
+      "x": 1350.0,
+      "y": 4028.0
+    },
+    "m-129": {
+      "x": 1350.0,
+      "y": 4112.0
+    },
+    "m-130": {
+      "x": 1350.0,
+      "y": 4196.0
+    },
+    "m-131": {
+      "x": 1350.0,
+      "y": 4280.0
+    },
+    "m-132": {
+      "x": 1350.0,
+      "y": 4364.0
+    },
+    "m-133": {
+      "x": 1350.0,
+      "y": 4448.0
+    },
+    "m-134": {
+      "x": 1350.0,
+      "y": 4532.0
+    },
+    "m-135": {
+      "x": 1350.0,
+      "y": 4616.0
+    },
+    "m-136": {
+      "x": 1350.0,
+      "y": 4700.0
+    },
+    "m-137": {
+      "x": 1350.0,
+      "y": 4784.0
+    },
+    "m-138": {
+      "x": 1350.0,
+      "y": 4868.0
+    },
+    "m-139": {
+      "x": 1350.0,
+      "y": 4952.0
+    },
+    "m-140": {
+      "x": 1350.0,
+      "y": 5036.0
+    },
+    "m-141": {
+      "x": 1350.0,
+      "y": 5120.0
+    },
+    "m-143": {
+      "x": 1350.0,
+      "y": 5204.0
+    },
+    "m-142": {
+      "x": 1350.0,
+      "y": 5288.0
+    },
+    "m-144": {
+      "x": 1350.0,
+      "y": 5372.0
+    },
+    "m-145": {
+      "x": 1350.0,
+      "y": 5456.0
+    },
+    "m-146": {
+      "x": 1350.0,
+      "y": 5540.0
+    },
+    "m-147": {
+      "x": 1350.0,
+      "y": 5624.0
+    },
+    "m-149": {
+      "x": 1350.0,
+      "y": 5708.0
+    },
+    "m-148": {
+      "x": 1350.0,
+      "y": 5792.0
+    }
+  }
+}

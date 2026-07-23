@@ -1,0 +1,740 @@
+{
+  "meta": {
+    "source_type": "patent",
+    "source_id": "e68b8562-de82-4ba6-a82c-ec7fb1e6b81d",
+    "status": "Completed"
+  },
+  "substances": [
+    {
+      "node_no": 1,
+      "substance_name": "Ni",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "Ni",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "Ni",
+          "start": 257,
+          "end": 259,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 2,
+      "substance_name": "Mo",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "Mo",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "Mo",
+          "start": 264,
+          "end": 266,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 3,
+      "substance_name": "13Cr steel",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "13Cr steel",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "13Cr steel",
+          "start": 272,
+          "end": 282,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 4,
+      "substance_name": "13Cr-5Ni steel",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "13Cr-5Ni steel",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "13Cr-5Ni steel",
+          "start": 407,
+          "end": 421,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 5,
+      "substance_name": "C",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "C",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "C",
+          "start": 454,
+          "end": 455,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 6,
+      "substance_name": "Si",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "Si",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "Si",
+          "start": 462,
+          "end": 464,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 7,
+      "substance_name": "Mn",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "Mn",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "Mn",
+          "start": 470,
+          "end": 472,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 8,
+      "substance_name": "Cr",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "Cr",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "Cr",
+          "start": 481,
+          "end": 483,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 9,
+      "substance_name": "Fe",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "Fe",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "Fe",
+          "start": 522,
+          "end": 524,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 10,
+      "substance_name": "P",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "P",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "P",
+          "start": 2081,
+          "end": 2082,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 11,
+      "substance_name": "S",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "S",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "S",
+          "start": 2099,
+          "end": 2100,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 12,
+      "substance_name": "iron",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "iron",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "iron",
+          "start": 3134,
+          "end": 3138,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 13,
+      "substance_name": "13Cr5Ni",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "13Cr5Ni",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "13Cr5Ni",
+          "start": 3176,
+          "end": 3183,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "compositions": [
+    {
+      "node_no": 14,
+      "composition_name": "13Cr-5Ni steel",
+      "composition_type": "alloy",
+      "physical_form": "solid",
+      "constituents": [
+        {
+          "constituent_ref": 5,
+          "constituent_status": "included",
+          "amount_comparator": "<",
+          "amount_value": 0.06,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 6,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 0.5,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 7,
+          "constituent_status": "included",
+          "amount_comparator": "<",
+          "amount_value": 1.0,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 8,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "wt%",
+          "amount_lower_value": 12.0,
+          "amount_upper_value": 14.0,
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "named as 13Cr steel / 13Cr-5Ni steel"
+        },
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "wt%",
+          "amount_lower_value": 4.0,
+          "amount_upper_value": 6.0,
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "specified as added element and named in 13Cr-5Ni steel"
+        },
+        {
+          "constituent_ref": 2,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "wt%",
+          "amount_lower_value": 0.2,
+          "amount_upper_value": 0.5,
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "specified as added element"
+        },
+        {
+          "constituent_ref": 9,
+          "constituent_status": "included",
+          "amount_comparator": "balance",
+          "amount_value": "-",
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        }
+      ],
+      "evidence_text": "13Cr-5Ni steel consisting of, by weight <0.06% C, 0.5% Si, <1% Mn, 12W14% Cr, 4W6% Ni, 0.2W0.5% Mo and the balance Fe",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "13Cr-5Ni steel consisting of, by weight <0.06% C, 0.5% Si, <1% Mn, 12W14% Cr, 4W6% Ni, 0.2W0.5% Mo and the balance Fe",
+          "start": 407,
+          "end": 524,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 15,
+      "composition_name": "Invention example",
+      "composition_type": "alloy",
+      "physical_form": "-",
+      "constituents": [
+        {
+          "constituent_ref": 5,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 6,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "wt%",
+          "amount_lower_value": 0.42,
+          "amount_upper_value": 0.5,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 7,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "wt%",
+          "amount_lower_value": 0.62,
+          "amount_upper_value": 0.69,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 10,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "wt%",
+          "amount_lower_value": 0.02,
+          "amount_upper_value": 0.035,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 11,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "wt%",
+          "amount_lower_value": 0.011,
+          "amount_upper_value": 0.018,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 8,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "wt%",
+          "amount_lower_value": 0.02,
+          "amount_upper_value": 1.25,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 2,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "wt%",
+          "amount_lower_value": 12.68,
+          "amount_upper_value": 13.02,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "range",
+          "amount_value": "-",
+          "amount_unit": "wt%",
+          "amount_lower_value": 4.9,
+          "amount_upper_value": 5.45,
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        }
+      ],
+      "evidence_text": "Invention example",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "Invention example",
+          "start": 2004,
+          "end": 2021,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "node_no": 16,
+      "property_name": "toughness",
+      "property_type": "performance",
+      "target_ref": 14,
+      "evidence_text": "The resulting parts can maintain the high toughness without carrying out annealing after welding.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "The resulting parts can maintain the high toughness without carrying out annealing after welding.",
+          "start": 526,
+          "end": 623,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 17,
+      "property_name": "shock value",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "The first position shown in fig. 1 taking impact test piece were tested. Fig. 1 is added to the first shock value relationship M O 2.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "The first position shown in fig. 1 taking impact test piece were tested. Fig. 1 is added to the first shock value relationship M O 2.",
+          "start": 2302,
+          "end": 2435,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 18,
+      "property_name": "toughness",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "As toughness is improved by adding approximately constant value ·0.5 MO torch.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "As toughness is improved by adding approximately constant value ·0.5 MO torch.",
+          "start": 2436,
+          "end": 2514,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 19,
+      "property_name": "high toughness can be held without annealing after welding",
+      "property_type": "performance",
+      "target_ref": 0,
+      "evidence_text": "a high toughness can be held without annealing after welding the cast steel parts for hydroelectric power generation",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "a high toughness can be held without annealing after welding the cast steel parts for hydroelectric power generation",
+          "start": 3185,
+          "end": 3301,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "measurements": [
+    {
+      "node_no": 20,
+      "measurement_type": "qualitative",
+      "property_ref": 16,
+      "value": [
+        "high"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "without carrying out annealing after welding"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "The resulting parts can maintain the high toughness without carrying out annealing after welding.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "The resulting parts can maintain the high toughness without carrying out annealing after welding.",
+          "start": 526,
+          "end": 623,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 21,
+      "measurement_type": "quantitative",
+      "property_ref": 17,
+      "value": [
+        "2"
+      ],
+      "comparator": "=",
+      "unit": [],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "first position shown in fig. 1; after first welding; Fig. 1 relationship"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "The first position shown in fig. 1 taking impact test piece were tested. Fig. 1 is added to the first shock value relationship M O 2.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "The first position shown in fig. 1 taking impact test piece were tested. Fig. 1 is added to the first shock value relationship M O 2.",
+          "start": 2302,
+          "end": 2435,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 22,
+      "measurement_type": "quantitative",
+      "property_ref": 18,
+      "value": [
+        "0.5"
+      ],
+      "comparator": "approx",
+      "unit": [
+        "Mo"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "improved by adding approximately constant value 0.5 Mo"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "As toughness is improved by adding approximately constant value ·0.5 MO torch.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "As toughness is improved by adding approximately constant value ·0.5 MO torch.",
+          "start": 2436,
+          "end": 2514,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 23,
+      "measurement_type": "qualitative",
+      "property_ref": 19,
+      "value": [
+        "high"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "after welding; without annealing; cast steel parts for hydroelectric power generation"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "a high toughness can be held without annealing after welding the cast steel parts for hydroelectric power generation",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "a high toughness can be held without annealing after welding the cast steel parts for hydroelectric power generation",
+          "start": 3185,
+          "end": 3301,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "graph_layout": {
+    "s-1": {
+      "x": 60.0,
+      "y": 80.0
+    },
+    "s-2": {
+      "x": 60.0,
+      "y": 164.0
+    },
+    "s-3": {
+      "x": 60.0,
+      "y": 248.0
+    },
+    "s-4": {
+      "x": 60.0,
+      "y": 332.0
+    },
+    "s-5": {
+      "x": 60.0,
+      "y": 416.0
+    },
+    "s-6": {
+      "x": 60.0,
+      "y": 500.0
+    },
+    "s-7": {
+      "x": 60.0,
+      "y": 584.0
+    },
+    "s-8": {
+      "x": 60.0,
+      "y": 668.0
+    },
+    "s-9": {
+      "x": 60.0,
+      "y": 752.0
+    },
+    "s-10": {
+      "x": 60.0,
+      "y": 836.0
+    },
+    "s-11": {
+      "x": 60.0,
+      "y": 920.0
+    },
+    "s-12": {
+      "x": 60.0,
+      "y": 1088.0
+    },
+    "s-13": {
+      "x": 60.0,
+      "y": 1172.0
+    },
+    "c-14": {
+      "x": 490.0,
+      "y": 80.0
+    },
+    "c-15": {
+      "x": 490.0,
+      "y": 164.0
+    },
+    "p-16": {
+      "x": 920.0,
+      "y": 80.0
+    },
+    "p-17": {
+      "x": 920.0,
+      "y": 164.0
+    },
+    "p-18": {
+      "x": 920.0,
+      "y": 248.0
+    },
+    "p-19": {
+      "x": 920.0,
+      "y": 332.0
+    },
+    "m-20": {
+      "x": 1350.0,
+      "y": 80.0
+    },
+    "m-21": {
+      "x": 1350.0,
+      "y": 164.0
+    },
+    "m-22": {
+      "x": 1350.0,
+      "y": 248.0
+    },
+    "m-23": {
+      "x": 1350.0,
+      "y": 332.0
+    }
+  }
+}

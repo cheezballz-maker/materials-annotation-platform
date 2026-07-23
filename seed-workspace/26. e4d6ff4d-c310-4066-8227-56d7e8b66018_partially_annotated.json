@@ -1,0 +1,75 @@
+{
+  "document_id": "26. e4d6ff4d-c310-4066-8227-56d7e8b66018.json",
+  "patent_id": "e4d6ff4d-c310-4066-8227-56d7e8b66018",
+  "status": "Partially complete",
+  "meta": {
+    "source_type": "patent",
+    "source_id": "e4d6ff4d-c310-4066-8227-56d7e8b66018",
+    "status": "unit_auto_annotated",
+    "coverage": {
+      "units_total": 32,
+      "must_account": 32,
+      "by_type": {
+        "paragraph": 32
+      },
+      "by_candidate": {
+        "composition_narrative": 31,
+        "mixed_narrative": 1
+      },
+      "candidate_units_processed": 32,
+      "extracted_units": 0,
+      "skipped_units": 0,
+      "failed_units": 32,
+      "missing_units": 0,
+      "accounted": false,
+      "complete": false,
+      "needs_review": true,
+      "review_unit_ids": [
+        "p0001",
+        "p0002",
+        "p0003",
+        "p0004",
+        "p0005",
+        "p0006",
+        "p0007",
+        "p0008",
+        "p0009",
+        "p0010",
+        "p0011",
+        "p0012",
+        "p0013",
+        "p0014",
+        "p0015",
+        "p0016",
+        "p0017",
+        "p0018",
+        "p0019",
+        "p0020",
+        "p0021",
+        "p0022",
+        "p0023",
+        "p0024",
+        "p0025",
+        "p0026",
+        "p0027",
+        "p0028",
+        "p0029",
+        "p0030",
+        "p0031",
+        "p0032"
+      ],
+      "skip_reasons": {},
+      "nodes": {
+        "substances": 0,
+        "compositions": 0,
+        "properties": 0,
+        "measurements": 0
+      }
+    }
+  },
+  "substances": [],
+  "compositions": [],
+  "properties": [],
+  "measurements": [],
+  "graph_layout": {}
+}

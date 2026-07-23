@@ -1,0 +1,2678 @@
+{
+  "meta": {
+    "source_type": "patent",
+    "source_id": "3cbddb77-f073-4435-a128-b06a8dcf57c1",
+    "status": "Completed"
+  },
+  "substances": [
+    {
+      "node_no": 1,
+      "substance_name": "benzoyl peroxide",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "The present invention relates to a solubilized benzoyl peroxide topical formulation for the treatment of acne.",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "The present invention relates to a solubilized benzoyl peroxide topical formulation for the treatment of acne.",
+          "start": 625,
+          "end": 735,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 2,
+      "substance_name": "sebum",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "the sebaceous glands of the skin produce excess sebum",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "the sebaceous glands of the skin produce excess sebum",
+          "start": 883,
+          "end": 936,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 3,
+      "substance_name": "keratin",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "a comedo (a mixture of keratin and sebum)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "a comedo (a mixture of keratin and sebum)",
+          "start": 1017,
+          "end": 1058,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 4,
+      "substance_name": "triclosan",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "topical bactericidals (e.g. triclosan, chlorhexidine gluconate and benzoyl peroxide)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "topical bactericidals (e.g. triclosan, chlorhexidine gluconate and benzoyl peroxide)",
+          "start": 1763,
+          "end": 1847,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 5,
+      "substance_name": "chlorhexidine gluconate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "topical bactericidals (e.g. triclosan, chlorhexidine gluconate and benzoyl peroxide)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "topical bactericidals (e.g. triclosan, chlorhexidine gluconate and benzoyl peroxide)",
+          "start": 1763,
+          "end": 1847,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 6,
+      "substance_name": "erythromycin",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "topical antibiotics (e.g. erythromycin, tetracycline and clindamycin)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "topical antibiotics (e.g. erythromycin, tetracycline and clindamycin)",
+          "start": 1849,
+          "end": 1918,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 7,
+      "substance_name": "tetracycline",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "topical antibiotics (e.g. erythromycin, tetracycline and clindamycin)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "topical antibiotics (e.g. erythromycin, tetracycline and clindamycin)",
+          "start": 1849,
+          "end": 1918,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 8,
+      "substance_name": "clindamycin",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "topical antibiotics (e.g. erythromycin, tetracycline and clindamycin)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "topical antibiotics (e.g. erythromycin, tetracycline and clindamycin)",
+          "start": 1849,
+          "end": 1918,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 9,
+      "substance_name": "tetracyclines",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "oral antibiotics (e.g. tetracyclines and trimethoprim)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "oral antibiotics (e.g. tetracyclines and trimethoprim)",
+          "start": 1920,
+          "end": 1974,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 10,
+      "substance_name": "trimethoprim",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "oral antibiotics (e.g. tetracyclines and trimethoprim)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "oral antibiotics (e.g. tetracyclines and trimethoprim)",
+          "start": 1920,
+          "end": 1974,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 11,
+      "substance_name": "tretinoin",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "topical retinoids (e.g. tretinoin, adapalene and tazarotene)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "topical retinoids (e.g. tretinoin, adapalene and tazarotene)",
+          "start": 2038,
+          "end": 2098,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 12,
+      "substance_name": "adapalene",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "topical retinoids (e.g. tretinoin, adapalene and tazarotene)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "topical retinoids (e.g. tretinoin, adapalene and tazarotene)",
+          "start": 2038,
+          "end": 2098,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 13,
+      "substance_name": "tazarotene",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "topical retinoids (e.g. tretinoin, adapalene and tazarotene)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "topical retinoids (e.g. tretinoin, adapalene and tazarotene)",
+          "start": 2038,
+          "end": 2098,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 14,
+      "substance_name": "isotretinoin",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "Roche Pharmaceuticals, New Jersey",
+      "evidence_text": "oral retinoids (e.g. isotretinoin, marketed as Accutane , Roche Pharmaceuticals, New Jersey)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "oral retinoids (e.g. isotretinoin, marketed as Accutane , Roche Pharmaceuticals, New Jersey)",
+          "start": 2100,
+          "end": 2192,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 15,
+      "substance_name": "Accutane",
+      "substance_type": "commercial",
+      "physical_form": "-",
+      "manufacturer": "Roche Pharmaceuticals, New Jersey",
+      "evidence_text": "isotretinoin, marketed as Accutane , Roche Pharmaceuticals, New Jersey",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "isotretinoin, marketed as Accutane , Roche Pharmaceuticals, New Jersey",
+          "start": 2121,
+          "end": 2191,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 16,
+      "substance_name": "ethylene glycol-400",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "selected from ethylene glycol-400 (low molecular weight solvent)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "selected from ethylene glycol-400 (low molecular weight solvent)",
+          "start": 4981,
+          "end": 5045,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 17,
+      "substance_name": "propylene glycol",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "propylene or butylene glycol",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "propylene or butylene glycol",
+          "start": 5047,
+          "end": 5075,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 18,
+      "substance_name": "butylene glycol",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "propylene or butylene glycol",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "propylene or butylene glycol",
+          "start": 5047,
+          "end": 5075,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 19,
+      "substance_name": "isopropyl alcohol",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "isopropyl or ethyl alcohol",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "isopropyl or ethyl alcohol",
+          "start": 5077,
+          "end": 5103,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 20,
+      "substance_name": "ethyl alcohol",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "isopropyl or ethyl alcohol",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "isopropyl or ethyl alcohol",
+          "start": 5077,
+          "end": 5103,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 21,
+      "substance_name": "short chain alkyl esters",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "short chain alkyl esters",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "short chain alkyl esters",
+          "start": 5105,
+          "end": 5129,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 22,
+      "substance_name": "sodium lauryl sulfate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "The solubilized benzoyl peroxide topical formulation may comprise the surfactant sodium lauryl sulfate.",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "The solubilized benzoyl peroxide topical formulation may comprise the surfactant sodium lauryl sulfate.",
+          "start": 5163,
+          "end": 5266,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 23,
+      "substance_name": "dimethylsulfoxide",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "The solubilized benzoyl peroxide topical formulation may comprise the skin penetration enhancer dimethylsulfoxide (DMSO).",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "The solubilized benzoyl peroxide topical formulation may comprise the skin penetration enhancer dimethylsulfoxide (DMSO).",
+          "start": 5267,
+          "end": 5388,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 24,
+      "substance_name": "DMSO",
+      "substance_type": "formula",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "dimethylsulfoxide (DMSO)",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "dimethylsulfoxide (DMSO)",
+          "start": 5363,
+          "end": 5387,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 25,
+      "substance_name": "benzyl alcohol",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "benzyl alcohol",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "benzyl alcohol",
+          "start": 9264,
+          "end": 9278,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 26,
+      "substance_name": "phenol",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "phenol",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "phenol",
+          "start": 9280,
+          "end": 9286,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 27,
+      "substance_name": "benzoyl benzoate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "benzoyl benzoate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "benzoyl benzoate",
+          "start": 9671,
+          "end": 9687,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 28,
+      "substance_name": "benzoyl alcohol",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "benzoyl alcohol",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "benzoyl alcohol",
+          "start": 9689,
+          "end": 9704,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 29,
+      "substance_name": "diethyl phthalate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "diethyl phthalate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "diethyl phthalate",
+          "start": 9706,
+          "end": 9723,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 30,
+      "substance_name": "benzoic acid 2-phenyl ethyl ester",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "benzoic acid 2-phenyl ethyl ester",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "benzoic acid 2-phenyl ethyl ester",
+          "start": 9725,
+          "end": 9758,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 31,
+      "substance_name": "phenyl ethyl ester",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "phenyl ethyl ester",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "phenyl ethyl ester",
+          "start": 9740,
+          "end": 9758,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 32,
+      "substance_name": "methyl salicylate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "methyl salicylate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "methyl salicylate",
+          "start": 9760,
+          "end": 9777,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 33,
+      "substance_name": "ethyl salicylate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "ethyl salicylate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "ethyl salicylate",
+          "start": 9761,
+          "end": 9777,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 34,
+      "substance_name": "propyl salicylate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "propyl salicylate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "propyl salicylate",
+          "start": 9797,
+          "end": 9814,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 35,
+      "substance_name": "butyl salicylate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "butyl salicylate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "butyl salicylate",
+          "start": 9816,
+          "end": 9832,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 36,
+      "substance_name": "ethyl benzoate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "ethyl benzoate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "ethyl benzoate",
+          "start": 9834,
+          "end": 9848,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 37,
+      "substance_name": "methyl benzoate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "methyl benzoate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "methyl benzoate",
+          "start": 9850,
+          "end": 9865,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 38,
+      "substance_name": "propyl benzoate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "propyl benzoate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "propyl benzoate",
+          "start": 9867,
+          "end": 9882,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 39,
+      "substance_name": "butyl benzoate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "butyl benzoate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "butyl benzoate",
+          "start": 9884,
+          "end": 9898,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 40,
+      "substance_name": "dimethyl phthalate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "dimethyl phthalate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "dimethyl phthalate",
+          "start": 9900,
+          "end": 9918,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 41,
+      "substance_name": "benzyl ethyl ether",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "benzyl ethyl ether",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "benzyl ethyl ether",
+          "start": 9939,
+          "end": 9957,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 42,
+      "substance_name": "benzyl methyl ether",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "benzyl methyl ether",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "benzyl methyl ether",
+          "start": 9959,
+          "end": 9978,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 43,
+      "substance_name": "phenetole",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "phenetole",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "phenetole",
+          "start": 9980,
+          "end": 9989,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 44,
+      "substance_name": "phenyl acetone",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "phenyl acetone",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "phenyl acetone",
+          "start": 9991,
+          "end": 10005,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 45,
+      "substance_name": "phenyl ethyl alcohol",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "phenyl ethyl alcohol",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "phenyl ethyl alcohol",
+          "start": 10007,
+          "end": 10027,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 46,
+      "substance_name": "phenoxyethanol",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "phenoxyethanol",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "phenoxyethanol",
+          "start": 10029,
+          "end": 10043,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 47,
+      "substance_name": "phenyl acetaldehyde",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "phenyl acetaldehyde",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "phenyl acetaldehyde",
+          "start": 10045,
+          "end": 10064,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 48,
+      "substance_name": "ethyl phenyl acetate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "ethyl phenyl acetate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "ethyl phenyl acetate",
+          "start": 10066,
+          "end": 10086,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 49,
+      "substance_name": "phenyl acetate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "phenyl acetate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "phenyl acetate",
+          "start": 10072,
+          "end": 10086,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 50,
+      "substance_name": "phenyl methyl ketone",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "phenyl methyl ketone",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "phenyl methyl ketone",
+          "start": 10088,
+          "end": 10108,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 51,
+      "substance_name": "benzyl acetate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "benzyl acetate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "benzyl acetate",
+          "start": 10126,
+          "end": 10140,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 52,
+      "substance_name": "benzyl aceto acetate",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "benzyl aceto acetate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "benzyl aceto acetate",
+          "start": 10142,
+          "end": 10162,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 53,
+      "substance_name": "benzyl formate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "benzyl formate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "benzyl formate",
+          "start": 10164,
+          "end": 10178,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 54,
+      "substance_name": "ethyl benzyl alcohol",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "ethyl benzyl alcohol",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "ethyl benzyl alcohol",
+          "start": 10196,
+          "end": 10216,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 55,
+      "substance_name": "phenyl benzoate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "phenyl benzoate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "phenyl benzoate",
+          "start": 10218,
+          "end": 10233,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 56,
+      "substance_name": "phenyl ether",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "phenyl ether",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "phenyl ether",
+          "start": 10235,
+          "end": 10247,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 57,
+      "substance_name": "benzyl benzoate",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "benzyl benzoate",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "benzyl benzoate",
+          "start": 10249,
+          "end": 10264,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 58,
+      "substance_name": "water",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "benzoyl peroxide-wet crystals containing 25% water",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "benzoyl peroxide-wet crystals containing 25% water",
+          "start": 17418,
+          "end": 17468,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 59,
+      "substance_name": "cremophor EL",
+      "substance_type": "commercial",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "A stable submicron emulsion gel was made with cremophor EL, glycerol, caprilic-capric triglycerides, and water in the proportion of 20-20/35/25, respectively",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "A stable submicron emulsion gel was made with cremophor EL, glycerol, caprilic-capric triglycerides, and water in the proportion of 20-20/35/25, respectively",
+          "start": 21530,
+          "end": 21687,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 60,
+      "substance_name": "glycerol",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "A stable submicron emulsion gel was made with cremophor EL, glycerol, caprilic-capric triglycerides, and water in the proportion of 20-20/35/25, respectively",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "A stable submicron emulsion gel was made with cremophor EL, glycerol, caprilic-capric triglycerides, and water in the proportion of 20-20/35/25, respectively",
+          "start": 21530,
+          "end": 21687,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 61,
+      "substance_name": "caprilic-capric triglycerides",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "A stable submicron emulsion gel was made with cremophor EL, glycerol, caprilic-capric triglycerides, and water in the proportion of 20-20/35/25, respectively",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "A stable submicron emulsion gel was made with cremophor EL, glycerol, caprilic-capric triglycerides, and water in the proportion of 20-20/35/25, respectively",
+          "start": 21530,
+          "end": 21687,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 62,
+      "substance_name": "oil droplets",
+      "substance_type": "raw",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "oil droplets",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "oil droplets",
+          "start": 21772,
+          "end": 21784,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 63,
+      "substance_name": "sodium hydroxide",
+      "substance_type": "canonical",
+      "physical_form": "-",
+      "manufacturer": "-",
+      "evidence_text": "Combining one or more penetration enhancers maintained at 25° to 40° C, one or more pharmaceutically acceptable organic solvents maintained at 25°to 40° C, wherein no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C and surfactant, maintained at 25° to 40° C, with constant stirring: b. Adding benzoyl peroxide powder to the foregoing solution and dissolving the benzoyl peroxide in the foregoing solution while it is all maintained at 25° to 40° C;and c. Cooling the resultant solution to room temperature. </seg-refi>\n<seg-con>15. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>salicylic acid. </seg-refi>\n<seg-con>16. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>sodium hydroxide. </seg-refi>\n17. The use of the solubilized benzoyl peroxide topical formulation of claim 11 for the treatment and/or prophylaxis of acne.\n<seg-con>18. A process for the preparation of a solubilized benzoyl peroxide topical formulation for use in treating acne vulgaris or otherwise infected subaceous gland inflammations, said process </seg-con><seg-trans>comprising: </seg-trans><seg-refi>a. Combining one or more penetration enhancers, one or more pharmaceutically acceptable organic solvents, wherein no one solvent in the one or more pharmaceutically acceptable solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable solvents to less than 40°C, and surfactant, at 25 to 40°C with constant stirring; b.",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "Combining one or more penetration enhancers maintained at 25° to 40° C, one or more pharmaceutically acceptable organic solvents maintained at 25°to 40° C, wherein no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C and surfactant, maintained at 25° to 40° C, with constant stirring: b. Adding benzoyl peroxide powder to the foregoing solution and dissolving the benzoyl peroxide in the foregoing solution while it is all maintained at 25° to 40° C;and c. Cooling the resultant solution to room temperature. </seg-refi>\n<seg-con>15. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>salicylic acid. </seg-refi>\n<seg-con>16. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>sodium hydroxide. </seg-refi>\n17. The use of the solubilized benzoyl peroxide topical formulation of claim 11 for the treatment and/or prophylaxis of acne.\n<seg-con>18. A process for the preparation of a solubilized benzoyl peroxide topical formulation for use in treating acne vulgaris or otherwise infected subaceous gland inflammations, said process </seg-con><seg-trans>comprising: </seg-trans><seg-refi>a. Combining one or more penetration enhancers, one or more pharmaceutically acceptable organic solvents, wherein no one solvent in the one or more pharmaceutically acceptable solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable solvents to less than 40°C, and surfactant, at 25 to 40°C with constant stirring; b.",
+          "start": 29920,
+          "end": 31696,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 64,
+      "substance_name": "benzoyl peroxide powder",
+      "substance_type": "raw",
+      "physical_form": "powder",
+      "manufacturer": "-",
+      "evidence_text": "Adding benzoyl peroxide powder to the foregoing solution",
+      "evidence_spans": [
+        {
+          "field": "substance_name",
+          "text": "Adding benzoyl peroxide powder to the foregoing solution",
+          "start": 31697,
+          "end": 31753,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "compositions": [
+    {
+      "node_no": 65,
+      "composition_name": "solubilized benzoyl peroxide topical formulation",
+      "composition_type": "-",
+      "physical_form": "topical formulation",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "named in the formulation title and description as 'solubilized benzoyl peroxide topical formulation'"
+        }
+      ],
+      "evidence_text": "The present invention relates to a solubilized benzoyl peroxide topical formulation for the treatment of acne.",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "The present invention relates to a solubilized benzoyl peroxide topical formulation for the treatment of acne.",
+          "start": 625,
+          "end": 735,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 66,
+      "composition_name": "comedo",
+      "composition_type": "mixture",
+      "physical_form": "-",
+      "constituents": [
+        {
+          "constituent_ref": 3,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 2,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        }
+      ],
+      "evidence_text": "a comedo (a mixture of keratin and sebum)",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "a comedo (a mixture of keratin and sebum)",
+          "start": 1017,
+          "end": 1058,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 67,
+      "composition_name": "preferred solubilized benzoyl peroxide topical formulation",
+      "composition_type": "-",
+      "physical_form": "topical formulation",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "explicitly present in preferred embodiment"
+        },
+        {
+          "constituent_ref": 22,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "surfactant",
+          "key_constituent": "yes",
+          "key_reason": "explicitly present in preferred embodiment"
+        },
+        {
+          "constituent_ref": 16,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "solvent",
+          "key_constituent": "yes",
+          "key_reason": "explicitly present in preferred embodiment solvent list"
+        },
+        {
+          "constituent_ref": 17,
+          "constituent_status": "optional",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "solvent",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 18,
+          "constituent_status": "optional",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "solvent",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 19,
+          "constituent_status": "optional",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "solvent",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 20,
+          "constituent_status": "optional",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "solvent",
+          "key_constituent": "no",
+          "key_reason": "-"
+        }
+      ],
+      "evidence_text": "In a preferred embodiment, the solubilized benzoyl peroxide topical formulation comprises: benzoyl peroxide, the skin penetration enhancer dimethylsulfoxide (DMSO), the surfactant sodium lauryl sulfate and the solvents: ethylene glycol-400, propylene or butylene glycol and isopropyl or ethyl alcohol.",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "In a preferred embodiment, the solubilized benzoyl peroxide topical formulation comprises: benzoyl peroxide, the skin penetration enhancer dimethylsulfoxide (DMSO), the surfactant sodium lauryl sulfate and the solvents: ethylene glycol-400, propylene or butylene glycol and isopropyl or ethyl alcohol.",
+          "start": 5398,
+          "end": 5699,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 68,
+      "composition_name": "solubilized benzoyl peroxide formulations",
+      "composition_type": "composition",
+      "physical_form": "-",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "available to penetrate into follicles, follicle oil glands, the stratum corneum and the epidermis of the skin",
+          "key_constituent": "yes",
+          "key_reason": "formulations comprise solubilized benzoyl peroxide molecules"
+        }
+      ],
+      "evidence_text": "The solubilized benzoyl peroxide formulations provide a solvent vehicle for the treatment of acne and comprise solubilized benzoyl peroxide molecules that are available to penetrate into follicles, follicle oil glands, the stratum corneum and the epidermis of the skin.",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "The solubilized benzoyl peroxide formulations provide a solvent vehicle for the treatment of acne and comprise solubilized benzoyl peroxide molecules that are available to penetrate into follicles, follicle oil glands, the stratum corneum and the epidermis of the skin.",
+          "start": 6990,
+          "end": 7259,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 69,
+      "composition_name": "solubilized benzoyl peroxide topical formulation containing 5% benzoyl peroxide",
+      "composition_type": "composition",
+      "physical_form": "topical formulation",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 5.0,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "The formulation is explicitly described as containing 5% benzoyl peroxide."
+        }
+      ],
+      "evidence_text": "Thus, for example, a solubilized benzoyl peroxide topical formulation containing 5% benzoyl peroxide has 2 to 3 times the skin penetration than prior art 10% benzoyl peroxide compositions.",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "Thus, for example, a solubilized benzoyl peroxide topical formulation containing 5% benzoyl peroxide has 2 to 3 times the skin penetration than prior art 10% benzoyl peroxide compositions.",
+          "start": 8145,
+          "end": 8333,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 70,
+      "composition_name": "prior art 10% benzoyl peroxide compositions",
+      "composition_type": "composition",
+      "physical_form": "-",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 10.0,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "The compositions are explicitly described as 10% benzoyl peroxide compositions."
+        }
+      ],
+      "evidence_text": "Thus, for example, a solubilized benzoyl peroxide topical formulation containing 5% benzoyl peroxide has 2 to 3 times the skin penetration than prior art 10% benzoyl peroxide compositions.",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "Thus, for example, a solubilized benzoyl peroxide topical formulation containing 5% benzoyl peroxide has 2 to 3 times the skin penetration than prior art 10% benzoyl peroxide compositions.",
+          "start": 8145,
+          "end": 8333,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 71,
+      "composition_name": "benzoyl peroxide-wet crystals",
+      "composition_type": "composition",
+      "physical_form": "wet crystals",
+      "constituents": [
+        {
+          "constituent_ref": 58,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 25.0,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "named crystal material"
+        }
+      ],
+      "evidence_text": "benzoyl peroxide-wet crystals containing 25% water",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "benzoyl peroxide-wet crystals containing 25% water",
+          "start": 17418,
+          "end": 17468,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 72,
+      "composition_name": "benzoyl peroxide slurry",
+      "composition_type": "-",
+      "physical_form": "slurry",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "named slurry material"
+        }
+      ],
+      "evidence_text": "then a saturated solution of a fine soft benzoyl peroxide slurry is formed",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "then a saturated solution of a fine soft benzoyl peroxide slurry is formed",
+          "start": 18145,
+          "end": 18219,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 73,
+      "composition_name": "Example 1 solubilized benzoyl peroxide topical formulation",
+      "composition_type": "-",
+      "physical_form": "topical formulation",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "named active constituent of the formulation"
+        }
+      ],
+      "evidence_text": "solubilized benzoyl peroxide topical formulation of Example 1 containing radiolabelled benzoyl peroxide (using 1- 125)",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "solubilized benzoyl peroxide topical formulation of Example 1 containing radiolabelled benzoyl peroxide (using 1- 125)",
+          "start": 20031,
+          "end": 20149,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 74,
+      "composition_name": "5% benzoyl peroxide topical formulation",
+      "composition_type": "-",
+      "physical_form": "topical formulation",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 5.0,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "explicitly quantified constituent in the named formulation"
+        }
+      ],
+      "evidence_text": "A 5% benzoyl peroxide topical formulation of the invention was applied",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "A 5% benzoyl peroxide topical formulation of the invention was applied",
+          "start": 20260,
+          "end": 20330,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 75,
+      "composition_name": "stable submicron emulsion gel",
+      "composition_type": "mixture",
+      "physical_form": "gel",
+      "constituents": [
+        {
+          "constituent_ref": 59,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 20.0,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 60,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 20.0,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 61,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 35.0,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 58,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 25.0,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        },
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 3.5,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        }
+      ],
+      "evidence_text": "A stable submicron emulsion gel was made with cremophor EL, glycerol, caprilic-capric triglycerides, and water in the proportion of 20-20/35/25, respectively; 3.5% benzoyl peroxide was also added.",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "A stable submicron emulsion gel was made with cremophor EL, glycerol, caprilic-capric triglycerides, and water in the proportion of 20-20/35/25, respectively; 3.5% benzoyl peroxide was also added.",
+          "start": 21530,
+          "end": 21726,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 76,
+      "composition_name": "Example 1 topical formulation",
+      "composition_type": "-",
+      "physical_form": "topical formulation",
+      "constituents": [],
+      "evidence_text": "post-treatment photos of patients following 12 weeks of treatment with the topical formulation of Example 1",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "post-treatment photos of patients following 12 weeks of treatment with the topical formulation of Example 1",
+          "start": 24640,
+          "end": 24747,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 77,
+      "composition_name": "Example 1 benzoyl peroxide topical formulation",
+      "composition_type": "-",
+      "physical_form": "topical formulation",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "=",
+          "amount_value": 3.5,
+          "amount_unit": "wt%",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "named as the solubilized benzoyl peroxide content of the formulation"
+        }
+      ],
+      "evidence_text": "The 3.5% solubilized benzoyl peroxide topical formulation of Example 1",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "The 3.5% solubilized benzoyl peroxide topical formulation of Example 1",
+          "start": 24796,
+          "end": 24866,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 78,
+      "composition_name": "low temperature formed solubilized benzoyl peroxide topical acne vulgaris or otherwise infected sebaceous gland inflammations treatment formulation",
+      "composition_type": "-",
+      "physical_form": "topical formulation",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "listed as a required comprising component"
+        }
+      ],
+      "evidence_text": "<seg-con>I Claim: 1. A low temperature formed solubilized benzoyl peroxide topical acne vulgaris or otherwise infected sebaceous gland inflammations treatment formulation </seg-con><seg-trans>comprising: </seg-trans><seg-refi>¨ one or more pharmaceutically acceptable organic solvents wherein said solvents are maintained at 25°to 40° C; ¨ benzoyl peroxide dissolved in the one or more pharmaceutically acceptable organic solvents; ¨ one or more skin penetration enhancers maintained at 25° to </seg-refi>\n<seg-refi> 4.° C; and ¨ a surfactant maintained at 25° to 40° C, and characterized in that no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C. </seg-refi>\n<seg-con>2. The solubilized benzoyl peroxide topical formulation of claim 1 </seg-con><seg-trans>wherein </seg-trans><seg-refi>the one or more solvents is selected from: short chain alkyl esters, ethers, aldehydes, ketones or alcohols of benzoic acid, and aryl esters, and combinations thereof. </seg-refi>\n<seg-con>3. The solubilized benzoyl peroxide topical formulation of claim 2 </seg-con><seg-trans>wherein </seg-trans><seg-refi>the ether is an alkyl ether of benzyl alcohol or an alkyl ether of phenol. </seg-refi><seg-con>4. The solubilized benzoyl peroxide topical formulation of claim 2, </seg-con><seg-trans>wherein </seg-trans><seg-refi>the aryl ester is an alkyl ester of benzoic acid, alkyl ester of benzyl alcohol, alkyl ester of salicylic acid, alkyl ester of phenol, alkyl ester of phthalic acid or an alkyl ester of phthalic acid. </seg-refi>\n<seg-con>5.",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "<seg-con>I Claim: 1. A low temperature formed solubilized benzoyl peroxide topical acne vulgaris or otherwise infected sebaceous gland inflammations treatment formulation </seg-con><seg-trans>comprising: </seg-trans><seg-refi>¨ one or more pharmaceutically acceptable organic solvents wherein said solvents are maintained at 25°to 40° C; ¨ benzoyl peroxide dissolved in the one or more pharmaceutically acceptable organic solvents; ¨ one or more skin penetration enhancers maintained at 25° to </seg-refi>\n<seg-refi> 4.° C; and ¨ a surfactant maintained at 25° to 40° C, and characterized in that no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C. </seg-refi>\n<seg-con>2. The solubilized benzoyl peroxide topical formulation of claim 1 </seg-con><seg-trans>wherein </seg-trans><seg-refi>the one or more solvents is selected from: short chain alkyl esters, ethers, aldehydes, ketones or alcohols of benzoic acid, and aryl esters, and combinations thereof. </seg-refi>\n<seg-con>3. The solubilized benzoyl peroxide topical formulation of claim 2 </seg-con><seg-trans>wherein </seg-trans><seg-refi>the ether is an alkyl ether of benzyl alcohol or an alkyl ether of phenol. </seg-refi><seg-con>4. The solubilized benzoyl peroxide topical formulation of claim 2, </seg-con><seg-trans>wherein </seg-trans><seg-refi>the aryl ester is an alkyl ester of benzoic acid, alkyl ester of benzyl alcohol, alkyl ester of salicylic acid, alkyl ester of phenol, alkyl ester of phthalic acid or an alkyl ester of phthalic acid. </seg-refi>\n<seg-con>5.",
+          "start": 25175,
+          "end": 26875,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 79,
+      "composition_name": "the solubilized benzoyl peroxide topical formulation of claim 1",
+      "composition_type": "composition",
+      "physical_form": "topical formulation",
+      "constituents": [],
+      "evidence_text": "the one or more solvents is selected from: short chain alkyl esters, ethers, aldehydes, ketones or alcohols of benzoic acid, and aryl esters, and combinations thereof",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "the one or more solvents is selected from: short chain alkyl esters, ethers, aldehydes, ketones or alcohols of benzoic acid, and aryl esters, and combinations thereof",
+          "start": 26131,
+          "end": 26297,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 80,
+      "composition_name": "the solubilized benzoyl peroxide topical formulation of claim 2",
+      "composition_type": "composition",
+      "physical_form": "topical formulation",
+      "constituents": [],
+      "evidence_text": "the ether is an alkyl ether of benzyl alcohol or an alkyl ether of phenol",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "the ether is an alkyl ether of benzyl alcohol or an alkyl ether of phenol",
+          "start": 26438,
+          "end": 26511,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 81,
+      "composition_name": "solubilized benzoyl peroxide topical formulation of claim 11",
+      "composition_type": "composition",
+      "physical_form": "topical formulation",
+      "constituents": [
+        {
+          "constituent_ref": 1,
+          "constituent_status": "included",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "yes",
+          "key_reason": "named in the formulation title and added to the solution"
+        },
+        {
+          "constituent_ref": 63,
+          "constituent_status": "optional",
+          "amount_comparator": "-",
+          "amount_value": "-",
+          "amount_unit": "-",
+          "amount_lower_value": "-",
+          "amount_upper_value": "-",
+          "function": "-",
+          "key_constituent": "no",
+          "key_reason": "-"
+        }
+      ],
+      "evidence_text": "Combining one or more penetration enhancers maintained at 25° to 40° C, one or more pharmaceutically acceptable organic solvents maintained at 25°to 40° C, wherein no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C and surfactant, maintained at 25° to 40° C, with constant stirring: b. Adding benzoyl peroxide powder to the foregoing solution and dissolving the benzoyl peroxide in the foregoing solution while it is all maintained at 25° to 40° C;and c. Cooling the resultant solution to room temperature. </seg-refi>\n<seg-con>15. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>salicylic acid. </seg-refi>\n<seg-con>16. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>sodium hydroxide. </seg-refi>\n17. The use of the solubilized benzoyl peroxide topical formulation of claim 11 for the treatment and/or prophylaxis of acne.\n<seg-con>18. A process for the preparation of a solubilized benzoyl peroxide topical formulation for use in treating acne vulgaris or otherwise infected subaceous gland inflammations, said process </seg-con><seg-trans>comprising: </seg-trans><seg-refi>a. Combining one or more penetration enhancers, one or more pharmaceutically acceptable organic solvents, wherein no one solvent in the one or more pharmaceutically acceptable solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable solvents to less than 40°C, and surfactant, at 25 to 40°C with constant stirring; b.",
+      "evidence_spans": [
+        {
+          "field": "composition_name",
+          "text": "Combining one or more penetration enhancers maintained at 25° to 40° C, one or more pharmaceutically acceptable organic solvents maintained at 25°to 40° C, wherein no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C and surfactant, maintained at 25° to 40° C, with constant stirring: b. Adding benzoyl peroxide powder to the foregoing solution and dissolving the benzoyl peroxide in the foregoing solution while it is all maintained at 25° to 40° C;and c. Cooling the resultant solution to room temperature. </seg-refi>\n<seg-con>15. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>salicylic acid. </seg-refi>\n<seg-con>16. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>sodium hydroxide. </seg-refi>\n17. The use of the solubilized benzoyl peroxide topical formulation of claim 11 for the treatment and/or prophylaxis of acne.\n<seg-con>18. A process for the preparation of a solubilized benzoyl peroxide topical formulation for use in treating acne vulgaris or otherwise infected subaceous gland inflammations, said process </seg-con><seg-trans>comprising: </seg-trans><seg-refi>a. Combining one or more penetration enhancers, one or more pharmaceutically acceptable organic solvents, wherein no one solvent in the one or more pharmaceutically acceptable solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable solvents to less than 40°C, and surfactant, at 25 to 40°C with constant stirring; b.",
+          "start": 29920,
+          "end": 31696,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "node_no": 82,
+      "property_name": "skin penetration",
+      "property_type": "performance",
+      "target_ref": 69,
+      "evidence_text": "Thus, for example, a solubilized benzoyl peroxide topical formulation containing 5% benzoyl peroxide has 2 to 3 times the skin penetration than prior art 10% benzoyl peroxide compositions.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Thus, for example, a solubilized benzoyl peroxide topical formulation containing 5% benzoyl peroxide has 2 to 3 times the skin penetration than prior art 10% benzoyl peroxide compositions.",
+          "start": 8145,
+          "end": 8333,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 83,
+      "property_name": "preparation temperature",
+      "property_type": "extrinsic",
+      "target_ref": 65,
+      "evidence_text": "stirring at a temperature between 25 to 40 C",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "stirring at a temperature between 25 to 40 C",
+          "start": 16950,
+          "end": 16994,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 84,
+      "property_name": "transdermal absorption",
+      "property_type": "performance",
+      "target_ref": 73,
+      "evidence_text": "Transdermal absorption of the solubilized benzoyl peroxide topical formulation of Example 1 containing radiolabelled benzoyl peroxide (using 1- 125) was measured over a 24 hour period in human cadaver skin using the Franz in vitro diffusion chamber.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Transdermal absorption of the solubilized benzoyl peroxide topical formulation of Example 1 containing radiolabelled benzoyl peroxide (using 1- 125) was measured over a 24 hour period in human cadaver skin using the Franz in vitro diffusion chamber.",
+          "start": 20001,
+          "end": 20250,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 85,
+      "property_name": "application time",
+      "property_type": "extrinsic",
+      "target_ref": 74,
+      "evidence_text": "A 5% benzoyl peroxide topical formulation of the invention was applied onto the human cadaver cell uniformly with gentle rubbing for 1 min.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "A 5% benzoyl peroxide topical formulation of the invention was applied onto the human cadaver cell uniformly with gentle rubbing for 1 min.",
+          "start": 20260,
+          "end": 20399,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 86,
+      "property_name": "oil droplet mean diameter",
+      "property_type": "intrinsic",
+      "target_ref": 62,
+      "evidence_text": "This submicron emulsion vehicle consisted of oil droplets, with a mean diameter of approximately 100-150 nm, dispersed in a continuous water phase.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "This submicron emulsion vehicle consisted of oil droplets, with a mean diameter of approximately 100-150 nm, dispersed in a continuous water phase.",
+          "start": 21727,
+          "end": 21874,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 87,
+      "property_name": "dosage per application",
+      "property_type": "extrinsic",
+      "target_ref": 0,
+      "evidence_text": "The dosage of cream per application was approximately 0.6 g",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "The dosage of cream per application was approximately 0.6 g",
+          "start": 23250,
+          "end": 23309,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 88,
+      "property_name": "maintained temperature",
+      "property_type": "extrinsic",
+      "target_ref": 0,
+      "evidence_text": "one or more pharmaceutically acceptable organic solvents wherein said solvents are maintained at 25°to 40° C",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "one or more pharmaceutically acceptable organic solvents wherein said solvents are maintained at 25°to 40° C",
+          "start": 25403,
+          "end": 25511,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 89,
+      "property_name": "maintained temperature",
+      "property_type": "extrinsic",
+      "target_ref": 0,
+      "evidence_text": "a surfactant maintained at 25° to 40° C",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "a surfactant maintained at 25° to 40° C",
+          "start": 25705,
+          "end": 25744,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 90,
+      "property_name": "flash point",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C",
+          "start": 25772,
+          "end": 25990,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 91,
+      "property_name": "processing temperature",
+      "property_type": "extrinsic",
+      "target_ref": 81,
+      "evidence_text": "Combining one or more penetration enhancers maintained at 25° to 40° C, one or more pharmaceutically acceptable organic solvents maintained at 25°to 40° C, wherein no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C and surfactant, maintained at 25° to 40° C, with constant stirring: b. Adding benzoyl peroxide powder to the foregoing solution and dissolving the benzoyl peroxide in the foregoing solution while it is all maintained at 25° to 40° C;and c. Cooling the resultant solution to room temperature. </seg-refi>\n<seg-con>15. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>salicylic acid. </seg-refi>\n<seg-con>16. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>sodium hydroxide. </seg-refi>\n17. The use of the solubilized benzoyl peroxide topical formulation of claim 11 for the treatment and/or prophylaxis of acne.\n<seg-con>18. A process for the preparation of a solubilized benzoyl peroxide topical formulation for use in treating acne vulgaris or otherwise infected subaceous gland inflammations, said process </seg-con><seg-trans>comprising: </seg-trans><seg-refi>a. Combining one or more penetration enhancers, one or more pharmaceutically acceptable organic solvents, wherein no one solvent in the one or more pharmaceutically acceptable solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable solvents to less than 40°C, and surfactant, at 25 to 40°C with constant stirring; b.",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "Combining one or more penetration enhancers maintained at 25° to 40° C, one or more pharmaceutically acceptable organic solvents maintained at 25°to 40° C, wherein no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C and surfactant, maintained at 25° to 40° C, with constant stirring: b. Adding benzoyl peroxide powder to the foregoing solution and dissolving the benzoyl peroxide in the foregoing solution while it is all maintained at 25° to 40° C;and c. Cooling the resultant solution to room temperature. </seg-refi>\n<seg-con>15. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>salicylic acid. </seg-refi>\n<seg-con>16. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>sodium hydroxide. </seg-refi>\n17. The use of the solubilized benzoyl peroxide topical formulation of claim 11 for the treatment and/or prophylaxis of acne.\n<seg-con>18. A process for the preparation of a solubilized benzoyl peroxide topical formulation for use in treating acne vulgaris or otherwise infected subaceous gland inflammations, said process </seg-con><seg-trans>comprising: </seg-trans><seg-refi>a. Combining one or more penetration enhancers, one or more pharmaceutically acceptable organic solvents, wherein no one solvent in the one or more pharmaceutically acceptable solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable solvents to less than 40°C, and surfactant, at 25 to 40°C with constant stirring; b.",
+          "start": 29920,
+          "end": 31696,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 92,
+      "property_name": "flash point",
+      "property_type": "intrinsic",
+      "target_ref": 0,
+      "evidence_text": "wherein no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C",
+      "evidence_spans": [
+        {
+          "field": "property_name",
+          "text": "wherein no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C",
+          "start": 30076,
+          "end": 30302,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "measurements": [
+    {
+      "node_no": 93,
+      "measurement_type": "quantitative",
+      "property_ref": 82,
+      "value": [
+        "2 to 3"
+      ],
+      "comparator": "=",
+      "unit": [
+        "times"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "than prior art 10% benzoyl peroxide compositions"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "Thus, for example, a solubilized benzoyl peroxide topical formulation containing 5% benzoyl peroxide has 2 to 3 times the skin penetration than prior art 10% benzoyl peroxide compositions.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Thus, for example, a solubilized benzoyl peroxide topical formulation containing 5% benzoyl peroxide has 2 to 3 times the skin penetration than prior art 10% benzoyl peroxide compositions.",
+          "start": 8145,
+          "end": 8333,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 94,
+      "measurement_type": "quantitative",
+      "property_ref": 83,
+      "value": [],
+      "comparator": "range",
+      "unit": [
+        "C"
+      ],
+      "lower_value": 25.0,
+      "upper_value": 40.0,
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "stirring while combining one or more solvents, one or more skin penetration enhancers, and surfactant"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "stirring at a temperature between 25 to 40 C",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "stirring at a temperature between 25 to 40 C",
+          "start": 16950,
+          "end": 16994,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 95,
+      "measurement_type": "qualitative",
+      "property_ref": 84,
+      "value": [
+        "measured"
+      ],
+      "comparator": "-",
+      "unit": [
+        "-"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "over a 24 hour period in human cadaver skin using the Franz in vitro diffusion chamber"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "Transdermal absorption of the solubilized benzoyl peroxide topical formulation of Example 1 containing radiolabelled benzoyl peroxide (using 1- 125) was measured over a 24 hour period in human cadaver skin using the Franz in vitro diffusion chamber.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Transdermal absorption of the solubilized benzoyl peroxide topical formulation of Example 1 containing radiolabelled benzoyl peroxide (using 1- 125) was measured over a 24 hour period in human cadaver skin using the Franz in vitro diffusion chamber.",
+          "start": 20001,
+          "end": 20250,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 96,
+      "measurement_type": "quantitative",
+      "property_ref": 85,
+      "value": [
+        1.0
+      ],
+      "comparator": "=",
+      "unit": [
+        "min"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "applied onto the human cadaver cell uniformly with gentle rubbing"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "A 5% benzoyl peroxide topical formulation of the invention was applied onto the human cadaver cell uniformly with gentle rubbing for 1 min.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "A 5% benzoyl peroxide topical formulation of the invention was applied onto the human cadaver cell uniformly with gentle rubbing for 1 min.",
+          "start": 20260,
+          "end": 20399,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 97,
+      "measurement_type": "quantitative",
+      "property_ref": 86,
+      "value": [
+        "100-150"
+      ],
+      "comparator": "approx",
+      "unit": [
+        "nm"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "oil droplets dispersed in a continuous water phase"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "This submicron emulsion vehicle consisted of oil droplets, with a mean diameter of approximately 100-150 nm, dispersed in a continuous water phase.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "This submicron emulsion vehicle consisted of oil droplets, with a mean diameter of approximately 100-150 nm, dispersed in a continuous water phase.",
+          "start": 21727,
+          "end": 21874,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 98,
+      "measurement_type": "quantitative",
+      "property_ref": 87,
+      "value": [
+        0.6
+      ],
+      "comparator": "approx",
+      "unit": [
+        "g"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "per application"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "The dosage of cream per application was approximately 0.6 g",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "The dosage of cream per application was approximately 0.6 g",
+          "start": 23250,
+          "end": 23309,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 99,
+      "measurement_type": "quantitative",
+      "property_ref": 88,
+      "value": [],
+      "comparator": "range",
+      "unit": [
+        "°C",
+        "°C"
+      ],
+      "lower_value": 25.0,
+      "upper_value": 40.0,
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "in the low temperature formed solubilized benzoyl peroxide topical formulation"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "one or more pharmaceutically acceptable organic solvents wherein said solvents are maintained at 25°to 40° C",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "one or more pharmaceutically acceptable organic solvents wherein said solvents are maintained at 25°to 40° C",
+          "start": 25403,
+          "end": 25511,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 100,
+      "measurement_type": "quantitative",
+      "property_ref": 89,
+      "value": [],
+      "comparator": "range",
+      "unit": [
+        "°C",
+        "°C"
+      ],
+      "lower_value": 25.0,
+      "upper_value": 40.0,
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "in the low temperature formed solubilized benzoyl peroxide topical formulation"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "a surfactant maintained at 25° to 40° C",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "a surfactant maintained at 25° to 40° C",
+          "start": 25705,
+          "end": 25744,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 101,
+      "measurement_type": "quantitative",
+      "property_ref": 90,
+      "value": [
+        40.0
+      ],
+      "comparator": ">=",
+      "unit": [
+        "°C"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point to less than 40° C"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C",
+          "start": 25772,
+          "end": 25990,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 102,
+      "measurement_type": "quantitative",
+      "property_ref": 91,
+      "value": [],
+      "comparator": "range",
+      "unit": [
+        "°C",
+        "°C"
+      ],
+      "lower_value": 25.0,
+      "upper_value": 40.0,
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "during combining, stirring, and dissolving"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "Combining one or more penetration enhancers maintained at 25° to 40° C, one or more pharmaceutically acceptable organic solvents maintained at 25°to 40° C, wherein no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C and surfactant, maintained at 25° to 40° C, with constant stirring: b. Adding benzoyl peroxide powder to the foregoing solution and dissolving the benzoyl peroxide in the foregoing solution while it is all maintained at 25° to 40° C;and c. Cooling the resultant solution to room temperature. </seg-refi>\n<seg-con>15. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>salicylic acid. </seg-refi>\n<seg-con>16. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>sodium hydroxide. </seg-refi>\n17. The use of the solubilized benzoyl peroxide topical formulation of claim 11 for the treatment and/or prophylaxis of acne.\n<seg-con>18. A process for the preparation of a solubilized benzoyl peroxide topical formulation for use in treating acne vulgaris or otherwise infected subaceous gland inflammations, said process </seg-con><seg-trans>comprising: </seg-trans><seg-refi>a. Combining one or more penetration enhancers, one or more pharmaceutically acceptable organic solvents, wherein no one solvent in the one or more pharmaceutically acceptable solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable solvents to less than 40°C, and surfactant, at 25 to 40°C with constant stirring; b.",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "Combining one or more penetration enhancers maintained at 25° to 40° C, one or more pharmaceutically acceptable organic solvents maintained at 25°to 40° C, wherein no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C and surfactant, maintained at 25° to 40° C, with constant stirring: b. Adding benzoyl peroxide powder to the foregoing solution and dissolving the benzoyl peroxide in the foregoing solution while it is all maintained at 25° to 40° C;and c. Cooling the resultant solution to room temperature. </seg-refi>\n<seg-con>15. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>salicylic acid. </seg-refi>\n<seg-con>16. The solubilized benzoyl peroxide topical formulation of claim 11 that </seg-con><seg-trans>further comprises </seg-trans><seg-refi>sodium hydroxide. </seg-refi>\n17. The use of the solubilized benzoyl peroxide topical formulation of claim 11 for the treatment and/or prophylaxis of acne.\n<seg-con>18. A process for the preparation of a solubilized benzoyl peroxide topical formulation for use in treating acne vulgaris or otherwise infected subaceous gland inflammations, said process </seg-con><seg-trans>comprising: </seg-trans><seg-refi>a. Combining one or more penetration enhancers, one or more pharmaceutically acceptable organic solvents, wherein no one solvent in the one or more pharmaceutically acceptable solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable solvents to less than 40°C, and surfactant, at 25 to 40°C with constant stirring; b.",
+          "start": 29920,
+          "end": 31696,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "node_no": 103,
+      "measurement_type": "quantitative",
+      "property_ref": 92,
+      "value": [
+        40.0
+      ],
+      "comparator": ">=",
+      "unit": [
+        "°C"
+      ],
+      "lower_value": "-",
+      "upper_value": "-",
+      "measurement_conditions": [
+        {
+          "condition_name": "condition",
+          "condition_value": [
+            "no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point to less than 40°C"
+          ],
+          "condition_unit": []
+        }
+      ],
+      "evidence_text": "wherein no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C",
+      "evidence_spans": [
+        {
+          "field": "value",
+          "text": "wherein no one organic solvent in the one or more pharmaceutically acceptable organic solvents is used in an amount that lowers the flash point of the one or more pharmaceutically acceptable organic solvents to less than 40° C",
+          "start": 30076,
+          "end": 30302,
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "graph_layout": {
+    "s-1": {
+      "x": 60.0,
+      "y": 80.0
+    },
+    "s-2": {
+      "x": 60.0,
+      "y": 164.0
+    },
+    "s-3": {
+      "x": 60.0,
+      "y": 248.0
+    },
+    "s-4": {
+      "x": 60.0,
+      "y": 332.0
+    },
+    "s-5": {
+      "x": 60.0,
+      "y": 416.0
+    },
+    "s-6": {
+      "x": 60.0,
+      "y": 500.0
+    },
+    "s-7": {
+      "x": 60.0,
+      "y": 584.0
+    },
+    "s-8": {
+      "x": 60.0,
+      "y": 668.0
+    },
+    "s-9": {
+      "x": 60.0,
+      "y": 752.0
+    },
+    "s-10": {
+      "x": 60.0,
+      "y": 836.0
+    },
+    "s-11": {
+      "x": 60.0,
+      "y": 920.0
+    },
+    "s-12": {
+      "x": 60.0,
+      "y": 1004.0
+    },
+    "s-13": {
+      "x": 60.0,
+      "y": 1088.0
+    },
+    "s-14": {
+      "x": 60.0,
+      "y": 1172.0
+    },
+    "s-15": {
+      "x": 60.0,
+      "y": 1256.0
+    },
+    "s-16": {
+      "x": 60.0,
+      "y": 1340.0
+    },
+    "s-17": {
+      "x": 60.0,
+      "y": 1424.0
+    },
+    "s-18": {
+      "x": 60.0,
+      "y": 1508.0
+    },
+    "s-19": {
+      "x": 60.0,
+      "y": 1592.0
+    },
+    "s-20": {
+      "x": 60.0,
+      "y": 1676.0
+    },
+    "s-21": {
+      "x": 60.0,
+      "y": 1760.0
+    },
+    "s-22": {
+      "x": 60.0,
+      "y": 1844.0
+    },
+    "s-23": {
+      "x": 60.0,
+      "y": 1928.0
+    },
+    "s-24": {
+      "x": 60.0,
+      "y": 2012.0
+    },
+    "s-25": {
+      "x": 60.0,
+      "y": 2516.0
+    },
+    "s-26": {
+      "x": 60.0,
+      "y": 2600.0
+    },
+    "s-27": {
+      "x": 60.0,
+      "y": 2684.0
+    },
+    "s-28": {
+      "x": 60.0,
+      "y": 2768.0
+    },
+    "s-29": {
+      "x": 60.0,
+      "y": 2852.0
+    },
+    "s-30": {
+      "x": 60.0,
+      "y": 2936.0
+    },
+    "s-32": {
+      "x": 60.0,
+      "y": 3020.0
+    },
+    "s-33": {
+      "x": 60.0,
+      "y": 3104.0
+    },
+    "s-34": {
+      "x": 60.0,
+      "y": 3188.0
+    },
+    "s-35": {
+      "x": 60.0,
+      "y": 3272.0
+    },
+    "s-36": {
+      "x": 60.0,
+      "y": 3356.0
+    },
+    "s-37": {
+      "x": 60.0,
+      "y": 3440.0
+    },
+    "s-38": {
+      "x": 60.0,
+      "y": 3524.0
+    },
+    "s-39": {
+      "x": 60.0,
+      "y": 3608.0
+    },
+    "s-40": {
+      "x": 60.0,
+      "y": 3692.0
+    },
+    "s-41": {
+      "x": 60.0,
+      "y": 3776.0
+    },
+    "s-42": {
+      "x": 60.0,
+      "y": 3860.0
+    },
+    "s-43": {
+      "x": 60.0,
+      "y": 3944.0
+    },
+    "s-44": {
+      "x": 60.0,
+      "y": 4028.0
+    },
+    "s-45": {
+      "x": 60.0,
+      "y": 4112.0
+    },
+    "s-46": {
+      "x": 60.0,
+      "y": 4196.0
+    },
+    "s-47": {
+      "x": 60.0,
+      "y": 4280.0
+    },
+    "s-48": {
+      "x": 60.0,
+      "y": 4364.0
+    },
+    "s-50": {
+      "x": 60.0,
+      "y": 4448.0
+    },
+    "s-49": {
+      "x": 60.0,
+      "y": 4532.0
+    },
+    "s-51": {
+      "x": 60.0,
+      "y": 4616.0
+    },
+    "s-52": {
+      "x": 60.0,
+      "y": 4700.0
+    },
+    "s-53": {
+      "x": 60.0,
+      "y": 4784.0
+    },
+    "s-54": {
+      "x": 60.0,
+      "y": 4868.0
+    },
+    "s-55": {
+      "x": 60.0,
+      "y": 4952.0
+    },
+    "s-56": {
+      "x": 60.0,
+      "y": 5036.0
+    },
+    "s-57": {
+      "x": 60.0,
+      "y": 5120.0
+    },
+    "s-31": {
+      "x": 60.0,
+      "y": 5204.0
+    },
+    "s-58": {
+      "x": 60.0,
+      "y": 5288.0
+    },
+    "s-59": {
+      "x": 60.0,
+      "y": 5624.0
+    },
+    "s-60": {
+      "x": 60.0,
+      "y": 5708.0
+    },
+    "s-61": {
+      "x": 60.0,
+      "y": 5792.0
+    },
+    "s-62": {
+      "x": 60.0,
+      "y": 5876.0
+    },
+    "s-63": {
+      "x": 60.0,
+      "y": 7052.0
+    },
+    "s-64": {
+      "x": 60.0,
+      "y": 7304.0
+    },
+    "c-65": {
+      "x": 490.0,
+      "y": 80.0
+    },
+    "c-66": {
+      "x": 490.0,
+      "y": 164.0
+    },
+    "c-67": {
+      "x": 490.0,
+      "y": 248.0
+    },
+    "c-68": {
+      "x": 490.0,
+      "y": 332.0
+    },
+    "c-69": {
+      "x": 490.0,
+      "y": 416.0
+    },
+    "c-70": {
+      "x": 490.0,
+      "y": 500.0
+    },
+    "c-71": {
+      "x": 490.0,
+      "y": 584.0
+    },
+    "c-72": {
+      "x": 490.0,
+      "y": 668.0
+    },
+    "c-73": {
+      "x": 490.0,
+      "y": 752.0
+    },
+    "c-74": {
+      "x": 490.0,
+      "y": 836.0
+    },
+    "c-75": {
+      "x": 490.0,
+      "y": 920.0
+    },
+    "c-76": {
+      "x": 490.0,
+      "y": 1256.0
+    },
+    "c-77": {
+      "x": 490.0,
+      "y": 1424.0
+    },
+    "c-78": {
+      "x": 490.0,
+      "y": 1508.0
+    },
+    "c-79": {
+      "x": 490.0,
+      "y": 1592.0
+    },
+    "c-80": {
+      "x": 490.0,
+      "y": 1676.0
+    },
+    "c-81": {
+      "x": 490.0,
+      "y": 2012.0
+    },
+    "p-82": {
+      "x": 920.0,
+      "y": 80.0
+    },
+    "p-83": {
+      "x": 920.0,
+      "y": 164.0
+    },
+    "p-84": {
+      "x": 920.0,
+      "y": 416.0
+    },
+    "p-85": {
+      "x": 920.0,
+      "y": 500.0
+    },
+    "p-86": {
+      "x": 920.0,
+      "y": 584.0
+    },
+    "p-87": {
+      "x": 920.0,
+      "y": 668.0
+    },
+    "p-88": {
+      "x": 920.0,
+      "y": 836.0
+    },
+    "p-89": {
+      "x": 920.0,
+      "y": 1004.0
+    },
+    "p-90": {
+      "x": 920.0,
+      "y": 1088.0
+    },
+    "p-92": {
+      "x": 920.0,
+      "y": 1172.0
+    },
+    "p-91": {
+      "x": 920.0,
+      "y": 1256.0
+    },
+    "m-93": {
+      "x": 1350.0,
+      "y": 80.0
+    },
+    "m-94": {
+      "x": 1350.0,
+      "y": 164.0
+    },
+    "m-95": {
+      "x": 1350.0,
+      "y": 416.0
+    },
+    "m-96": {
+      "x": 1350.0,
+      "y": 500.0
+    },
+    "m-97": {
+      "x": 1350.0,
+      "y": 584.0
+    },
+    "m-98": {
+      "x": 1350.0,
+      "y": 668.0
+    },
+    "m-99": {
+      "x": 1350.0,
+      "y": 836.0
+    },
+    "m-100": {
+      "x": 1350.0,
+      "y": 1004.0
+    },
+    "m-101": {
+      "x": 1350.0,
+      "y": 1088.0
+    },
+    "m-103": {
+      "x": 1350.0,
+      "y": 1172.0
+    },
+    "m-102": {
+      "x": 1350.0,
+      "y": 1256.0
+    }
+  }
+}
