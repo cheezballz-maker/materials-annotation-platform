@@ -764,8 +764,10 @@ function App() {
   async function exportCurrent() {
     if (!activeDoc || !await save()) return;
     try {
-      const payload = await apiRequest<{ path: string }>(`/api/workspace/files/${encodeURIComponent(activeDoc.document_id)}/export`, { method: "POST" });
-      setNotice(`Exported: ${payload.path}`);
+      const payload = await apiRequest<{ path: string; schema: unknown }>(`/api/workspace/files/${encodeURIComponent(activeDoc.document_id)}/export`, { method: "POST" });
+      const filename = fileNameFromPath(payload.path) || `${safeFilename(activeDoc.patent_id || activeDoc.document_id)}.schema.json`;
+      downloadTextFile(filename, JSON.stringify(payload.schema, null, 2), "application/json;charset=utf-8");
+      setNotice(`Exported and downloaded: ${filename}`);
       window.setTimeout(() => setNotice(""), 5000);
     } catch (requestError) {
       setError(errorMessage(requestError));
@@ -3739,6 +3741,10 @@ function downloadTextFile(filename: string, content: string, type: string) {
 
 function safeFilename(value: string) {
   return (value || "annotated_document").replace(/[<>:"/\\|?*\x00-\x1F]/g, "_").replace(/\s+/g, "_").slice(0, 120);
+}
+
+function fileNameFromPath(path: string) {
+  return path.split(/[\\/]/).filter(Boolean).pop() || "";
 }
 
 function escapeHtml(value: string) {

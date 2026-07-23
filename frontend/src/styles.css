@@ -15,6 +15,7 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .workspace-atmosphere::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,.26) 0%, rgba(255,255,255,0) 22%, rgba(255,255,255,0) 100%); }
 .workspace-atmosphere::after { content: ""; position: absolute; inset: auto 0 -24px 0; height: 110px; background: radial-gradient(ellipse at center, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 72%); filter: blur(18px); }
 .molecule-waveband { position: absolute; left: 0; width: max(1850px, 118%); overflow: visible; }
+.workspace-bar.fixed-workspace .molecule-waveband { left: -4%; width: max(2450px, 156%); }
 .band-back { top: -4px; height: 76px; opacity: .82; animation: waveTravelBack 38s linear infinite; }
 .band-mid { top: 36px; height: 78px; opacity: .76; animation: waveTravelMid 31s linear infinite; }
 .band-front { top: 78px; height: 62px; opacity: .66; animation: waveTravelFront 24s linear infinite; }
