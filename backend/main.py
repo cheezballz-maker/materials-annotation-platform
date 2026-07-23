@@ -144,6 +144,7 @@ class OpenWorkspaceRequest(BaseModel):
 class WorkspacePayload(BaseModel):
     path: str | None = None
     parent_path: str | None = None
+    configured_workspace: bool = False
     files: list[dict] = Field(default_factory=list)
 
 
@@ -1230,12 +1231,14 @@ def workspace_files(path: Path) -> list[dict]:
 
 
 def workspace_payload(path: Path | None) -> WorkspacePayload:
+    is_configured = bool(CONFIGURED_WORKSPACE)
     if not path:
-        return WorkspacePayload()
+        return WorkspacePayload(configured_workspace=is_configured)
     parent = path.parent if path.parent != path else None
     return WorkspacePayload(
         path=str(path),
         parent_path=str(parent) if parent else None,
+        configured_workspace=is_configured,
         files=workspace_files(path),
     )
 

@@ -42,7 +42,7 @@ type GraphPosition = { x: number; y: number };
 type GraphLayout = Record<string, GraphPosition>;
 type AnnotationState = { document_id: string; patent_id: string; status: Status; meta: Meta; substances: SubstanceRecord[]; compositions: CompositionRecord[]; properties: PropertyRecord[]; measurements: MeasurementRecord[]; graph_layout: GraphLayout };
 type FileSummary = { kind?: "file" | "folder"; document_id: string; patent_id: string; status: Status; counts: Record<EntityType, number>; annotation_path?: string | null; updated_at: number; path?: string | null };
-type WorkspacePayload = { path: string | null; parent_path?: string | null; files: FileSummary[] };
+type WorkspacePayload = { path: string | null; parent_path?: string | null; configured_workspace?: boolean; files: FileSummary[] };
 type LoadedDoc = { document_id: string; patent_id: string; markdown: string; state: AnnotationState; annotation_path?: string | null; revision?: string };
 type ActiveRecord = { type: EntityType; nodeNo: number } | null;
 type SelectionMenu = { id: string; text: string; start: number; end: number } | null;
@@ -1482,6 +1482,7 @@ function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefr
 }) {
   const folderCount = files.filter((file) => file.kind === "folder").length;
   const rawFileCount = files.length - folderCount;
+  const fixedWorkspace = Boolean(workspace.configured_workspace);
   const mouseNavigationAtRef = React.useRef(0);
   const forwardFoldersRef = React.useRef<string[]>([]);
   const openParentFolder = React.useCallback(() => {
@@ -1533,7 +1534,7 @@ function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefr
   }, [openForwardFolder, openParentFolder, workspace.parent_path]);
 
   return <main className="landing-shell">
-    <section className="workspace-bar">
+    <section className={`workspace-bar ${fixedWorkspace ? "fixed-workspace" : ""}`}>
       <div className="workspace-atmosphere" aria-hidden="true">
         <svg className="molecule-waveband band-back" viewBox="0 0 1800 180" role="presentation">
           <defs>
@@ -1650,16 +1651,17 @@ function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefr
           </div>
         </div>
       </div>
-      <div className="workspace-controls">
-        <div className="folder-form">
-          <input value={folderPath} onChange={(event) => setFolderPath(event.target.value)} placeholder={DEFAULT_FOLDER}/>
-          <button onClick={() => {
-            forwardFoldersRef.current = [];
-            onPickWorkspace();
-          }}><FolderOpen size={16}/> Open folder</button>
-          {workspace.path && <button className="secondary-folder-button" onClick={onRefresh}><RefreshCw size={14}/> Refresh</button>}
+      {!fixedWorkspace && <div className="workspace-controls">
+          <div className="folder-form">
+            <input value={folderPath} onChange={(event) => setFolderPath(event.target.value)} placeholder={DEFAULT_FOLDER}/>
+            <button onClick={() => {
+              forwardFoldersRef.current = [];
+              onPickWorkspace();
+            }}><FolderOpen size={16}/> Open folder</button>
+            {workspace.path && <button className="secondary-folder-button" onClick={onRefresh}><RefreshCw size={14}/> Refresh</button>}
+          </div>
         </div>
-      </div>
+      }
       {error && <div className="landing-error">{error}</div>}
     </section>
     <section className="file-browser">
