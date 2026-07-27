@@ -21,6 +21,7 @@ import {
 import "./styles.css";
 
 type Status = "Unannotated" | "Partially complete" | "Completed";
+type DocumentStatusFilter = "all" | "partial" | "completed";
 type EntityType = "substances" | "compositions" | "properties" | "measurements";
 type SourceType = "patent" | "paper";
 type SubstanceType = "canonical" | "commercial" | "formula" | "raw";
@@ -400,6 +401,7 @@ function App() {
   const [spanFocus, setSpanFocus] = React.useState<SpanFocus>(null);
   const [documentSelectedRecord, setDocumentSelectedRecord] = React.useState<ActiveRecord>(null);
   const [fileFilter, setFileFilter] = React.useState("");
+  const [fileStatusFilter, setFileStatusFilter] = React.useState<DocumentStatusFilter>("all");
   const [nodeSearch, setNodeSearch] = React.useState("");
   const [nodeRelationshipFilters, setNodeRelationshipFilters] = React.useState<NodeRelationshipFilterState>({});
   const [saveState, setSaveState] = React.useState<SaveState>("Saved");
@@ -1404,7 +1406,16 @@ function App() {
     selectRecordFromGraph(ref.type, ref.nodeNo);
   }
 
-  const filteredFiles = workspace.files.filter((file) => `${file.document_id} ${file.patent_id} ${file.path || ""}`.toLowerCase().includes(fileFilter.toLowerCase()));
+  const filteredFiles = React.useMemo(() => {
+    const normalizedFilter = fileFilter.trim().toLowerCase();
+    return workspace.files
+      .filter((file) => !normalizedFilter || `${file.document_id} ${file.patent_id} ${file.path || ""}`.toLowerCase().includes(normalizedFilter))
+      .filter((file) => file.kind === "folder"
+        || fileStatusFilter === "all"
+        || (fileStatusFilter === "partial" && file.status === "Partially complete")
+        || (fileStatusFilter === "completed" && file.status === "Completed"))
+      .sort(compareWorkspaceFiles);
+  }, [fileFilter, fileStatusFilter, workspace.files]);
   if (!workspace.path || !activeDoc) {
     return <Landing
       workspace={workspace}
@@ -1415,6 +1426,8 @@ function App() {
       files={filteredFiles}
       filter={fileFilter}
       setFilter={setFileFilter}
+      statusFilter={fileStatusFilter}
+      setStatusFilter={setFileStatusFilter}
       onPickWorkspace={pickWorkspaceFolder}
       onOpenFolder={openWorkspace}
       onOpenFile={loadDoc}
@@ -1468,7 +1481,7 @@ function App() {
   </div>;
 }
 
-function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefresh, files, filter, setFilter, onPickWorkspace, onOpenFolder, onOpenFile, error }: {
+function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefresh, files, filter, setFilter, statusFilter, setStatusFilter, onPickWorkspace, onOpenFolder, onOpenFile, error }: {
   workspace: WorkspacePayload;
   folderPath: string;
   setFolderPath: (path: string) => void;
@@ -1477,6 +1490,8 @@ function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefr
   files: FileSummary[];
   filter: string;
   setFilter: (filter: string) => void;
+  statusFilter: DocumentStatusFilter;
+  setStatusFilter: (filter: DocumentStatusFilter) => void;
   onPickWorkspace: () => void;
   onOpenFolder: (path: string) => void;
   onOpenFile: (file: string) => void;
@@ -1667,10 +1682,20 @@ function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefr
       {error && <div className="landing-error">{error}</div>}
     </section>
     <section className="file-browser">
-      <header><div><strong>Folder contents</strong><span>{folderCount} folders · {rawFileCount} raw files</span></div><label><Search size={14}/><input value={filter} onChange={(event) => setFilter(event.target.value)} placeholder="Search folders and files"/></label></header>
+      <header>
+        <div><strong>Folder contents</strong><span>{folderCount} folders · {rawFileCount} raw files</span></div>
+        <div className="file-browser-tools">
+          <div className="file-status-filter" role="group" aria-label="Filter documents by annotation status">
+            <button type="button" className={statusFilter === "all" ? "active" : ""} aria-pressed={statusFilter === "all"} onClick={() => setStatusFilter("all")}>All</button>
+            <button type="button" className={statusFilter === "partial" ? "active" : ""} aria-pressed={statusFilter === "partial"} onClick={() => setStatusFilter("partial")}>Partially annotated</button>
+            <button type="button" className={statusFilter === "completed" ? "active" : ""} aria-pressed={statusFilter === "completed"} onClick={() => setStatusFilter("completed")}>Annotated</button>
+          </div>
+          <label><Search size={14}/><input value={filter} onChange={(event) => setFilter(event.target.value)} placeholder="Search folders and files"/></label>
+        </div>
+      </header>
       <div className="file-table">
         {!workspace.path && <div className="empty-state">Open a working folder to browse folders and patent files.</div>}
-        {workspace.path && !files.length && <div className="empty-state">No folders or supported `.md`, `.markdown`, `.txt`, or `.json` files found in this folder.</div>}
+        {workspace.path && !files.length && <div className="empty-state">{workspace.files.length ? "No documents match the current filters." : "No folders or supported `.md`, `.markdown`, `.txt`, or `.json` files found in this folder."}</div>}
         {files.map((file) => {
           const isFolder = file.kind === "folder";
           return <button
@@ -4656,6 +4681,26 @@ function statusClass(status: Status) {
   if (status === "Completed") return "complete";
   if (status === "Partially complete") return "partial";
   return "open";
+}
+
+const documentNameCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
+
+function compareWorkspaceFiles(left: FileSummary, right: FileSummary) {
+  const leftIsFolder = left.kind === "folder";
+  const rightIsFolder = right.kind === "folder";
+  if (leftIsFolder !== rightIsFolder) return leftIsFolder ? -1 : 1;
+
+  const leftIndex = documentIndex(left.document_id);
+  const rightIndex = documentIndex(right.document_id);
+  if (leftIndex !== null && rightIndex !== null && leftIndex !== rightIndex) return leftIndex - rightIndex;
+  if (leftIndex !== null && rightIndex === null) return -1;
+  if (leftIndex === null && rightIndex !== null) return 1;
+  return documentNameCollator.compare(left.document_id, right.document_id);
+}
+
+function documentIndex(fileName: string) {
+  const match = fileName.match(/^\s*(\d+)\.\s+/);
+  return match ? Number.parseInt(match[1], 10) : null;
 }
 
 function errorMessage(error: unknown) {
