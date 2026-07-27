@@ -15,6 +15,7 @@ ENV_KEYS = (
     "ANNOTATION_USERS_JSON",
     "ANNOTATION_APP_USERNAME",
     "ANNOTATION_APP_PASSWORD",
+    "ANNOTATION_SESSION_SECRET",
     "ANNOTATION_WORKSPACE_PATH",
     "ANNOTATION_SEED_WORKSPACE",
 )
@@ -116,6 +117,84 @@ class MultiUserAccessTests(unittest.TestCase):
             self.backend.parse_configured_users("")
         with self.assertRaisesRegex(ValueError, "document_glob"):
             self.backend.parse_configured_users('[{"username":"user","password":"pass"}]')
+
+
+class SessionAuthenticationTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.workspace = tempfile.TemporaryDirectory()
+        workspace_path = Path(self.workspace.name)
+        for name in ("1. alpha.txt", "2. beta.txt", "3. gamma.txt"):
+            (workspace_path / name).write_text(f"Source document {name}", encoding="utf-8")
+
+        self.saved_env = {key: os.environ.get(key) for key in ENV_KEYS}
+        for key in ENV_KEYS:
+            os.environ.pop(key, None)
+        os.environ.update(
+            {
+                "ANNOTATION_WORKSPACE_PATH": self.workspace.name,
+                "ANNOTATION_SEED_WORKSPACE": "0",
+                "ANNOTATION_SESSION_SECRET": "test-session-secret-that-is-longer-than-32-characters",
+                "ANNOTATION_USERS_JSON": json.dumps(
+                    [
+                        {"username": "alice", "password": "alice-pass", "document_globs": ["1.*", "2.*"]},
+                        {"username": "bob", "password": "bob-pass", "document_globs": ["3.*"]},
+                    ]
+                ),
+            }
+        )
+
+        import backend.main
+
+        self.backend = importlib.reload(backend.main)
+        self.client = TestClient(self.backend.app)
+
+    def tearDown(self) -> None:
+        self.client.close()
+        for key in ENV_KEYS:
+            os.environ.pop(key, None)
+        for key, value in self.saved_env.items():
+            if value is not None:
+                os.environ[key] = value
+        self.workspace.cleanup()
+
+    def test_login_cookie_assignment_and_logout(self) -> None:
+        unauthenticated = self.client.get("/api/workspace")
+        self.assertEqual(unauthenticated.status_code, 401)
+        self.assertNotIn("www-authenticate", unauthenticated.headers)
+        self.assertNotEqual(self.client.get("/").status_code, 401)
+        self.assertEqual(
+            self.client.get("/api/workspace", headers=basic_auth("alice", "alice-pass")).status_code,
+            401,
+        )
+        self.assertEqual(
+            self.client.post("/api/auth/login", json={"username": "alice", "password": "wrong"}).status_code,
+            401,
+        )
+
+        login = self.client.post(
+            "/api/auth/login",
+            json={"username": "alice", "password": "alice-pass"},
+        )
+        self.assertEqual(login.status_code, 200)
+        self.assertIn("annotation_session=", login.headers["set-cookie"])
+        self.assertIn("HttpOnly", login.headers["set-cookie"])
+        self.assertIn("SameSite=lax", login.headers["set-cookie"])
+
+        session = self.client.get("/api/auth/session")
+        self.assertEqual(session.json()["username"], "alice")
+        workspace = self.client.get("/api/workspace")
+        self.assertEqual(workspace.status_code, 200)
+        self.assertEqual(
+            [entry["document_id"] for entry in workspace.json()["files"]],
+            ["1. alpha.txt", "2. beta.txt"],
+        )
+
+        self.assertEqual(self.client.post("/api/auth/logout").status_code, 200)
+        self.assertEqual(self.client.get("/api/workspace").status_code, 401)
+
+    def test_tampered_session_cookie_is_rejected(self) -> None:
+        self.client.cookies.set("annotation_session", "tampered.session")
+        self.assertEqual(self.client.get("/api/workspace").status_code, 401)
 
 
 if __name__ == "__main__":

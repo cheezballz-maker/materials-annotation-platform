@@ -163,6 +163,14 @@ Each `document_globs` entry is matched case-insensitively against the raw docume
 
 The backend filters workspace listings for the authenticated user and applies the same authorization check to document reads, annotation saves, and exports. Requests for an unassigned document return `404`, even when the filename exists. Invalid or empty multi-user configuration stops application startup rather than falling back to unrestricted access.
 
+To use the application's login screen and Logout button instead of the browser's Basic Auth prompt, add one more Railway variable:
+
+```text
+ANNOTATION_SESSION_SECRET=<at-least-32-random-characters>
+```
+
+The app then issues a signed, HttpOnly, same-site cookie that expires after eight hours. No database or additional Railway service is required. Keep this value secret and stable across redeployments; changing it signs out all users. If the variable is omitted, the existing Basic Auth mode remains active.
+
 Saves include a lightweight revision check. If two people open the same document and one saves after the other, the second person will be asked to refresh before saving instead of silently overwriting the newer annotation.
 
 ## File Behavior

@@ -10,6 +10,8 @@ import {
   FolderOpen,
   GitBranch,
   Link2,
+  LogIn,
+  LogOut,
   Minus,
   Plus,
   RefreshCw,
@@ -22,6 +24,7 @@ import "./styles.css";
 
 type Status = "Unannotated" | "Partially complete" | "Completed";
 type DocumentStatusFilter = "all" | "partial" | "completed";
+type AuthSession = { authenticated: boolean; username: string | null; mode: "session" | "basic" | "none" };
 type EntityType = "substances" | "compositions" | "properties" | "measurements";
 type SourceType = "patent" | "paper";
 type SubstanceType = "canonical" | "commercial" | "formula" | "raw";
@@ -122,10 +125,23 @@ const emptyState = (document_id = "", patent_id = ""): AnnotationState => ({
   graph_layout: {}
 });
 
+class ApiError extends Error {
+  status: number;
+
+  constructor(message: string, status: number) {
+    super(message);
+    this.name = "ApiError";
+    this.status = status;
+  }
+}
+
 async function apiRequest<T>(url: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(url, options);
+  const response = await fetch(url, { credentials: "same-origin", ...options });
   const payload = await response.json().catch(() => null);
-  if (!response.ok) throw new Error(payload?.detail || `Request failed with status ${response.status}`);
+  if (!response.ok) {
+    if (response.status === 401) window.dispatchEvent(new Event("annotation-auth-required"));
+    throw new ApiError(payload?.detail || `Request failed with status ${response.status}`, response.status);
+  }
   return payload as T;
 }
 
@@ -384,7 +400,49 @@ function MoleculeAtmosphere({ compact = false }: { compact?: boolean }) {
   </div>;
 }
 
+function LoginScreen({ onLogin }: { onLogin: (username: string, password: string) => Promise<void> }) {
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [error, setError] = React.useState("");
+  const [submitting, setSubmitting] = React.useState(false);
+
+  async function submit(event: React.FormEvent) {
+    event.preventDefault();
+    setError("");
+    setSubmitting(true);
+    try {
+      await onLogin(username, password);
+    } catch (requestError) {
+      setError(errorMessage(requestError));
+      setSubmitting(false);
+    }
+  }
+
+  return <main className="login-shell">
+    <section className="login-panel" aria-labelledby="login-title">
+      <div className="login-brand">
+        <BrandGlyph className="login-glyph" />
+        <div>
+          <h1 id="login-title">Annotation Platform</h1>
+          <p>Sign in to access your assigned documents.</p>
+        </div>
+      </div>
+      <form className="login-form" onSubmit={submit}>
+        <label>Username<input autoFocus autoComplete="username" value={username} onChange={(event) => setUsername(event.target.value)} required /></label>
+        <label>Password<input type="password" autoComplete="current-password" value={password} onChange={(event) => setPassword(event.target.value)} required /></label>
+        {error && <div className="login-error" role="alert">{error}</div>}
+        <button type="submit" disabled={submitting || !username || !password}><LogIn size={16}/>{submitting ? "Signing in..." : "Sign in"}</button>
+      </form>
+    </section>
+  </main>;
+}
+
+function AuthenticationLoading() {
+  return <main className="login-shell"><div className="auth-loading" role="status">Loading annotation workspace...</div></main>;
+}
+
 function App() {
+  const [authSession, setAuthSession] = React.useState<AuthSession | null | undefined>(undefined);
   const [workspace, setWorkspace] = React.useState<WorkspacePayload>({ path: null, files: [] });
   const [folderPath, setFolderPath] = React.useState(DEFAULT_FOLDER);
   const [activeDoc, setActiveDoc] = React.useState<LoadedDoc | null>(null);
@@ -444,7 +502,14 @@ function App() {
     markDirty: () => updateSaveState("Unsaved changes")
   }), [registerPendingFieldCommit, updateSaveState]);
 
-  React.useEffect(() => { loadWorkspace(); }, []);
+  React.useEffect(() => { void initializeApp(); }, []);
+  React.useEffect(() => {
+    const requireAuthentication = () => {
+      if (authSession?.mode === "session") setAuthSession(null);
+    };
+    window.addEventListener("annotation-auth-required", requireAuthentication);
+    return () => window.removeEventListener("annotation-auth-required", requireAuthentication);
+  }, [authSession?.mode]);
   React.useEffect(() => {
     const warn = (event: BeforeUnloadEvent) => {
       if (saveState !== "Unsaved changes") return;
@@ -651,6 +716,46 @@ function App() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeDoc, state, spanAdjustment]);
+
+  async function initializeApp() {
+    try {
+      const session = await apiRequest<AuthSession>("/api/auth/session");
+      setAuthSession(session);
+      await loadWorkspace();
+    } catch (requestError) {
+      if (requestError instanceof ApiError && requestError.status === 401) {
+        setAuthSession(null);
+        return;
+      }
+      setAuthSession({ authenticated: true, username: null, mode: "none" });
+      setError(errorMessage(requestError));
+    }
+  }
+
+  async function login(username: string, password: string) {
+    const session = await apiRequest<AuthSession>("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    });
+    setAuthSession(session);
+    setError("");
+    await loadWorkspace();
+  }
+
+  async function logout() {
+    if (!canLeaveCurrent()) return;
+    try {
+      await apiRequest<{ authenticated: boolean }>("/api/auth/logout", { method: "POST" });
+      closeDocument(true);
+      setWorkspace({ path: null, files: [] });
+      setError("");
+      setNotice("");
+      setAuthSession(null);
+    } catch (requestError) {
+      setError(errorMessage(requestError));
+    }
+  }
 
   async function loadWorkspace() {
     try {
@@ -1416,6 +1521,9 @@ function App() {
         || (fileStatusFilter === "completed" && file.status === "Completed"))
       .sort(compareWorkspaceFiles);
   }, [fileFilter, fileStatusFilter, workspace.files]);
+  if (authSession === undefined) return <AuthenticationLoading/>;
+  if (authSession === null) return <LoginScreen onLogin={login}/>;
+  const sessionLogout = authSession.mode === "session" ? logout : undefined;
   if (!workspace.path || !activeDoc) {
     return <Landing
       workspace={workspace}
@@ -1432,6 +1540,8 @@ function App() {
       onOpenFolder={openWorkspace}
       onOpenFile={loadDoc}
       error={error}
+      username={authSession.username}
+      onLogout={sessionLogout}
     />;
   }
 
@@ -1442,6 +1552,7 @@ function App() {
         <button onClick={() => closeDocument()}><ArrowLeft size={14}/> Folder</button>
         <div><strong>{activeDoc.document_id}</strong><span>{workspace.path}</span></div>
         <button type="button" className="source-export-button" onClick={exportAnnotatedDocumentView}><Download size={14}/> Export view</button>
+        {sessionLogout && <button type="button" className="logout-button icon-only" title={`Sign out ${authSession.username || ""}`} aria-label="Sign out" onClick={sessionLogout}><LogOut size={15}/></button>}
       </header>
       <article className="document-view" ref={documentViewRef} onMouseUp={handleDocumentSelection}>
         {renderMarkdown(activeDoc.markdown, state, spanFocus, handleAnnotationSpanClick, selectionMenu)}
@@ -1481,7 +1592,7 @@ function App() {
   </div>;
 }
 
-function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefresh, files, filter, setFilter, statusFilter, setStatusFilter, onPickWorkspace, onOpenFolder, onOpenFile, error }: {
+function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefresh, files, filter, setFilter, statusFilter, setStatusFilter, onPickWorkspace, onOpenFolder, onOpenFile, error, username, onLogout }: {
   workspace: WorkspacePayload;
   folderPath: string;
   setFolderPath: (path: string) => void;
@@ -1496,6 +1607,8 @@ function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefr
   onOpenFolder: (path: string) => void;
   onOpenFile: (file: string) => void;
   error: string;
+  username: string | null;
+  onLogout?: () => void;
 }) {
   const folderCount = files.filter((file) => file.kind === "folder").length;
   const rawFileCount = files.length - folderCount;
@@ -1667,6 +1780,7 @@ function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefr
             <p>Patent annotation workbench</p>
           </div>
         </div>
+        {onLogout && <div className="session-controls"><span>{username}</span><button type="button" title="Sign out" aria-label="Sign out" onClick={onLogout}><LogOut size={15}/></button></div>}
       </div>
       {!fixedWorkspace && <div className="workspace-controls">
           <div className="folder-form">
