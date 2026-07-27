@@ -1780,7 +1780,7 @@ function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefr
             <p>Patent annotation workbench</p>
           </div>
         </div>
-        {onLogout && <div className="session-controls"><span>{username}</span><button type="button" title="Sign out" aria-label="Sign out" onClick={onLogout}><LogOut size={15}/></button></div>}
+        {onLogout && <button type="button" className="session-controls" title={`Sign out ${username || ""}`} aria-label={`Sign out ${username || ""}`} onClick={onLogout}><span>{username}</span><LogOut size={15}/></button>}
       </div>
       {!fixedWorkspace && <div className="workspace-controls">
           <div className="folder-form">

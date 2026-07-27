@@ -57,9 +57,9 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .haze-a { top: -8px; left: 16%; width: 320px; height: 82px; background: radial-gradient(circle, rgba(137, 223, 202, .24) 0%, rgba(137, 223, 202, 0) 72%); animation: hazeShiftA 32s linear infinite; }
 .haze-b { top: 48px; right: 18%; width: 340px; height: 84px; background: radial-gradient(circle, rgba(169, 199, 244, .2) 0%, rgba(169, 199, 244, 0) 72%); animation: hazeShiftB 28s linear infinite; }
 .workspace-hero { display: grid; gap: 8px; align-content: center; }
-.session-controls { width: max-content; max-width: 100%; display: inline-flex; align-items: center; gap: 7px; margin-left: 168px; padding: 3px 3px 3px 10px; border: 1px solid rgba(185, 203, 213, .86); border-radius: 8px; background: rgba(255,255,255,.78); color: #526076; }
+.session-controls { width: max-content; max-width: 100%; min-height: 38px; display: inline-flex; align-items: center; gap: 9px; margin-left: 168px; padding: 3px 9px 3px 10px; border: 1px solid rgba(185, 203, 213, .86); border-radius: 8px; background: rgba(255,255,255,.78); color: #526076; }
+.session-controls:hover:not(:disabled) { border-color: #94a3b8; background: #fff; }
 .session-controls span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.session-controls button { width: 30px; height: 30px; flex: 0 0 30px; padding: 0; border: 0; background: transparent; }
 .workspace-controls { display: grid; gap: 10px; align-content: center; }
 .brand-lockup { display: flex; gap: 18px; align-items: center; }
 .brand-cluster { position: relative; width: 150px; height: 116px; flex: 0 0 auto; pointer-events: none; }
