@@ -153,6 +153,16 @@ Set `ANNOTATION_SEED_WORKSPACE=0` if you do not want the deployed image to copy 
 
 For a very small internal POC, `ANNOTATION_APP_PASSWORD` enables browser HTTP Basic authentication. Use HTTPS from the hosting provider, and share the password only with intended annotators. Leave the password unset for local unauthenticated development.
 
+For separate user credentials and document assignments, replace the shared username/password variables with `ANNOTATION_USERS_JSON`. Railway accepts the value as a single-line JSON array:
+
+```json
+[{"username":"alice","password":"choose-a-password","document_globs":["1.*","2.*"]},{"username":"bob","password":"choose-another-password","document_globs":["3.*","4.*"]},{"username":"admin","password":"choose-an-admin-password","document_globs":["*"]}]
+```
+
+Each `document_globs` entry is matched case-insensitively against the raw document filename. List every assigned index explicitly, such as `1.*`, or use `*` for an administrator who may access every document. When `ANNOTATION_USERS_JSON` is present, it takes precedence over `ANNOTATION_APP_USERNAME` and `ANNOTATION_APP_PASSWORD`.
+
+The backend filters workspace listings for the authenticated user and applies the same authorization check to document reads, annotation saves, and exports. Requests for an unassigned document return `404`, even when the filename exists. Invalid or empty multi-user configuration stops application startup rather than falling back to unrestricted access.
+
 Saves include a lightweight revision check. If two people open the same document and one saves after the other, the second person will be asked to refresh before saving instead of silently overwriting the newer annotation.
 
 ## File Behavior

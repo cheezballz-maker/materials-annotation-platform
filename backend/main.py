@@ -7,6 +7,8 @@ import secrets
 import shutil
 import tempfile
 from base64 import b64decode
+from dataclasses import dataclass
+from fnmatch import fnmatchcase
 from html import unescape
 from pathlib import Path
 from threading import Lock
@@ -26,6 +28,7 @@ CONFIGURED_WORKSPACE = os.getenv("ANNOTATION_WORKSPACE_PATH", "").strip()
 SEED_WORKSPACE = os.getenv("ANNOTATION_SEED_WORKSPACE", "").strip().lower() in {"1", "true", "yes", "on"}
 APP_USERNAME = os.getenv("ANNOTATION_APP_USERNAME", "annotator")
 APP_PASSWORD = os.getenv("ANNOTATION_APP_PASSWORD", "")
+APP_USERS_JSON = os.getenv("ANNOTATION_USERS_JSON")
 
 Status = Literal["Unannotated", "Partially complete", "Completed"]
 SourceType = Literal["patent", "paper"]
@@ -43,6 +46,63 @@ IDENTITY_FIELDS = {
     "properties": "property_name",
     "measurements": "value",
 }
+
+
+@dataclass(frozen=True)
+class ConfiguredUser:
+    username: str
+    password: str
+    document_globs: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class UserAccess:
+    username: str
+    document_globs: tuple[str, ...]
+
+
+def parse_configured_users(raw: str) -> tuple[ConfiguredUser, ...]:
+    if not raw.strip():
+        raise ValueError("must be a non-empty JSON array")
+    try:
+        entries = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise ValueError("must be valid JSON") from exc
+    if not isinstance(entries, list) or not entries:
+        raise ValueError("must be a non-empty JSON array")
+
+    users = []
+    usernames = set()
+    for position, entry in enumerate(entries, start=1):
+        if not isinstance(entry, dict):
+            raise ValueError(f"entry {position} must be an object")
+        username = entry.get("username")
+        password = entry.get("password")
+        document_globs = entry.get("document_globs")
+        if not isinstance(username, str) or not username.strip() or username != username.strip():
+            raise ValueError(f"entry {position} has an invalid username")
+        if username in usernames:
+            raise ValueError(f"username {username!r} is duplicated")
+        if not isinstance(password, str) or not password:
+            raise ValueError(f"entry {position} has an empty password")
+        if not isinstance(document_globs, list) or not document_globs:
+            raise ValueError(f"entry {position} must have at least one document_glob")
+        patterns = tuple(pattern.strip() for pattern in document_globs if isinstance(pattern, str) and pattern.strip())
+        if len(patterns) != len(document_globs):
+            raise ValueError(f"entry {position} has an invalid document_glob")
+        users.append(ConfiguredUser(username=username, password=password, document_globs=patterns))
+        usernames.add(username)
+    return tuple(users)
+
+
+try:
+    CONFIGURED_USERS = parse_configured_users(APP_USERS_JSON) if APP_USERS_JSON is not None else ()
+except ValueError as exc:
+    raise RuntimeError(f"Invalid ANNOTATION_USERS_JSON: {exc}") from exc
+
+AUTH_USERS = CONFIGURED_USERS or (
+    (ConfiguredUser(username=APP_USERNAME, password=APP_PASSWORD, document_globs=("*",)),) if APP_PASSWORD else ()
+)
 
 
 class EvidenceSpan(BaseModel):
@@ -172,31 +232,52 @@ _seeded_workspaces: set[str] = set()
 
 
 def authentication_enabled() -> bool:
-    return bool(APP_PASSWORD)
+    return bool(AUTH_USERS)
 
 
-def authenticate_basic_header(header: str | None) -> bool:
-    if not authentication_enabled():
-        return True
+def authenticate_basic_header(header: str | None) -> UserAccess | None:
     if not header or not header.startswith("Basic "):
-        return False
+        return None
     try:
         decoded = b64decode(header.removeprefix("Basic ").strip()).decode("utf-8")
     except (ValueError, UnicodeDecodeError):
-        return False
+        return None
     username, separator, password = decoded.partition(":")
-    return bool(separator) and secrets.compare_digest(username, APP_USERNAME) and secrets.compare_digest(password, APP_PASSWORD)
+    if not separator:
+        return None
+    for configured_user in AUTH_USERS:
+        username_matches = secrets.compare_digest(username, configured_user.username)
+        password_matches = secrets.compare_digest(password, configured_user.password)
+        if username_matches and password_matches:
+            return UserAccess(username=configured_user.username, document_globs=configured_user.document_globs)
+    return None
 
 
 @app.middleware("http")
 async def require_basic_auth(request: Request, call_next):
-    if request.method == "OPTIONS" or request.url.path == "/api/health" or authenticate_basic_header(request.headers.get("authorization")):
+    if request.method == "OPTIONS" or request.url.path == "/api/health" or not authentication_enabled():
+        request.state.annotation_user = None
+        return await call_next(request)
+    user = authenticate_basic_header(request.headers.get("authorization"))
+    if user:
+        request.state.annotation_user = user
         return await call_next(request)
     return Response(
         "Authentication required",
         status_code=401,
         headers={"WWW-Authenticate": 'Basic realm="Annotation Platform"'},
     )
+
+
+def request_user(request: Request) -> UserAccess | None:
+    return getattr(request.state, "annotation_user", None)
+
+
+def document_allowed(file_name: str, user: UserAccess | None) -> bool:
+    if user is None:
+        return True
+    normalized_name = file_name.casefold()
+    return any(fnmatchcase(normalized_name, pattern.casefold()) for pattern in user.document_globs)
 
 
 def configured_workspace() -> Path | None:
@@ -314,11 +395,11 @@ def patent_id_from_name(path: Path) -> str:
     return (match.group(1) if match else stem).strip() or "-"
 
 
-def raw_file_path(file_name: str) -> Path:
+def raw_file_path(file_name: str, user: UserAccess | None = None) -> Path:
     workspace = current_workspace()
     assert workspace is not None
     path = (workspace / file_name).resolve()
-    if path.parent != workspace.resolve() or not is_raw_text_file(path):
+    if path.parent != workspace.resolve() or not is_raw_text_file(path) or not document_allowed(path.name, user):
         raise HTTPException(status_code=404, detail="Raw patent text file not found")
     return path
 
@@ -1220,17 +1301,17 @@ def folder_summary(path: Path) -> dict:
     }
 
 
-def workspace_files(path: Path) -> list[dict]:
+def workspace_files(path: Path, user: UserAccess | None = None) -> list[dict]:
     entries = []
     for item in sorted(path.iterdir(), key=lambda value: (not value.is_dir(), value.name.lower())):
         if item.is_dir():
             entries.append(folder_summary(item))
-        elif is_raw_text_file(item):
+        elif is_raw_text_file(item) and document_allowed(item.name, user):
             entries.append(file_summary(item))
     return entries
 
 
-def workspace_payload(path: Path | None) -> WorkspacePayload:
+def workspace_payload(path: Path | None, user: UserAccess | None = None) -> WorkspacePayload:
     is_configured = bool(CONFIGURED_WORKSPACE)
     if not path:
         return WorkspacePayload(configured_workspace=is_configured)
@@ -1239,7 +1320,7 @@ def workspace_payload(path: Path | None) -> WorkspacePayload:
         path=str(path),
         parent_path=str(parent) if parent else None,
         configured_workspace=is_configured,
-        files=workspace_files(path),
+        files=workspace_files(path, user),
     )
 
 
@@ -1276,22 +1357,23 @@ def export_schema(state: AnnotationState) -> dict:
 
 
 @app.get("/api/workspace", response_model=WorkspacePayload)
-def get_workspace() -> WorkspacePayload:
+def get_workspace(request: Request) -> WorkspacePayload:
     path = current_workspace(required=False)
-    return workspace_payload(path)
+    return workspace_payload(path, request_user(request))
 
 
 @app.post("/api/workspace/open", response_model=WorkspacePayload)
-def open_workspace(request: OpenWorkspaceRequest) -> WorkspacePayload:
-    path = set_workspace(request.path)
-    return workspace_payload(path)
+def open_workspace(payload: OpenWorkspaceRequest, request: Request) -> WorkspacePayload:
+    path = set_workspace(payload.path)
+    return workspace_payload(path, request_user(request))
 
 
 @app.post("/api/workspace/pick-folder", response_model=WorkspacePayload)
-def pick_workspace_folder() -> WorkspacePayload:
+def pick_workspace_folder(request: Request) -> WorkspacePayload:
+    user = request_user(request)
     configured = configured_workspace()
     if configured:
-        return workspace_payload(configured)
+        return workspace_payload(configured, user)
     try:
         import tkinter as tk
         from tkinter import filedialog
@@ -1309,20 +1391,20 @@ def pick_workspace_folder() -> WorkspacePayload:
         root.destroy()
 
     if not selected:
-        return workspace_payload(current_workspace(required=False))
-    return workspace_payload(set_workspace(selected))
+        return workspace_payload(current_workspace(required=False), user)
+    return workspace_payload(set_workspace(selected), user)
 
 
 @app.get("/api/workspace/files")
-def list_workspace_files() -> list[dict]:
+def list_workspace_files(request: Request) -> list[dict]:
     path = current_workspace()
     assert path is not None
-    return workspace_files(path)
+    return workspace_files(path, request_user(request))
 
 
 @app.get("/api/workspace/files/{file_name:path}", response_model=DocumentPayload)
-def get_document(file_name: str) -> DocumentPayload:
-    path = raw_file_path(file_name)
+def get_document(file_name: str, request: Request) -> DocumentPayload:
+    path = raw_file_path(file_name, request_user(request))
     state, annotation_path = load_state(path)
     return DocumentPayload(
         document_id=path.name,
@@ -1336,7 +1418,7 @@ def get_document(file_name: str) -> DocumentPayload:
 
 @app.put("/api/workspace/files/{file_name:path}/annotations")
 def save_annotations(file_name: str, state: AnnotationState, request: Request) -> dict:
-    path = raw_file_path(file_name)
+    path = raw_file_path(file_name, request_user(request))
     if state.document_id != path.name:
         raise HTTPException(status_code=400, detail="Document id mismatch")
     expected_revision = request.headers.get("x-annotation-revision")
@@ -1351,8 +1433,8 @@ def save_annotations(file_name: str, state: AnnotationState, request: Request) -
 
 
 @app.post("/api/workspace/files/{file_name:path}/export")
-def export_document(file_name: str) -> dict:
-    path = raw_file_path(file_name)
+def export_document(file_name: str, request: Request) -> dict:
+    path = raw_file_path(file_name, request_user(request))
     state, _ = load_state(path)
     out = path.with_name(f"{path.stem}.schema.json")
     exported = export_schema(state)
