@@ -645,7 +645,7 @@ function App() {
       if (!activeRecord) {
         if (event.key !== "ArrowDown" || !tabRecords.length) return;
         event.preventDefault();
-        selectRecord(activeTab, tabRecords[0].node_no);
+        selectRecord(activeTab, tabRecords[0].node_no, 0, "keyboard");
         return;
       }
       const records = state[activeRecord.type] as AnyRecord[];
@@ -655,7 +655,7 @@ function App() {
       const nextRecord = records[currentIndex + delta];
       if (!nextRecord) return;
       event.preventDefault();
-      selectRecord(activeRecord.type, nextRecord.node_no);
+      selectRecord(activeRecord.type, nextRecord.node_no, 0, "keyboard");
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
@@ -1240,7 +1240,7 @@ function App() {
     setNotice(`Adjusting ${fieldDisplayName(field)}. Select the corrected text span, then release. Press Esc to cancel.`);
   }
 
-  function selectRecord(type: EntityType, nodeNo: NodeId, focusIndex = 0, origin: "panel" | "document" = "panel") {
+  function selectRecord(type: EntityType, nodeNo: NodeId, focusIndex = 0, origin: "panel" | "document" | "keyboard" = "panel") {
     flushPendingFieldCommits();
     const currentState = stateRef.current;
     if (editSessionRef.current && editingRecord && !statesEqual(editSessionRef.current.state, currentState)) {
@@ -1256,11 +1256,12 @@ function App() {
     setSpanInspector(null);
     window.setTimeout(() => document.querySelector(recordSelector(type, nodeNo))?.scrollIntoView({ behavior: "smooth", block: "center" }), 30);
     const record = (currentState[type] as AnyRecord[]).find((item) => item.node_no === nodeNo);
-    const span = record?.evidence_spans[focusIndex];
+    const resolvedFocusIndex = record && origin !== "document" ? preferredEvidenceSpanIndex(record) : focusIndex;
+    const span = record?.evidence_spans[resolvedFocusIndex];
     if (span && typeof span.start === "number") {
-      setSpanFocus({ type, nodeNo, index: focusIndex });
-      if (origin === "document") {
-        window.setTimeout(() => document.querySelector(highlightSelector(type, nodeNo, focusIndex))?.scrollIntoView({ behavior: "smooth", block: "center" }), 30);
+      setSpanFocus({ type, nodeNo, index: resolvedFocusIndex });
+      if (origin === "panel") {
+        window.setTimeout(() => document.querySelector(highlightSelector(type, nodeNo, resolvedFocusIndex))?.scrollIntoView({ behavior: "smooth", block: "center" }), 30);
       }
     }
   }
@@ -2144,7 +2145,7 @@ function CompositionForm({ record, state, selectionMenu, editing, onAnnotate, on
   const constituentCandidates = React.useMemo(() => compositionConstituentCandidates(state, record), [record, state]);
   const addConstituent = (candidate: LinkCandidate) => {
     onUpdate((current) => ({
-      constituents: [...(current as CompositionRecord).constituents, defaultConstituent(candidate.nodeNo)]
+      constituents: [defaultConstituent(candidate.nodeNo), ...(current as CompositionRecord).constituents]
     }));
   };
   return <div className="form-grid">
@@ -3089,6 +3090,15 @@ function normalizeEvidenceSpanRoles(type: EntityType, spans: EvidenceSpan[]) {
   if (type === "measurements" && primaryIndex < 0) primaryIndex = normalized.findIndex((span) => span.field === "evidence_text");
   if (primaryIndex < 0) return normalized;
   return normalized.map((span, index) => index === primaryIndex ? { ...span, primary: true } : span);
+}
+
+function preferredEvidenceSpanIndex(record: AnyRecord) {
+  const primaryOffsetIndex = record.evidence_spans.findIndex((span) => span.primary && typeof span.start === "number");
+  if (primaryOffsetIndex >= 0) return primaryOffsetIndex;
+  const firstOffsetIndex = record.evidence_spans.findIndex((span) => typeof span.start === "number");
+  if (firstOffsetIndex >= 0) return firstOffsetIndex;
+  const primaryIndex = record.evidence_spans.findIndex((span) => span.primary);
+  return primaryIndex >= 0 ? primaryIndex : 0;
 }
 
 function isMainEvidenceSpan(type: EntityType, record: AnyRecord, index: number) {
@@ -4526,7 +4536,7 @@ function addRelationship(state: AnnotationState, source: GraphRef, target: Graph
       ...state,
       compositions: state.compositions.map((item) => item.node_no === target.nodeNo ? {
         ...item,
-        constituents: [...item.constituents, defaultConstituent(source.nodeNo)]
+        constituents: [defaultConstituent(source.nodeNo), ...item.constituents]
       } : item)
     };
   }
