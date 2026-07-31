@@ -5,6 +5,7 @@ import "reactflow/dist/style.css";
 import {
   ArrowLeft,
   CheckCircle2,
+  Copy,
   Download,
   Edit3,
   FileDiff,
@@ -687,6 +688,15 @@ function App() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeRecord, editingRecord, selectionMenu, spanInspector, graphOpen]);
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key.toLowerCase() !== "v" || (!event.ctrlKey && !event.metaKey) || event.repeat || !activeDoc || !activeRecord || selectionMenu || spanInspector || spanAdjustment || spanAdditionTarget || graphOpen || event.isComposing || event.shiftKey || event.altKey || isEditableTarget(event.target)) return;
+      event.preventDefault();
+      duplicateRecord(activeRecord.type, activeRecord.nodeNo);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeDoc, activeRecord, selectionMenu, spanInspector, spanAdjustment, spanAdditionTarget, graphOpen, state]);
   React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key.toLowerCase() !== "s" || (!event.ctrlKey && !event.metaKey) || event.repeat || !activeDoc) return;
@@ -1401,6 +1411,40 @@ function App() {
     window.setTimeout(() => setNotice(""), 2600);
   }
 
+  function duplicateRecord(type: EntityType, nodeNo: NodeId) {
+    flushPendingFieldCommits();
+    const currentState = stateRef.current;
+    if (editSessionRef.current && editingRecord && !statesEqual(editSessionRef.current.state, currentState)) {
+      pushUndoSnapshot(editSessionRef.current, currentState);
+    }
+    editSessionRef.current = null;
+    const tempNodeNo = nextNodeNo(currentState);
+    const duplicated = cloneRecordBelow(currentState, { type, nodeNo }, tempNodeNo);
+    if (!duplicated || duplicated === currentState) return;
+    const normalized = markDirty(duplicated, { recordHistory: true, historySnapshot: makeUndoSnapshot(currentState) });
+    const normalizedNo = normalized.maps[type].get(tempNodeNo) || tempNodeNo;
+    setActiveTab(type);
+    setActiveRecord({ type, nodeNo: normalizedNo });
+    setEditingRecord({ type, nodeNo: normalizedNo });
+    setDocumentSelectedRecord(null);
+    setSpanAdjustment(null);
+    setSpanAdditionTarget(null);
+    setSpanFocus(null);
+    setSpanInspector(null);
+    setSelectionMenu(null);
+    setLinkSource(null);
+    editSessionRef.current = makeUndoSnapshot(normalized.state, {
+      activeTab: type,
+      activeRecord: { type, nodeNo: normalizedNo },
+      editingRecord: { type, nodeNo: normalizedNo },
+      documentSelectedRecord: null,
+      spanFocus: null
+    });
+    window.setTimeout(() => document.querySelector(recordSelector(type, normalizedNo))?.scrollIntoView({ behavior: "smooth", block: "center" }), 30);
+    setNotice(`Duplicated ${nodeLabel(currentState, { type, nodeNo })} as ${nodeDisplayId(type, normalizedNo)}.`);
+    window.setTimeout(() => setNotice(""), 2600);
+  }
+
   function annotateActiveItem(target: AnnotationTarget) {
     if (!selectionMenu || !activeRecord) return;
     const record = getRecord(state, activeRecord);
@@ -1621,7 +1665,7 @@ function App() {
       </nav>
       <section className="annotation-workspace">
       <PendingFieldCommitContext.Provider value={pendingFieldCommitContext}>
-        <NodeAccordion type={activeTab} state={state} activeRecord={activeRecord} editingRecord={editingRecord} selectionMenu={selectionMenu} spanAdjustment={spanAdjustment} spanAdditionTarget={spanAdditionTarget} search={nodeSearch} relationshipFilters={nodeRelationshipFilters[activeTab] || {}} onSearchChange={setNodeSearch} onRelationshipFilterChange={(key, value) => setNodeRelationshipFilters((current) => ({ ...current, [activeTab]: { ...(current[activeTab] || {}), [key]: value } }))} onSelect={selectRecord} onEdit={(type, nodeNo, editing) => editing ? finalizeRecord(type, nodeNo) : beginEditing(type, nodeNo)} onDelete={deleteRecord} onUpdate={updateRecord} onAnnotateItem={annotateActiveItem} onAddEvidenceSpan={addEvidenceSpan} onDone={finalizeRecord} onCollapse={collapseRecord} onCreateComposition={createCompositionWithoutSelection} onAdjustSpan={beginSpanAdjustment}/>
+        <NodeAccordion type={activeTab} state={state} activeRecord={activeRecord} editingRecord={editingRecord} selectionMenu={selectionMenu} spanAdjustment={spanAdjustment} spanAdditionTarget={spanAdditionTarget} search={nodeSearch} relationshipFilters={nodeRelationshipFilters[activeTab] || {}} onSearchChange={setNodeSearch} onRelationshipFilterChange={(key, value) => setNodeRelationshipFilters((current) => ({ ...current, [activeTab]: { ...(current[activeTab] || {}), [key]: value } }))} onSelect={selectRecord} onEdit={(type, nodeNo, editing) => editing ? finalizeRecord(type, nodeNo) : beginEditing(type, nodeNo)} onDelete={deleteRecord} onDuplicate={duplicateRecord} onUpdate={updateRecord} onAnnotateItem={annotateActiveItem} onAddEvidenceSpan={addEvidenceSpan} onDone={finalizeRecord} onCollapse={collapseRecord} onCreateComposition={createCompositionWithoutSelection} onAdjustSpan={beginSpanAdjustment}/>
       </PendingFieldCommitContext.Provider>
       </section>
     </aside>
@@ -1887,7 +1931,7 @@ function SelectionPopover({ selection, activeRecord, onCreate, onDismiss }: {
   </div>;
 }
 
-function NodeAccordion({ type, state, activeRecord, editingRecord, selectionMenu, spanAdjustment, spanAdditionTarget, search, relationshipFilters, onSearchChange, onRelationshipFilterChange, onSelect, onEdit, onDelete, onUpdate, onAnnotateItem, onAddEvidenceSpan, onDone, onCollapse, onCreateComposition, onAdjustSpan }: {
+function NodeAccordion({ type, state, activeRecord, editingRecord, selectionMenu, spanAdjustment, spanAdditionTarget, search, relationshipFilters, onSearchChange, onRelationshipFilterChange, onSelect, onEdit, onDelete, onDuplicate, onUpdate, onAnnotateItem, onAddEvidenceSpan, onDone, onCollapse, onCreateComposition, onAdjustSpan }: {
   type: EntityType;
   state: AnnotationState;
   activeRecord: ActiveRecord;
@@ -1902,6 +1946,7 @@ function NodeAccordion({ type, state, activeRecord, editingRecord, selectionMenu
   onSelect: (type: EntityType, nodeNo: NodeId) => void;
   onEdit: (type: EntityType, nodeNo: NodeId, editing: boolean) => void;
   onDelete: (type: EntityType, nodeNo: NodeId) => void;
+  onDuplicate: (type: EntityType, nodeNo: NodeId) => void;
   onUpdate: (type: EntityType, nodeNo: NodeId, patch: RecordPatch) => void;
   onAnnotateItem: (target: AnnotationTarget) => void;
   onAddEvidenceSpan: (type: EntityType, nodeNo: NodeId) => void;
@@ -1963,6 +2008,7 @@ function NodeAccordion({ type, state, activeRecord, editingRecord, selectionMenu
         </button>
         <div className="record-actions">
           {active && <button className="confirm-button" onClick={() => onDone(type, record.node_no)}><CheckCircle2 size={13}/> Done</button>}
+          {active && <button onClick={() => onDuplicate(type, record.node_no)}><Copy size={13}/> Duplicate</button>}
           <button className={editing ? "active-action" : ""} onClick={() => { onSelect(type, record.node_no); onEdit(type, record.node_no, editing); }}><Edit3 size={13}/> {editing ? "Finish edit" : "Edit"}</button>
           <button onClick={() => onDelete(type, record.node_no)}><Trash2 size={13}/></button>
         </div>
@@ -3153,6 +3199,28 @@ function cloneGraphNodes(state: AnnotationState, refs: GraphRef[], step = 1) {
     if (originalPosition) nextState.graph_layout[graphId({ type: ref.type, nodeNo: tempNodeNo })] = { x: originalPosition.x + shift, y: originalPosition.y + shift };
   });
   return { state: nextState, refs: clonedRefs };
+}
+
+function cloneRecordBelow(state: AnnotationState, ref: GraphRef, tempNodeNo: NodeId) {
+  const cloned = cloneRecordForGraph(state, ref, tempNodeNo);
+  if (!cloned) return null;
+  const records = state[ref.type] as AnyRecord[];
+  const sourceIndex = records.findIndex((item) => item.node_no === ref.nodeNo);
+  if (sourceIndex < 0) return null;
+  const nextRecords = [...records.slice(0, sourceIndex + 1), cloned as AnyRecord, ...records.slice(sourceIndex + 1)];
+  const nextState = {
+    ...state,
+    [ref.type]: nextRecords,
+    graph_layout: { ...(state.graph_layout || {}) }
+  } as AnnotationState;
+  const originalPosition = (state.graph_layout || {})[graphId(ref)];
+  if (originalPosition) {
+    nextState.graph_layout[graphId({ type: ref.type, nodeNo: tempNodeNo })] = {
+      x: originalPosition.x,
+      y: originalPosition.y + 72
+    };
+  }
+  return nextState;
 }
 
 function cloneRecordForGraph(state: AnnotationState, ref: GraphRef, tempNodeNo: NodeId) {
