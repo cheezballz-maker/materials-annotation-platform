@@ -173,6 +173,13 @@ The app then issues a signed, HttpOnly, same-site cookie that expires after eigh
 
 Saves include a lightweight revision check. If two people open the same document and one saves after the other, the second person will be asked to refresh before saving instead of silently overwriting the newer annotation.
 
+## Creating Railway Backups on Local Repo
+```text
+$backup = ".\railway-backup-$(Get-Date -Format 'yyyy-MM-dd-HHmmss')"
+railway service files download /data/workspace $backup --concurrency 16
+Write-Host "Backup saved to: $backup"
+```
+
 ## File Behavior
 
 - Raw files can be `.md`, `.markdown`, `.txt`, or `.json`.

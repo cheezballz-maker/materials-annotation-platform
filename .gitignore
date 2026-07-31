@@ -16,8 +16,10 @@ Input text/
 annotations/
 exports/
 annotation_backups/
+railway-backup-*/
 annotation_import_audit.json
 seed-workspace/run_status.jsonl
+frontend/src/styles-FA*.css
 
 Main.java
 test.py

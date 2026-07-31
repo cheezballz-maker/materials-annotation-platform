@@ -7,6 +7,7 @@ import {
   CheckCircle2,
   Download,
   Edit3,
+  FileDiff,
   FolderOpen,
   GitBranch,
   Link2,
@@ -34,44 +35,45 @@ type KeyConstituent = "yes" | "no" | "-";
 type PropertyType = "intrinsic" | "extrinsic" | "performance";
 type MeasurementType = "quantitative" | "qualitative";
 type Comparator = "=" | ">" | "<" | ">=" | "<=" | "approx" | "range" | "-";
+type NodeId = number | string;
 type EvidenceSpan = { field: string; text: string; start?: number | null; end?: number | null; primary?: boolean };
 type Meta = { source_type: SourceType; source_id: string };
-type SubstanceRecord = { node_no: number; substance_name: string; substance_type: SubstanceType; physical_form: string; manufacturer: string; evidence_text: string; evidence_spans: EvidenceSpan[] };
-type ConstituentRecord = { constituent_ref: number; constituent_status: ConstituentStatus; amount_comparator: AmountComparator; amount_value: string | number; amount_unit: string; amount_lower_value: string | number; amount_upper_value: string | number; function: string; key_constituent: KeyConstituent; key_reason: string };
-type CompositionRecord = { node_no: number; composition_name: string; composition_type: string; physical_form: string; constituents: ConstituentRecord[]; evidence_text: string; evidence_spans: EvidenceSpan[] };
-type PropertyRecord = { node_no: number; property_name: string; property_type: PropertyType; target_ref: number; evidence_text: string; evidence_spans: EvidenceSpan[] };
+type SubstanceRecord = { node_no: NodeId; substance_name: string; substance_type: SubstanceType; physical_form: string; manufacturer: string; evidence_text: string; evidence_spans: EvidenceSpan[] };
+type ConstituentRecord = { constituent_ref: NodeId; constituent_status: ConstituentStatus; amount_comparator: AmountComparator; amount_value: string | number; amount_unit: string; amount_lower_value: string | number; amount_upper_value: string | number; function: string; key_constituent: KeyConstituent; key_reason: string };
+type CompositionRecord = { node_no: NodeId; composition_name: string; composition_type: string; physical_form: string; constituents: ConstituentRecord[]; evidence_text: string; evidence_spans: EvidenceSpan[] };
+type PropertyRecord = { node_no: NodeId; property_name: string; property_type: PropertyType; target_ref: NodeId; evidence_text: string; evidence_spans: EvidenceSpan[] };
 type MeasurementCondition = { condition_name: string; condition_value: Array<string | number>; condition_unit: string[] };
-type MeasurementRecord = { node_no: number; measurement_type: MeasurementType; property_ref: number; value: Array<string | number>; comparator: Comparator; unit: string[]; lower_value: string | number; upper_value: string | number; measurement_conditions: MeasurementCondition[]; evidence_text: string; evidence_spans: EvidenceSpan[] };
+type MeasurementRecord = { node_no: NodeId; measurement_type: MeasurementType; property_ref: NodeId; value: Array<string | number>; comparator: Comparator; unit: string[]; lower_value: string | number; upper_value: string | number; measurement_conditions: MeasurementCondition[]; evidence_text: string; evidence_spans: EvidenceSpan[] };
 type GraphPosition = { x: number; y: number };
 type GraphLayout = Record<string, GraphPosition>;
 type AnnotationState = { document_id: string; patent_id: string; status: Status; meta: Meta; substances: SubstanceRecord[]; compositions: CompositionRecord[]; properties: PropertyRecord[]; measurements: MeasurementRecord[]; graph_layout: GraphLayout };
 type FileSummary = { kind?: "file" | "folder"; document_id: string; patent_id: string; status: Status; counts: Record<EntityType, number>; annotation_path?: string | null; updated_at: number; path?: string | null };
 type WorkspacePayload = { path: string | null; parent_path?: string | null; configured_workspace?: boolean; files: FileSummary[] };
-type LoadedDoc = { document_id: string; patent_id: string; markdown: string; state: AnnotationState; annotation_path?: string | null; revision?: string };
-type ActiveRecord = { type: EntityType; nodeNo: number } | null;
+type LoadedDoc = { document_id: string; patent_id: string; markdown: string; state: AnnotationState; annotation_path?: string | null; llm_baseline_path?: string | null; edit_log_path?: string | null; revision?: string };
+type ActiveRecord = { type: EntityType; nodeNo: NodeId } | null;
 type SelectionMenu = { id: string; text: string; start: number; end: number } | null;
-type SpanFocus = { type: EntityType; nodeNo: number; index: number } | null;
-type GraphRef = { type: EntityType; nodeNo: number };
+type SpanFocus = { type: EntityType; nodeNo: NodeId; index: number } | null;
+type GraphRef = { type: EntityType; nodeNo: NodeId };
 type AnyRecord = SubstanceRecord | CompositionRecord | PropertyRecord | MeasurementRecord;
 type AnnotationTarget = { field: string; label: string; kind: "text" | "stringArray" | "mixedArray" };
 type RelationshipEdge = { id: string; source: GraphRef; target: GraphRef; label: string };
 type GraphEdgeData = { siblingOffset?: number; sourceAnchorOffset?: number; targetAnchorOffset?: number; relationship: RelationshipEdge | null; onSelect?: (edge: RelationshipEdge | null) => void; simpleMode?: boolean; lowDetail?: boolean };
-type GraphNodeGroup = { type: EntityType; nodeNos: number[] };
-type AnnotatedSpan = EvidenceSpan & { entityType: EntityType; nodeNo: number; index: number; identity: boolean };
+type GraphNodeGroup = { type: EntityType; nodeNos: NodeId[] };
+type AnnotatedSpan = EvidenceSpan & { entityType: EntityType; nodeNo: NodeId; index: number; identity: boolean };
 type HighlightSpan = AnnotatedSpan | (EvidenceSpan & { entityType: "pending"; nodeNo: -1; index: -1; identity: false });
 type SpanInspector = { x: number; y: number; text: string; spans: AnnotatedSpan[] } | null;
-type SpanAdjustment = { type: EntityType; nodeNo: number; field: string; index: number } | null;
+type SpanAdjustment = { type: EntityType; nodeNo: NodeId; field: string; index: number } | null;
 type UndoSnapshot = { state: AnnotationState; activeTab: EntityType; activeRecord: ActiveRecord; editingRecord: ActiveRecord; documentSelectedRecord: ActiveRecord; spanFocus: SpanFocus };
 type SaveState = "Saved" | "Unsaved changes";
 type GraphViewport = Viewport;
 type GraphFilterState = Record<EntityType, boolean>;
 type NodeRelationshipFilterKey = "default" | "measurementUnlinked" | "targetUnlinked";
 type NodeRelationshipFilterState = Partial<Record<EntityType, Partial<Record<NodeRelationshipFilterKey, boolean>>>>;
-type LinkCandidate = { type: EntityType; nodeNo: number; title: string; meta?: string };
+type LinkCandidate = { type: EntityType; nodeNo: NodeId; title: string; meta?: string };
 type PendingFieldCommit = () => void;
 type PendingFieldCommitRegistry = { register: (id: string, commit: PendingFieldCommit | null) => void; markDirty: () => void };
 type RecordPatch = Record<string, unknown> | ((record: AnyRecord) => Record<string, unknown>);
-type ExportAnnotationEntry = { type: EntityType; nodeNo: number; nodeId: string; category: string; title: string; field: string; rows: Array<{ label: string; value: string }> };
+type ExportAnnotationEntry = { type: EntityType; nodeNo: NodeId; nodeId: string; category: string; title: string; field: string; rows: Array<{ label: string; value: string }> };
 
 const DEFAULT_FOLDER = String.raw`C:\Users\IT PatsnapSG\OneDrive - Patsnap\13. PatSnap\10. Testing & Evaluation\5. PDF Parser\output_md`;
 const GRAPH_NODE_EXPANDED_WIDTH = 360;
@@ -140,9 +142,29 @@ async function apiRequest<T>(url: string, options?: RequestInit): Promise<T> {
   const payload = await response.json().catch(() => null);
   if (!response.ok) {
     if (response.status === 401) window.dispatchEvent(new Event("annotation-auth-required"));
-    throw new ApiError(payload?.detail || `Request failed with status ${response.status}`, response.status);
+    throw new ApiError(formatApiErrorDetail(payload?.detail, response.status), response.status);
   }
   return payload as T;
+}
+
+function formatApiErrorDetail(detail: unknown, status: number) {
+  if (typeof detail === "string" && detail.trim()) return detail;
+  if (Array.isArray(detail)) {
+    const messages = detail.map((entry) => {
+      if (!entry || typeof entry !== "object") return String(entry);
+      const issue = entry as { loc?: unknown; msg?: unknown };
+      const location = Array.isArray(issue.loc) ? issue.loc.filter((part) => part !== "body").join(".") : "";
+      const message = typeof issue.msg === "string" ? issue.msg : JSON.stringify(entry);
+      return location ? `${location}: ${message}` : message;
+    }).filter(Boolean);
+    if (messages.length) return messages.join("; ");
+  }
+  if (detail && typeof detail === "object") {
+    const message = (detail as { msg?: unknown }).msg;
+    if (typeof message === "string" && message.trim()) return message;
+    return JSON.stringify(detail);
+  }
+  return `Request failed with status ${status}`;
 }
 
 function BrandGlyph({ className = "" }: { className?: string }) {
@@ -848,18 +870,19 @@ function App() {
     const normalized = normalizeNodeNumbers(stateToSave).state;
     setError("");
     try {
-      const payload = await apiRequest<{ state: AnnotationState; summary: FileSummary; path: string; revision: string }>(`/api/workspace/files/${encodeURIComponent(activeDoc.document_id)}/annotations`, {
+      const payload = await apiRequest<{ state: AnnotationState; summary: FileSummary; path: string; revision: string; edit_log_path?: string | null; edit_log_warning?: string | null }>(`/api/workspace/files/${encodeURIComponent(activeDoc.document_id)}/annotations`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", "X-Annotation-Revision": activeDoc.revision || "0" },
         body: JSON.stringify(normalized)
       });
       setLiveState(payload.state);
-      setActiveDoc({ ...activeDoc, state: payload.state, annotation_path: payload.path, revision: payload.revision });
+      setActiveDoc({ ...activeDoc, state: payload.state, annotation_path: payload.path, edit_log_path: payload.edit_log_path || null, revision: payload.revision });
       setWorkspace((current) => ({ ...current, files: current.files.map((file) => file.document_id === activeDoc.document_id ? payload.summary : file) }));
       updateSaveState("Saved");
       sourceIdEditRef.current = null;
       setNotice(`Saved: ${payload.path}`);
       window.setTimeout(() => setNotice(""), 4000);
+      if (payload.edit_log_warning) setError(payload.edit_log_warning);
       return true;
     } catch (requestError) {
       setError(errorMessage(requestError));
@@ -875,6 +898,19 @@ function App() {
       const filename = fileNameFromPath(payload.path) || `${safeFilename(activeDoc.patent_id || activeDoc.document_id)}.schema.json`;
       downloadTextFile(filename, JSON.stringify(payload.schema, null, 2), "application/json;charset=utf-8");
       setNotice(`Exported and downloaded: ${filename}`);
+      window.setTimeout(() => setNotice(""), 5000);
+    } catch (requestError) {
+      setError(errorMessage(requestError));
+    }
+  }
+
+  async function downloadEditLog() {
+    if (!activeDoc?.edit_log_path) return;
+    try {
+      const payload = await apiRequest<{ path: string; edit_log: unknown }>(`/api/workspace/edit-logs/${encodeURIComponent(activeDoc.document_id)}`);
+      const filename = fileNameFromPath(payload.path) || `${safeFilename(activeDoc.document_id)}_edit_log.json`;
+      downloadTextFile(filename, JSON.stringify(payload.edit_log, null, 2), "application/json;charset=utf-8");
+      setNotice(`Downloaded Edit Log: ${filename}`);
       window.setTimeout(() => setNotice(""), 5000);
     } catch (requestError) {
       setError(errorMessage(requestError));
@@ -1097,8 +1133,8 @@ function App() {
     selection.removeAllRanges();
   }
 
-  function nextNodeNo(current = state) {
-    return Math.max(0, ...nodeRecords(current).map((item) => item.node_no)) + 1;
+  function nextNodeNo(current = state): NodeId {
+    return `U${Math.max(0, ...nodeRecords(current).map((item) => userNodeIndex(item.node_no))) + 1}`;
   }
 
   function createFromSelection(type: EntityType) {
@@ -1175,7 +1211,7 @@ function App() {
     window.setTimeout(() => setNotice(""), 2200);
   }
 
-  function beginSpanAdjustment(type: EntityType, nodeNo: number, field: string, index: number) {
+  function beginSpanAdjustment(type: EntityType, nodeNo: NodeId, field: string, index: number) {
     if (spanAdjustment && spanAdjustment.type === type && spanAdjustment.nodeNo === nodeNo && spanAdjustment.field === field && spanAdjustment.index === index) {
       setSpanAdjustment(null);
       setSpanFocus(null);
@@ -1194,7 +1230,7 @@ function App() {
     setNotice(`Adjusting ${fieldDisplayName(field)}. Select the corrected text span, then release. Press Esc to cancel.`);
   }
 
-  function selectRecord(type: EntityType, nodeNo: number, focusIndex = 0, origin: "panel" | "document" = "panel") {
+  function selectRecord(type: EntityType, nodeNo: NodeId, focusIndex = 0, origin: "panel" | "document" = "panel") {
     flushPendingFieldCommits();
     const currentState = stateRef.current;
     if (editSessionRef.current && editingRecord && !statesEqual(editSessionRef.current.state, currentState)) {
@@ -1219,7 +1255,7 @@ function App() {
     }
   }
 
-  function selectRecordFromGraph(type: EntityType, nodeNo: number) {
+  function selectRecordFromGraph(type: EntityType, nodeNo: NodeId) {
     flushPendingFieldCommits();
     const currentState = stateRef.current;
     if (editSessionRef.current && editingRecord && !statesEqual(editSessionRef.current.state, currentState)) {
@@ -1237,7 +1273,7 @@ function App() {
     window.setTimeout(() => document.querySelector(recordSelector(type, nodeNo))?.scrollIntoView({ behavior: "smooth", block: "center" }), 30);
   }
 
-  function updateRecord(type: EntityType, nodeNo: number, patch: RecordPatch) {
+  function updateRecord(type: EntityType, nodeNo: NodeId, patch: RecordPatch) {
     const currentState = stateRef.current;
     markDirty({
       ...currentState,
@@ -1253,7 +1289,7 @@ function App() {
     });
   }
 
-  function beginEditing(type: EntityType, nodeNo: number) {
+  function beginEditing(type: EntityType, nodeNo: NodeId) {
     flushPendingFieldCommits();
     setActiveTab(type);
     setActiveRecord({ type, nodeNo });
@@ -1302,7 +1338,7 @@ function App() {
     removeEvidenceSpan(documentSelectedRecord.type, documentSelectedRecord.nodeNo, selectedSpanIndex);
   }
 
-  function removeEvidenceSpan(type: EntityType, nodeNo: number, index: number) {
+  function removeEvidenceSpan(type: EntityType, nodeNo: NodeId, index: number) {
     const record = getRecord(state, { type, nodeNo });
     if (!record) return;
     if (isMainEvidenceSpan(type, record, index)) {
@@ -1327,7 +1363,7 @@ function App() {
     window.setTimeout(() => setNotice(""), 2600);
   }
 
-  function deleteRecord(type: EntityType, nodeNo: number) {
+  function deleteRecord(type: EntityType, nodeNo: NodeId) {
     markDirty(removeRecordsFromState(state, [{ type, nodeNo }]), { recordHistory: true });
     setActiveRecord(null);
     setEditingRecord(null);
@@ -1382,7 +1418,7 @@ function App() {
     window.setTimeout(() => setNotice(""), 3000);
   }
 
-  function addEvidenceSpan(type: EntityType, nodeNo: number) {
+  function addEvidenceSpan(type: EntityType, nodeNo: NodeId) {
     if (selectionMenu) {
       appendEvidenceSpan(type, nodeNo, selectionMenu);
       setSpanAdditionTarget(null);
@@ -1400,7 +1436,7 @@ function App() {
     setNotice(`Select source text to add an evidence span to ${nodeLabel(state, { type, nodeNo })}. Press Esc to cancel.`);
   }
 
-  function appendEvidenceSpan(type: EntityType, nodeNo: number, selection: NonNullable<SelectionMenu>) {
+  function appendEvidenceSpan(type: EntityType, nodeNo: NodeId, selection: NonNullable<SelectionMenu>) {
     const record = (state[type] as AnyRecord[]).find((item) => item.node_no === nodeNo);
     if (!record) return;
     const duplicate = record.evidence_spans.some((span) => span.field === "evidence_text" && span.start === selection.start && span.end === selection.end);
@@ -1425,7 +1461,7 @@ function App() {
     window.setTimeout(() => setNotice(""), 2600);
   }
 
-  function finalizeRecord(type: EntityType, nodeNo: number) {
+  function finalizeRecord(type: EntityType, nodeNo: NodeId) {
     flushPendingFieldCommits();
     const currentState = stateRef.current;
     const record = (currentState[type] as AnyRecord[]).find((item) => item.node_no === nodeNo);
@@ -1565,6 +1601,7 @@ function App() {
       <header className="annotation-header">
         <MoleculeAtmosphere compact />
         <div><strong>{state.meta.source_id || activeDoc.patent_id}</strong><span className={`save-state ${saveState === "Saved" ? "saved" : "unsaved"}`}>{saveState}</span></div>
+        <button type="button" className="edit-log-button" disabled={!activeDoc.edit_log_path} title={activeDoc.edit_log_path ? "Download the latest Edit Log" : "No Edit Log is available for download"} onClick={downloadEditLog}><FileDiff size={14}/><span>Download Edit Log</span></button>
         <select value={state.status === "Unannotated" ? "Partially complete" : state.status} onChange={(event) => updateStatus(event.target.value as Status)}>
           <option>Partially complete</option>
           <option>Completed</option>
@@ -1862,16 +1899,16 @@ function NodeAccordion({ type, state, activeRecord, editingRecord, selectionMenu
   relationshipFilters: Partial<Record<NodeRelationshipFilterKey, boolean>>;
   onSearchChange: (value: string) => void;
   onRelationshipFilterChange: (key: NodeRelationshipFilterKey, value: boolean) => void;
-  onSelect: (type: EntityType, nodeNo: number) => void;
-  onEdit: (type: EntityType, nodeNo: number, editing: boolean) => void;
-  onDelete: (type: EntityType, nodeNo: number) => void;
-  onUpdate: (type: EntityType, nodeNo: number, patch: RecordPatch) => void;
+  onSelect: (type: EntityType, nodeNo: NodeId) => void;
+  onEdit: (type: EntityType, nodeNo: NodeId, editing: boolean) => void;
+  onDelete: (type: EntityType, nodeNo: NodeId) => void;
+  onUpdate: (type: EntityType, nodeNo: NodeId, patch: RecordPatch) => void;
   onAnnotateItem: (target: AnnotationTarget) => void;
-  onAddEvidenceSpan: (type: EntityType, nodeNo: number) => void;
-  onDone: (type: EntityType, nodeNo: number) => void;
+  onAddEvidenceSpan: (type: EntityType, nodeNo: NodeId) => void;
+  onDone: (type: EntityType, nodeNo: NodeId) => void;
   onCollapse: () => void;
   onCreateComposition: () => void;
-  onAdjustSpan: (type: EntityType, nodeNo: number, field: string, index: number) => void;
+  onAdjustSpan: (type: EntityType, nodeNo: NodeId, field: string, index: number) => void;
 }) {
   const records = state[type] as AnyRecord[];
   const query = search.trim().toLowerCase();
@@ -1917,7 +1954,7 @@ function NodeAccordion({ type, state, activeRecord, editingRecord, selectionMenu
     return <article className={`record-summary-card ${active ? "active expanded" : ""} ${active ? (editing ? "editing" : "inspecting") : ""}`} data-record-type={type} data-record-node={record.node_no} key={record.node_no}>
       <div className="record-summary-top">
         <button className="record-main-button" onClick={() => onSelect(type, record.node_no)}>
-          <span className="node-pill">{nodePrefix(type)}{record.node_no}</span>
+          <span className="node-pill">{nodeDisplayId(type, record.node_no)}</span>
           <strong className={`record-title ${type === "measurements" ? "measurement-record-title" : ""}`}>
             {renderRecordTitle(type, record, state)}
             {isUnlinkedNode(type, record, state) && <span className="unlinked-node-indicator">Unlinked</span>}
@@ -1957,7 +1994,7 @@ function ReadOnlyNodeCard({ type, record, state }: { type: EntityType; record: A
         label="Linked properties"
         empty="No properties linked."
         items={linkedProperties.map((property) => ({
-          title: `${nodePrefix("properties")}${property.node_no} ${property.property_name}`,
+          title: `${nodeDisplayId("properties", property.node_no)} ${property.property_name}`,
           detail: property.property_type,
         }))}
       />
@@ -1984,7 +2021,7 @@ function ReadOnlyNodeCard({ type, record, state }: { type: EntityType; record: A
         label="Linked properties"
         empty="No properties linked."
         items={linkedProperties.map((property) => ({
-          title: `${nodePrefix("properties")}${property.node_no} ${property.property_name}`,
+          title: `${nodeDisplayId("properties", property.node_no)} ${property.property_name}`,
           detail: property.property_type,
         }))}
       />
@@ -1999,7 +2036,7 @@ function ReadOnlyNodeCard({ type, record, state }: { type: EntityType; record: A
       <SummaryCollection
         label="Targets"
         empty="No linked targets."
-        items={property.target_ref > 0 ? [{
+        items={hasNodeRef(property.target_ref) ? [{
           title: lookupLinkedTargetName(state, property.target_ref),
           detail: `Ref ${property.target_ref}`,
         }] : []}
@@ -2126,15 +2163,15 @@ function PropertyForm({ record, state, selectionMenu, editing, onAnnotate, onUpd
     <TextField label="Property name" value={record.property_name} editing={editing} annotation={annotationProps(record, selectionMenu, { field: "property_name", label: "Property name", kind: "text" }, onAnnotate)} onChange={(value) => onUpdate({ property_name: value })}/>
     <SelectField label="Property type" value={normalizePropertyType(record.property_type)} options={["intrinsic", "extrinsic", "performance"]} editing={editing} onChange={(value) => onUpdate({ property_type: value as PropertyType })}/>
     <div className="wide-field relationship-editor"><strong>Linked targets</strong>
-      {record.target_ref <= 0 && <span className="muted">No substance or composition linked yet.</span>}
+      {!hasNodeRef(record.target_ref) && <span className="muted">No substance or composition linked yet.</span>}
       {editing && <LinkCandidatePicker
-        label={record.target_ref > 0 ? "Replace target" : "Add target"}
+        label={hasNodeRef(record.target_ref) ? "Replace target" : "Add target"}
         placeholder="Search substances or compositions"
         candidates={targetCandidates}
         empty="No valid target candidates."
         onPick={setTarget}
       />}
-      {record.target_ref > 0 && <div className="linked-relationship-list"><LinkedRelationshipRow
+      {hasNodeRef(record.target_ref) && <div className="linked-relationship-list"><LinkedRelationshipRow
         title={lookupLinkedTargetName(state, record.target_ref)}
         meta={`Ref ${record.target_ref}`}
         editing={editing}
@@ -2159,7 +2196,7 @@ function MeasurementForm({ record, state, selectionMenu, editing, onAnnotate, on
     <TextField label="Upper value" value={String(record.upper_value)} editing={editing && quantitative && range} annotation={range ? annotationProps(record, selectionMenu, { field: "upper_value", label: "Upper value", kind: "text" }, onAnnotate) : undefined} onChange={(value) => onUpdate({ upper_value: value || "-" })}/>
     <div className="wide-field relationship-editor"><strong>Linked property</strong>
       {linkedProperty ? <LinkedRelationshipRow
-        title={`${nodePrefix("properties")}${linkedProperty.node_no} ${linkedProperty.property_name}`}
+        title={`${nodeDisplayId("properties", linkedProperty.node_no)} ${linkedProperty.property_name}`}
         meta={linkedProperty.property_type}
         editing={editing}
         onRemove={() => onUpdate({ property_ref: 0 })}
@@ -2193,7 +2230,7 @@ function LinkCandidatePicker({ label, placeholder, candidates, empty, onPick }: 
   const visibleCandidates = React.useMemo(() => {
     const normalized = query.trim().toLowerCase();
     const filtered = normalized
-      ? candidates.filter((candidate) => `${nodePrefix(candidate.type)}${candidate.nodeNo} ${candidate.title} ${candidate.meta || ""}`.toLowerCase().includes(normalized))
+      ? candidates.filter((candidate) => `${nodeDisplayId(candidate.type, candidate.nodeNo)} ${candidate.title} ${candidate.meta || ""}`.toLowerCase().includes(normalized))
       : candidates;
     return filtered.slice(0, LINK_CANDIDATE_LIMIT);
   }, [candidates, query]);
@@ -2213,7 +2250,7 @@ function LinkCandidatePicker({ label, placeholder, candidates, empty, onPick }: 
             setOpen(false);
           }}
         >
-          <span className={`candidate-node-pill ${candidate.type}`}>{nodePrefix(candidate.type)}{candidate.nodeNo}</span>
+          <span className={`candidate-node-pill ${candidate.type}`}>{nodeDisplayId(candidate.type, candidate.nodeNo)}</span>
           <strong>{candidate.title}</strong>
           <em>{candidate.meta || singular(candidate.type)}</em>
         </button>)}
@@ -2848,7 +2885,7 @@ function primaryIdentitySpan(spans: AnnotatedSpan[]) {
 function compareHighlightPriority(a: AnnotatedSpan, b: AnnotatedSpan) {
   return entityOrder.indexOf(a.entityType) - entityOrder.indexOf(b.entityType)
     || Number(!a.identity) - Number(!b.identity)
-    || a.nodeNo - b.nodeNo
+    || compareNodeIds(a.nodeNo, b.nodeNo)
     || a.index - b.index;
 }
 
@@ -2867,7 +2904,7 @@ function underlineColor(type: EntityType, index: number) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-type NodeNumberMaps = Record<EntityType, Map<number, number>>;
+type NodeNumberMaps = Record<EntityType, Map<NodeId, NodeId>>;
 
 function normalizeNodeNumbers(input: AnnotationState): { state: AnnotationState; maps: NodeNumberMaps } {
   input = normalizeSchemaFields(input);
@@ -2884,11 +2921,15 @@ function normalizeNodeNumbers(input: AnnotationState): { state: AnnotationState;
     measurements: [...input.measurements].sort((a, b) => compareRecordsByOffset("measurements", a, b))
   };
 
-  let nextNo = 1;
+  let nextUserNo = 1;
   entityOrder.forEach((type) => {
     (sorted[type] as AnyRecord[]).forEach((record) => {
-      maps[type].set(record.node_no, nextNo);
-      nextNo += 1;
+      if (isUserNodeId(record.node_no)) {
+        maps[type].set(record.node_no, `U${nextUserNo}`);
+        nextUserNo += 1;
+      } else {
+        maps[type].set(record.node_no, record.node_no);
+      }
     });
   });
 
@@ -2903,7 +2944,7 @@ function normalizeNodeNumbers(input: AnnotationState): { state: AnnotationState;
     properties: sorted.properties.map((record) => ({
       ...record,
       node_no: maps.properties.get(record.node_no) ?? record.node_no,
-      target_ref: record.target_ref > 0 ? remapTargetRef(record.target_ref, maps) : 0
+      target_ref: hasNodeRef(record.target_ref) ? remapTargetRef(record.target_ref, maps) : 0
     })),
     measurements: sorted.measurements.map((record) => ({
       ...record,
@@ -2917,8 +2958,8 @@ function normalizeNodeNumbers(input: AnnotationState): { state: AnnotationState;
 }
 
 function normalizeSchemaFields(input: AnnotationState): AnnotationState {
-  const structuralBySubstance = new Map<number, { value?: string; spans: EvidenceSpan[] }>();
-  const structuralByComposition = new Map<number, { value?: string; spans: EvidenceSpan[] }>();
+  const structuralBySubstance = new Map<NodeId, { value?: string; spans: EvidenceSpan[] }>();
+  const structuralByComposition = new Map<NodeId, { value?: string; spans: EvidenceSpan[] }>();
   const substances = input.substances.map((record) => {
     const legacy = record as SubstanceRecord & { structural?: string; physical_form?: string };
     const { structural: _legacyStructural, ...cleaned } = legacy;
@@ -2936,7 +2977,7 @@ function normalizeSchemaFields(input: AnnotationState): AnnotationState {
   });
   const rawProperties: PropertyRecord[] = [];
   input.properties.forEach((rawRecord) => {
-    const legacy = rawRecord as PropertyRecord & { structural?: string; target_ref?: number | number[] };
+    const legacy = rawRecord as PropertyRecord & { structural?: string; target_ref?: NodeId | NodeId[] };
     const structural = nonEmpty(legacy.structural || "-");
     const structuralSpans = legacy.evidence_spans.filter((span) => span.field === "structural");
     const refs = targetRefs(legacy.target_ref);
@@ -2984,7 +3025,7 @@ function normalizeSchemaFields(input: AnnotationState): AnnotationState {
 }
 
 function compareRecordsByOffset(type: EntityType, a: AnyRecord, b: AnyRecord) {
-  return recordOffset(type, a) - recordOffset(type, b) || a.node_no - b.node_no;
+  return recordOffset(type, a) - recordOffset(type, b) || compareNodeIds(a.node_no, b.node_no);
 }
 
 function recordOffset(type: EntityType, record: AnyRecord) {
@@ -3015,7 +3056,7 @@ function finiteStarts(spans: EvidenceSpan[]) {
   return spans.map((span) => span.start).filter((start): start is number => typeof start === "number" && Number.isFinite(start));
 }
 
-function remapTargetRef(ref: number, maps: NodeNumberMaps) {
+function remapTargetRef(ref: NodeId, maps: NodeNumberMaps) {
   return maps.compositions.get(ref) ?? maps.substances.get(ref) ?? ref;
 }
 
@@ -3060,11 +3101,11 @@ function removeRecordsFromState(state: AnnotationState, refs: GraphRef[]) {
     acc[ref.type].add(ref.nodeNo);
     return acc;
   }, {
-    substances: new Set<number>(),
-    compositions: new Set<number>(),
-    properties: new Set<number>(),
-    measurements: new Set<number>()
-  } as Record<EntityType, Set<number>>);
+    substances: new Set<NodeId>(),
+    compositions: new Set<NodeId>(),
+    properties: new Set<NodeId>(),
+    measurements: new Set<NodeId>()
+  } as Record<EntityType, Set<NodeId>>);
   const removedNodeNos = new Set(refs.map((ref) => ref.nodeNo));
   return {
     ...state,
@@ -3086,9 +3127,9 @@ function removeRecordsFromState(state: AnnotationState, refs: GraphRef[]) {
 }
 
 function cloneGraphNodes(state: AnnotationState, refs: GraphRef[], step = 1) {
-  const sortedRefs = [...refs].sort((a, b) => entityOrder.indexOf(a.type) - entityOrder.indexOf(b.type) || a.nodeNo - b.nodeNo);
+  const sortedRefs = [...refs].sort((a, b) => entityOrder.indexOf(a.type) - entityOrder.indexOf(b.type) || compareNodeIds(a.nodeNo, b.nodeNo));
   if (!sortedRefs.length) return { state, refs: [] as GraphRef[] };
-  let nextNodeNoValue = nextNodeNoForState(state);
+  let nextUserIndex = Math.max(0, ...nodeRecords(state).map((item) => userNodeIndex(item.node_no))) + 1;
   const clonedRefs: GraphRef[] = [];
   const nextState: AnnotationState = {
     ...state,
@@ -3100,7 +3141,7 @@ function cloneGraphNodes(state: AnnotationState, refs: GraphRef[], step = 1) {
   };
   const shift = 28 * Math.max(1, step);
   sortedRefs.forEach((ref) => {
-    const tempNodeNo = nextNodeNoValue++;
+    const tempNodeNo = `U${nextUserIndex++}`;
     const cloned = cloneRecordForGraph(state, ref, tempNodeNo);
     if (!cloned) return;
     clonedRefs.push({ type: ref.type, nodeNo: tempNodeNo });
@@ -3114,7 +3155,7 @@ function cloneGraphNodes(state: AnnotationState, refs: GraphRef[], step = 1) {
   return { state: nextState, refs: clonedRefs };
 }
 
-function cloneRecordForGraph(state: AnnotationState, ref: GraphRef, tempNodeNo: number) {
+function cloneRecordForGraph(state: AnnotationState, ref: GraphRef, tempNodeNo: NodeId) {
   const record = (state[ref.type] as AnyRecord[]).find((item) => item.node_no === ref.nodeNo);
   if (!record) return null;
   if (ref.type === "substances") return { ...(record as SubstanceRecord), node_no: tempNodeNo, evidence_spans: cloneEvidenceSpans(record.evidence_spans) };
@@ -3145,10 +3186,6 @@ function cloneRecordForGraph(state: AnnotationState, ref: GraphRef, tempNodeNo: 
 
 function cloneEvidenceSpans(spans: EvidenceSpan[]) {
   return spans.map((span) => ({ ...span }));
-}
-
-function nextNodeNoForState(state: AnnotationState) {
-  return Math.max(0, ...nodeRecords(state).map((item) => item.node_no)) + 1;
 }
 
 function layoutPatchFromNodes(nodes: FlowNode[]): GraphLayout {
@@ -3243,7 +3280,7 @@ function placeMissingGraphNodes(state: AnnotationState, visibleTypes: EntityType
   const layout: GraphLayout = { ...storedLayout };
   const nodeGap = GRAPH_NODE_EXPANDED_HEIGHT + 52;
   visibleTypes.forEach((type) => {
-    const records = [...(state[type] as AnyRecord[])].sort((a, b) => a.node_no - b.node_no);
+    const records = [...(state[type] as AnyRecord[])].sort((a, b) => compareNodeIds(a.node_no, b.node_no));
     const usedY = records.flatMap((record) => {
       const position = layout[graphId({ type, nodeNo: record.node_no })];
       return position ? [position.y] : [];
@@ -3267,14 +3304,14 @@ function autoArrangeRank(type: EntityType, a: AnyRecord, b: AnyRecord, state: An
   if (type === "properties") {
     const aKey = (a as PropertyRecord).target_ref || Number.MAX_SAFE_INTEGER;
     const bKey = (b as PropertyRecord).target_ref || Number.MAX_SAFE_INTEGER;
-    return aKey - bKey || a.node_no - b.node_no;
+    return compareNodeIds(aKey, bKey) || compareNodeIds(a.node_no, b.node_no);
   }
   if (type === "measurements") {
     const aMeasurement = a as MeasurementRecord;
     const bMeasurement = b as MeasurementRecord;
-    return aMeasurement.property_ref - bMeasurement.property_ref || a.node_no - b.node_no;
+    return compareNodeIds(aMeasurement.property_ref, bMeasurement.property_ref) || compareNodeIds(a.node_no, b.node_no);
   }
-  return a.node_no - b.node_no;
+  return compareNodeIds(a.node_no, b.node_no);
 }
 
 function computeLaneHeight(state: AnnotationState, visibleTypes: EntityType[]) {
@@ -3336,7 +3373,7 @@ function reorderLaneByConnectivity(type: EntityType, orders: Record<EntityType, 
     return scoreA - scoreB
       || (connectivity.weightedDegree.get(idB) || 0) - (connectivity.weightedDegree.get(idA) || 0)
       || (initialRank.get(idA) ?? 0) - (initialRank.get(idB) ?? 0)
-      || a.node_no - b.node_no;
+      || compareNodeIds(a.node_no, b.node_no);
   });
 }
 
@@ -3465,7 +3502,7 @@ function exportEntryForSpan(state: AnnotationState, span: AnnotatedSpan): Export
   return {
     type: span.entityType,
     nodeNo: span.nodeNo,
-    nodeId: `${nodePrefix(span.entityType)}${span.nodeNo}`,
+    nodeId: nodeDisplayId(span.entityType, span.nodeNo),
     category: singular(span.entityType),
     title: recordTitleText(span.entityType, record, state),
     field: titleCase(fieldDisplayName(span.field)),
@@ -3525,9 +3562,9 @@ function exportValue(value: string | number | null | undefined) {
   return text || "-";
 }
 
-function linkedPropertiesSummary(state: AnnotationState, nodeNo: number) {
+function linkedPropertiesSummary(state: AnnotationState, nodeNo: NodeId) {
   const linked = propertiesLinkedToNode(state, nodeNo);
-  return linked.length ? linked.map((property) => `P${property.node_no} ${property.property_name || "Property"}`).join("; ") : "-";
+  return linked.length ? linked.map((property) => `${nodeDisplayId("properties", property.node_no)} ${property.property_name || "Property"}`).join("; ") : "-";
 }
 
 function compositionConstituentSummary(state: AnnotationState, item: CompositionRecord) {
@@ -3541,17 +3578,17 @@ function compositionConstituentSummary(state: AnnotationState, item: Composition
 }
 
 function propertyTargetsSummary(state: AnnotationState, item: PropertyRecord) {
-  return item.target_ref > 0 ? lookupLinkedTargetName(state, item.target_ref) : "-";
+  return hasNodeRef(item.target_ref) ? lookupLinkedTargetName(state, item.target_ref) : "-";
 }
 
-function propertyMeasurementsSummary(state: AnnotationState, nodeNo: number) {
+function propertyMeasurementsSummary(state: AnnotationState, nodeNo: NodeId) {
   const linked = state.measurements.filter((measurement) => measurement.property_ref === nodeNo);
-  return linked.length ? linked.map((measurement) => `M${measurement.node_no} ${measurementDisplayText(measurement) || "Measurement"}`).join("; ") : "-";
+  return linked.length ? linked.map((measurement) => `${nodeDisplayId("measurements", measurement.node_no)} ${measurementDisplayText(measurement) || "Measurement"}`).join("; ") : "-";
 }
 
 function measurementPropertySummary(state: AnnotationState, item: MeasurementRecord) {
   const property = state.properties.find((record) => record.node_no === item.property_ref);
-  return property ? `P${property.node_no} ${property.property_name || "Property"}` : "<Unlinked Property>";
+  return property ? `${nodeDisplayId("properties", property.node_no)} ${property.property_name || "Property"}` : "<Unlinked Property>";
 }
 
 function measurementConditionSummary(item: MeasurementRecord) {
@@ -4168,20 +4205,21 @@ function normalizePropertyType(value: PropertyType | "constitutive") {
   return value === "constitutive" ? "performance" : value;
 }
 
-function targetRefs(value: number | number[] | undefined) {
+function targetRefs(value: NodeId | NodeId[] | undefined) {
   const values = Array.isArray(value) ? value : value ? [value] : [];
-  return values.map((item) => Number(item)).filter((item, index, list) => item > 0 && list.indexOf(item) === index);
+  return values.filter((item, index, list) => hasNodeRef(item) && list.indexOf(item) === index);
 }
 
-function temporaryCloneNodeNo(base: number, index: number) {
-  return Number.MAX_SAFE_INTEGER - Math.abs(base || 0) * 10 - index;
+function temporaryCloneNodeNo(base: NodeId, index: number): NodeId {
+  const baseValue = typeof base === "number" ? base : userNodeIndex(base);
+  return `U${Number.MAX_SAFE_INTEGER - Math.abs(baseValue || 0) * 10 - index}`;
 }
 
 function renameEvidenceField(spans: EvidenceSpan[], from: string, to: string) {
   return spans.map((span) => span.field === from ? { ...span, field: to } : span);
 }
 
-function defaultConstituent(nodeNo: number): ConstituentRecord {
+function defaultConstituent(nodeNo: NodeId): ConstituentRecord {
   return {
     constituent_ref: nodeNo,
     constituent_status: "included",
@@ -4204,11 +4242,11 @@ function normalizeAmountScalar(value: string | number) {
   return Number.isFinite(asNumber) ? text : "-";
 }
 
-function normalizeConstituent(entry: Partial<ConstituentRecord> & { constituent_ref: number; constituent_type?: string }): ConstituentRecord {
+function normalizeConstituent(entry: Partial<ConstituentRecord> & { constituent_ref: NodeId; constituent_type?: string }): ConstituentRecord {
   const next: ConstituentRecord = {
     ...defaultConstituent(entry.constituent_ref),
     ...entry,
-    constituent_ref: Number(entry.constituent_ref) || 0,
+    constituent_ref: hasNodeRef(entry.constituent_ref) ? entry.constituent_ref : 0,
     constituent_status: (entry.constituent_status || "included") as ConstituentStatus,
     amount_comparator: (entry.amount_comparator || "-") as AmountComparator,
     amount_unit: nonEmpty(entry.amount_unit),
@@ -4268,7 +4306,7 @@ function fieldDisplayName(field: string) {
   return last.replace(/_/g, " ");
 }
 
-function propertiesLinkedToNode(state: AnnotationState, nodeNo: number) {
+function propertiesLinkedToNode(state: AnnotationState, nodeNo: NodeId) {
   return state.properties.filter((property) => property.target_ref === nodeNo);
 }
 
@@ -4288,19 +4326,19 @@ function recordMatchesRelationshipFilters(type: EntityType, record: AnyRecord, s
   if (type === "properties") {
     const property = record as PropertyRecord;
     if (filters.measurementUnlinked && hasMeasurementLinkedToProperty(state, property.node_no)) return false;
-    if (filters.targetUnlinked && property.target_ref > 0) return false;
+    if (filters.targetUnlinked && hasNodeRef(property.target_ref)) return false;
   }
   return true;
 }
 
-function hasMeasurementLinkedToProperty(state: AnnotationState, propertyNo: number) {
+function hasMeasurementLinkedToProperty(state: AnnotationState, propertyNo: NodeId) {
   return state.measurements.some((measurement) => measurement.property_ref === propertyNo);
 }
 
 function isUnlinkedNode(type: EntityType, record: AnyRecord, state: AnnotationState) {
   if (type === "properties") {
     const property = record as PropertyRecord;
-    return property.target_ref <= 0 && !hasMeasurementLinkedToProperty(state, property.node_no);
+    return !hasNodeRef(property.target_ref) && !hasMeasurementLinkedToProperty(state, property.node_no);
   }
   if (type === "measurements") return !(record as MeasurementRecord).property_ref;
   return false;
@@ -4363,14 +4401,14 @@ function measurementPropertyCandidates(state: AnnotationState, record: Measureme
 }
 
 function compareLinkCandidates(a: LinkCandidate, b: LinkCandidate) {
-  return entityOrder.indexOf(a.type) - entityOrder.indexOf(b.type) || a.nodeNo - b.nodeNo;
+  return entityOrder.indexOf(a.type) - entityOrder.indexOf(b.type) || compareNodeIds(a.nodeNo, b.nodeNo);
 }
 
-function wouldCreateCompositionCycle(state: AnnotationState, constituentNo: number, compositionNo: number) {
+function wouldCreateCompositionCycle(state: AnnotationState, constituentNo: NodeId, compositionNo: NodeId) {
   return constituentNo === compositionNo || compositionCanReachComposition(state, constituentNo, compositionNo, new Set());
 }
 
-function compositionCanReachComposition(state: AnnotationState, sourceNo: number, targetNo: number, seen: Set<number>): boolean {
+function compositionCanReachComposition(state: AnnotationState, sourceNo: NodeId, targetNo: NodeId, seen: Set<NodeId>): boolean {
   if (seen.has(sourceNo)) return false;
   seen.add(sourceNo);
   const source = state.compositions.find((item) => item.node_no === sourceNo);
@@ -4550,7 +4588,7 @@ function makeNode(type: EntityType, record: AnyRecord, position: { x: number; y:
     position,
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
-    data: { label: `${nodePrefix(type)}${record.node_no}: ${recordTitleText(type, record, state)}` },
+    data: { label: `${nodeDisplayId(type, record.node_no)}: ${recordTitleText(type, record, state)}` },
     width,
     height,
     style: {
@@ -4671,14 +4709,40 @@ function removeRelationship(state: AnnotationState, edge: RelationshipEdge): Ann
   return state;
 }
 
+function isUserNodeId(value: NodeId): value is string {
+  return typeof value === "string" && /^U[1-9]\d*$/.test(value);
+}
+
+function userNodeIndex(value: NodeId) {
+  return isUserNodeId(value) ? Number(value.slice(1)) : 0;
+}
+
+function compareNodeIds(a: NodeId, b: NodeId) {
+  const aUser = isUserNodeId(a);
+  const bUser = isUserNodeId(b);
+  if (aUser !== bUser) return aUser ? 1 : -1;
+  if (aUser && bUser) return userNodeIndex(a) - userNodeIndex(b);
+  return Number(a) - Number(b);
+}
+
+function hasNodeRef(value: NodeId) {
+  return isUserNodeId(value) || (typeof value === "number" && value > 0);
+}
+
+function parseNodeId(value: string): NodeId | null {
+  if (/^U[1-9]\d*$/.test(value)) return value;
+  const numeric = Number(value);
+  return Number.isInteger(numeric) && numeric > 0 ? numeric : null;
+}
+
 function graphId(ref: GraphRef) {
   return `${nodePrefix(ref.type).toLowerCase()}-${ref.nodeNo}`;
 }
 
 function parseGraphNode(id: string): GraphRef | null {
   const [prefix, rawNo] = id.split("-");
-  const nodeNo = Number(rawNo);
-  if (!Number.isFinite(nodeNo)) return null;
+  const nodeNo = parseNodeId(rawNo);
+  if (nodeNo === null) return null;
   if (prefix === "s") return { type: "substances", nodeNo };
   if (prefix === "c") return { type: "compositions", nodeNo };
   if (prefix === "p") return { type: "properties", nodeNo };
@@ -4686,7 +4750,7 @@ function parseGraphNode(id: string): GraphRef | null {
   return null;
 }
 
-function graphIdForTarget(state: AnnotationState, nodeNo: number) {
+function graphIdForTarget(state: AnnotationState, nodeNo: NodeId) {
   if (state.substances.some((item) => item.node_no === nodeNo)) return `s-${nodeNo}`;
   if (state.compositions.some((item) => item.node_no === nodeNo)) return `c-${nodeNo}`;
   return "";
@@ -4734,7 +4798,7 @@ function measurementTitleParts(record: MeasurementRecord, state: AnnotationState
   const linkedProperty = state.properties.find((item) => item.node_no === record.property_ref);
   const linked = Boolean(linkedProperty?.property_name?.trim());
   const propertyName = linkedProperty?.property_name?.trim() || "Unlinked Property";
-  const propertyRefText = linkedProperty ? `${nodePrefix("properties")}${linkedProperty.node_no}` : "";
+  const propertyRefText = linkedProperty ? nodeDisplayId("properties", linkedProperty.node_no) : "";
   const valueText = measurementDisplayText(record);
   return { propertyName, valueText, linked, propertyRefText };
 }
@@ -4766,18 +4830,18 @@ function prettyMeasurementUnit(text: string) {
 
 function nodeLabel(state: AnnotationState, ref: GraphRef) {
   const record = (state[ref.type] as AnyRecord[]).find((item) => item.node_no === ref.nodeNo);
-  return `${nodePrefix(ref.type)}${ref.nodeNo}${record ? ` ${recordTitleText(ref.type, record, state)}` : ""}`;
+  return `${nodeDisplayId(ref.type, ref.nodeNo)}${record ? ` ${recordTitleText(ref.type, record, state)}` : ""}`;
 }
 
-function lookupLinkedTargetName(state: AnnotationState, nodeNo: number) {
+function lookupLinkedTargetName(state: AnnotationState, nodeNo: NodeId) {
   const substance = state.substances.find((item) => item.node_no === nodeNo);
-  if (substance) return `${nodePrefix("substances")}${nodeNo} ${recordTitleText("substances", substance, state)}`;
+  if (substance) return `${nodeDisplayId("substances", nodeNo)} ${recordTitleText("substances", substance, state)}`;
   const composition = state.compositions.find((item) => item.node_no === nodeNo);
-  if (composition) return `${nodePrefix("compositions")}${nodeNo} ${recordTitleText("compositions", composition, state)}`;
+  if (composition) return `${nodeDisplayId("compositions", nodeNo)} ${recordTitleText("compositions", composition, state)}`;
   return `Ref ${nodeNo}`;
 }
 
-function materialRefType(state: AnnotationState, nodeNo: number): "substances" | "compositions" | null {
+function materialRefType(state: AnnotationState, nodeNo: NodeId): "substances" | "compositions" | null {
   if (state.substances.some((item) => item.node_no === nodeNo)) return "substances";
   if (state.compositions.some((item) => item.node_no === nodeNo)) return "compositions";
   return null;
@@ -4785,6 +4849,10 @@ function materialRefType(state: AnnotationState, nodeNo: number): "substances" |
 
 function nodePrefix(type: EntityType) {
   return ({ substances: "S", compositions: "C", properties: "P", measurements: "M" } as Record<EntityType, string>)[type];
+}
+
+function nodeDisplayId(type: EntityType, nodeNo: NodeId) {
+  return isUserNodeId(nodeNo) ? nodeNo : `${nodePrefix(type)}${nodeNo}`;
 }
 
 function singular(type: EntityType) {
@@ -4851,11 +4919,11 @@ function textToDraftArray(value: string): Array<string | number> {
   return textToDraftStringArray(value);
 }
 
-function recordSelector(type: EntityType, nodeNo: number) {
+function recordSelector(type: EntityType, nodeNo: NodeId) {
   return `[data-record-type="${type}"][data-record-node="${nodeNo}"]`;
 }
 
-function highlightSelector(type: EntityType, nodeNo: number, index: number) {
+function highlightSelector(type: EntityType, nodeNo: NodeId, index: number) {
   return `[data-entity-type="${type}"][data-node-no="${nodeNo}"][data-span-index="${index}"]`;
 }
 

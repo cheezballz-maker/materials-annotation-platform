@@ -15,13 +15,13 @@ from html import unescape
 from pathlib import Path
 from threading import Lock
 from time import time
-from typing import Literal
+from typing import Annotated, Literal
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field, ValidationError
+from pydantic import AfterValidator, BaseModel, Field, ValidationError
 
 ROOT = Path(__file__).resolve().parents[1]
 FRONTEND_DIST = ROOT / "frontend" / "dist"
@@ -52,6 +52,29 @@ IDENTITY_FIELDS = {
     "properties": "property_name",
     "measurements": "value",
 }
+USER_NODE_ID_PATTERN = re.compile(r"^U[1-9]\d*$")
+
+
+def validate_node_id(value: int | str) -> int | str:
+    if isinstance(value, bool):
+        raise ValueError("node identifiers cannot be booleans")
+    if isinstance(value, int):
+        if value <= 0:
+            raise ValueError("original node identifiers must be positive integers")
+        return value
+    if isinstance(value, str) and USER_NODE_ID_PATTERN.fullmatch(value):
+        return value
+    raise ValueError("node identifiers must be positive integers or U-prefixed identifiers")
+
+
+def validate_node_ref(value: int | str) -> int | str:
+    if value == 0:
+        return 0
+    return validate_node_id(value)
+
+
+NodeId = Annotated[int | str, AfterValidator(validate_node_id)]
+NodeRef = Annotated[int | str, AfterValidator(validate_node_ref)]
 
 
 @dataclass(frozen=True)
@@ -130,7 +153,7 @@ class Meta(BaseModel):
 
 
 class SubstanceRecord(BaseModel):
-    node_no: int
+    node_no: NodeId
     substance_name: str = "-"
     substance_type: SubstanceType = "raw"
     physical_form: str = "-"
@@ -140,7 +163,7 @@ class SubstanceRecord(BaseModel):
 
 
 class ConstituentRecord(BaseModel):
-    constituent_ref: int
+    constituent_ref: NodeRef
     constituent_status: ConstituentStatus = "included"
     amount_comparator: AmountComparator = "-"
     amount_value: str | float = "-"
@@ -153,7 +176,7 @@ class ConstituentRecord(BaseModel):
 
 
 class CompositionRecord(BaseModel):
-    node_no: int
+    node_no: NodeId
     composition_name: str = "-"
     composition_type: str = "-"
     physical_form: str = "-"
@@ -163,10 +186,10 @@ class CompositionRecord(BaseModel):
 
 
 class PropertyRecord(BaseModel):
-    node_no: int
+    node_no: NodeId
     property_name: str = "-"
     property_type: PropertyType = "performance"
-    target_ref: int = 0
+    target_ref: NodeRef = 0
     evidence_text: str = "-"
     evidence_spans: list[EvidenceSpan] = Field(default_factory=list)
 
@@ -178,9 +201,9 @@ class MeasurementCondition(BaseModel):
 
 
 class MeasurementRecord(BaseModel):
-    node_no: int
+    node_no: NodeId
     measurement_type: MeasurementType = "quantitative"
-    property_ref: int = 0
+    property_ref: NodeRef = 0
     value: list[str | float] = Field(default_factory=list)
     comparator: Comparator = "-"
     unit: list[str] = Field(default_factory=list)
@@ -230,6 +253,8 @@ class DocumentPayload(BaseModel):
     markdown: str
     state: AnnotationState
     annotation_path: str | None = None
+    llm_baseline_path: str | None = None
+    edit_log_path: str | None = None
     revision: str = "0"
 
 
@@ -245,6 +270,8 @@ app.add_middleware(
 _lock = Lock()
 _workspace_path: Path | None = None
 _seeded_workspaces: set[str] = set()
+_summary_cache: dict[tuple[str, int, int, str | None, int | None, int | None], dict] = {}
+_llm_baseline_cache: dict[tuple[str, int, int], AnnotationState] = {}
 
 
 def authentication_enabled() -> bool:
@@ -446,7 +473,13 @@ def write_text_atomic(path: Path, content: str) -> None:
 
 
 def is_annotation_stem(stem: str) -> bool:
-    return stem.endswith("_annotated") or stem.endswith("_partially_annotated") or stem.endswith(".annotation") or stem.endswith(".schema")
+    return (
+        stem.endswith("_annotated")
+        or stem.endswith("_partially_annotated")
+        or stem.endswith("_edit_log")
+        or stem.endswith(".annotation")
+        or stem.endswith(".schema")
+    )
 
 
 def raw_stem_from_annotation(path: Path) -> str:
@@ -483,6 +516,14 @@ def annotation_candidates(raw_path: Path) -> list[Path]:
         raw_path.with_name(f"{raw_path.stem}_partially_annotated.json"),
         raw_path.with_name(f"{raw_path.stem}.annotation.json"),
     ]
+
+
+def llm_baseline_path(raw_path: Path) -> Path:
+    return raw_path.with_name(f"{raw_path.stem}_llm_annotated.json")
+
+
+def edit_log_path(raw_path: Path) -> Path:
+    return raw_path.with_name(f"{raw_path.stem}_edit_log.json")
 
 
 def selected_annotation_path(raw_path: Path) -> Path | None:
@@ -1025,33 +1066,53 @@ def normalize_compositions(state: AnnotationState) -> AnnotationState:
     for record in state.compositions:
         record.composition_type = record.composition_type.strip() or "-"
         record.physical_form = record.physical_form.strip() or "-"
-        record.constituents = [normalize_constituent_record(entry) for entry in record.constituents if entry.constituent_ref > 0]
+        record.constituents = [normalize_constituent_record(entry) for entry in record.constituents if has_node_ref(entry.constituent_ref)]
     return state
 
 
-def graph_id(group: str, node_no: int) -> str:
+def is_user_node_id(value: NodeId | NodeRef) -> bool:
+    return isinstance(value, str) and bool(USER_NODE_ID_PATTERN.fullmatch(value))
+
+
+def has_node_ref(value: NodeRef) -> bool:
+    return value != 0
+
+
+def node_sort_key(value: NodeId | NodeRef) -> tuple[int, int]:
+    if isinstance(value, int):
+        return (0, value)
+    if is_user_node_id(value):
+        return (1, int(value[1:]))
+    return (2, 0)
+
+
+def graph_id(group: str, node_no: NodeId) -> str:
     return {"substances": "s", "compositions": "c", "properties": "p", "measurements": "m"}[group] + f"-{node_no}"
 
 
-def parse_graph_id(raw_id: str) -> tuple[str, int] | None:
+def parse_graph_id(raw_id: str) -> tuple[str, NodeId] | None:
     prefix, _, raw_no = raw_id.partition("-")
     group = {"s": "substances", "c": "compositions", "p": "properties", "m": "measurements"}.get(prefix)
     if not group:
         return None
+    if USER_NODE_ID_PATTERN.fullmatch(raw_no):
+        return group, raw_no
     try:
-        return group, int(raw_no)
+        node_no = int(raw_no)
+        return (group, node_no) if node_no > 0 else None
     except ValueError:
         return None
 
 
-def remap_graph_layout(state: AnnotationState, maps: dict[str, dict[int, int]]) -> dict[str, GraphPosition]:
+def remap_graph_layout(state: AnnotationState, user_map: dict[str, str]) -> dict[str, GraphPosition]:
     remapped = {}
     for raw_id, position in state.graph_layout.items():
         parsed = parse_graph_id(raw_id)
         if not parsed:
             continue
         group, old_no = parsed
-        remapped[graph_id(group, maps[group].get(old_no, old_no))] = position
+        new_no = user_map.get(old_no, old_no) if isinstance(old_no, str) else old_no
+        remapped[graph_id(group, new_no)] = position
     valid_ids = {
         *(graph_id("substances", item.node_no) for item in state.substances),
         *(graph_id("compositions", item.node_no) for item in state.compositions),
@@ -1061,58 +1122,77 @@ def remap_graph_layout(state: AnnotationState, maps: dict[str, dict[int, int]]) 
     return {raw_id: position for raw_id, position in remapped.items() if raw_id in valid_ids}
 
 
-def remap_material_ref(ref: int, maps: dict[str, dict[int, int]]) -> int:
-    if ref in maps["substances"]:
-        return maps["substances"][ref]
-    if ref in maps["compositions"]:
-        return maps["compositions"][ref]
-    return ref
+def remap_user_ref(ref: NodeRef, user_map: dict[str, str]) -> NodeRef:
+    return user_map.get(ref, ref) if isinstance(ref, str) else ref
 
 
 def normalize_node_numbers(state: AnnotationState) -> AnnotationState:
-    maps: dict[str, dict[int, int]] = {group: {} for group in ENTITY_ORDER}
     grouped = {
-        "substances": sorted(state.substances, key=lambda item: (record_offset("substances", item), item.node_no)),
-        "compositions": sorted(state.compositions, key=lambda item: (record_offset("compositions", item), item.node_no)),
-        "properties": sorted(state.properties, key=lambda item: (record_offset("properties", item), item.node_no)),
-        "measurements": sorted(state.measurements, key=lambda item: (record_offset("measurements", item), item.node_no)),
+        "substances": sorted(state.substances, key=lambda item: (record_offset("substances", item), node_sort_key(item.node_no))),
+        "compositions": sorted(state.compositions, key=lambda item: (record_offset("compositions", item), node_sort_key(item.node_no))),
+        "properties": sorted(state.properties, key=lambda item: (record_offset("properties", item), node_sort_key(item.node_no))),
+        "measurements": sorted(state.measurements, key=lambda item: (record_offset("measurements", item), node_sort_key(item.node_no))),
     }
-    next_no = 1
+    seen_original: set[int] = set()
+    seen_user: set[str] = set()
+    user_map: dict[str, str] = {}
+    next_user_no = 1
     for group in ENTITY_ORDER:
         for record in grouped[group]:
-            maps[group][record.node_no] = next_no
-            next_no += 1
+            if isinstance(record.node_no, int):
+                if record.node_no in seen_original:
+                    raise ValueError(f"Duplicate original node identifier: {record.node_no}")
+                seen_original.add(record.node_no)
+                continue
+            if record.node_no in seen_user:
+                raise ValueError(f"Duplicate user node identifier: {record.node_no}")
+            seen_user.add(record.node_no)
+            user_map[record.node_no] = f"U{next_user_no}"
+            next_user_no += 1
 
     for record in grouped["substances"]:
-        record.node_no = maps["substances"].get(record.node_no, record.node_no)
+        if isinstance(record.node_no, str):
+            record.node_no = user_map[record.node_no]
     for record in grouped["compositions"]:
-        record.node_no = maps["compositions"].get(record.node_no, record.node_no)
+        if isinstance(record.node_no, str):
+            record.node_no = user_map[record.node_no]
         for entry in record.constituents:
-            entry.constituent_ref = remap_material_ref(entry.constituent_ref, maps)
+            entry.constituent_ref = remap_user_ref(entry.constituent_ref, user_map)
     for record in grouped["properties"]:
-        record.node_no = maps["properties"].get(record.node_no, record.node_no)
-        record.target_ref = remap_material_ref(record.target_ref, maps) if record.target_ref > 0 else 0
+        if isinstance(record.node_no, str):
+            record.node_no = user_map[record.node_no]
+        record.target_ref = remap_user_ref(record.target_ref, user_map) if has_node_ref(record.target_ref) else 0
     for record in grouped["measurements"]:
-        record.node_no = maps["measurements"].get(record.node_no, record.node_no)
-        record.property_ref = maps["properties"].get(record.property_ref, record.property_ref)
+        if isinstance(record.node_no, str):
+            record.node_no = user_map[record.node_no]
+        record.property_ref = remap_user_ref(record.property_ref, user_map)
 
     state.substances = grouped["substances"]
     state.compositions = grouped["compositions"]
     state.properties = grouped["properties"]
     state.measurements = grouped["measurements"]
-    state.graph_layout = remap_graph_layout(state, maps)
+    state.graph_layout = remap_graph_layout(state, user_map)
     return state
 
 
-def target_refs_from_raw(value) -> list[int]:
+def node_ref_from_raw(value) -> NodeRef:
+    if value in {None, "", 0, "0"}:
+        return 0
+    if isinstance(value, str) and USER_NODE_ID_PATTERN.fullmatch(value):
+        return value
+    try:
+        numeric = int(value)
+    except (TypeError, ValueError):
+        return 0
+    return numeric if numeric > 0 else 0
+
+
+def target_refs_from_raw(value) -> list[NodeId]:
     values = value if isinstance(value, list) else [value]
-    refs = []
+    refs: list[NodeId] = []
     for item in values:
-        try:
-            ref = int(item)
-        except (TypeError, ValueError):
-            continue
-        if ref > 0 and ref not in refs:
+        ref = node_ref_from_raw(item)
+        if has_node_ref(ref) and ref not in refs:
             refs.append(ref)
     return refs
 
@@ -1135,10 +1215,9 @@ def migrate_raw_schema(raw: dict) -> dict:
         for span in item.get("evidence_spans", []) if isinstance(item.get("evidence_spans"), list) else []:
             if isinstance(span, dict) and span.get("field") == "structural":
                 span["field"] = "physical_form"
-        try:
-            targets_by_no[int(item.get("node_no", 0))] = item
-        except (TypeError, ValueError):
-            continue
+        node_no = node_ref_from_raw(item.get("node_no"))
+        if has_node_ref(node_no):
+            targets_by_no[node_no] = item
     for item in compositions:
         if not isinstance(item, dict):
             continue
@@ -1167,10 +1246,9 @@ def migrate_raw_schema(raw: dict) -> dict:
             migrated.setdefault("key_reason", "-")
             migrated_constituents.append(migrated)
         item["constituents"] = migrated_constituents
-        try:
-            targets_by_no[int(item.get("node_no", 0))] = item
-        except (TypeError, ValueError):
-            continue
+        node_no = node_ref_from_raw(item.get("node_no"))
+        if has_node_ref(node_no):
+            targets_by_no[node_no] = item
 
     node_numbers = [0]
     for group in (substances, compositions, properties, measurements):
@@ -1184,7 +1262,7 @@ def migrate_raw_schema(raw: dict) -> dict:
             except (TypeError, ValueError):
                 continue
     max_node_no = max(node_numbers)
-    first_property_for_old_no: dict[int, int] = {}
+    first_property_for_old_no: dict[NodeId, NodeId] = {}
     migrated_properties = []
     for item in properties:
         if not isinstance(item, dict):
@@ -1210,7 +1288,7 @@ def migrate_raw_schema(raw: dict) -> dict:
                         destination_spans.append(migrated_span)
         if isinstance(spans, list):
             item["evidence_spans"] = [span for span in spans if not (isinstance(span, dict) and span.get("field") == "structural")]
-        old_no = int(item.get("node_no", 0) or 0)
+        old_no = node_ref_from_raw(item.get("node_no"))
         if not refs:
             item["target_ref"] = 0
             migrated_properties.append(item)
@@ -1222,7 +1300,7 @@ def migrate_raw_schema(raw: dict) -> dict:
                 next_no = old_no
             else:
                 max_node_no += 1
-                next_no = max_node_no
+                next_no = f"U{max_node_no}" if isinstance(old_no, str) else max_node_no
             next_item["node_no"] = next_no
             next_item["target_ref"] = ref
             migrated_properties.append(next_item)
@@ -1234,10 +1312,7 @@ def migrate_raw_schema(raw: dict) -> dict:
         for item in measurements:
             if not isinstance(item, dict):
                 continue
-            try:
-                old_ref = int(item.get("property_ref", 0))
-            except (TypeError, ValueError):
-                old_ref = 0
+            old_ref = node_ref_from_raw(item.get("property_ref"))
             item["property_ref"] = first_property_for_old_no.get(old_ref, old_ref)
     return raw
 
@@ -1342,9 +1417,37 @@ def state_counts(state: AnnotationState) -> dict:
     }
 
 
+def copy_summary(summary: dict) -> dict:
+    copied = dict(summary)
+    copied["counts"] = dict(summary.get("counts", {}))
+    return copied
+
+
+def file_summary_cache_key(path: Path) -> tuple[str, int, int, str | None, int | None, int | None]:
+    raw_stat = path.stat()
+    annotation_path = selected_annotation_path(path)
+    if annotation_path:
+        annotation_stat = annotation_path.stat()
+        return (
+            str(path.resolve()),
+            raw_stat.st_mtime_ns,
+            raw_stat.st_size,
+            str(annotation_path.resolve()),
+            annotation_stat.st_mtime_ns,
+            annotation_stat.st_size,
+        )
+    return (str(path.resolve()), raw_stat.st_mtime_ns, raw_stat.st_size, None, None, None)
+
+
 def file_summary(path: Path) -> dict:
+    key = file_summary_cache_key(path)
+    with _lock:
+        cached = _summary_cache.get(key)
+    if cached:
+        return copy_summary(cached)
+
     state, annotation_path = load_state(path)
-    return {
+    summary = {
         "kind": "file",
         "document_id": path.name,
         "patent_id": patent_id_from_name(path),
@@ -1354,6 +1457,11 @@ def file_summary(path: Path) -> dict:
         "updated_at": annotation_path.stat().st_mtime if annotation_path else path.stat().st_mtime,
         "path": str(path),
     }
+    with _lock:
+        if len(_summary_cache) > 1000:
+            _summary_cache.clear()
+        _summary_cache[key] = copy_summary(summary)
+    return summary
 
 
 def folder_summary(path: Path) -> dict:
@@ -1397,9 +1505,17 @@ def workspace_payload(path: Path | None, user: UserAccess | None = None) -> Work
     )
 
 
+def export_evidence_spans(spans: list[EvidenceSpan]) -> list[dict]:
+    return [
+        {"field": span.field, "text": span.text}
+        for span in spans
+        if span.text.strip() and span.text.strip() != "-"
+    ]
+
+
 def strip_internal(record: BaseModel) -> dict:
     data = record.model_dump()
-    data.pop("evidence_spans", None)
+    data["evidence_spans"] = export_evidence_spans(getattr(record, "evidence_spans", []))
     return data
 
 
@@ -1416,6 +1532,228 @@ def serialize_saved_state(state: AnnotationState) -> dict:
     data.pop("status", None)
     data["meta"] = meta_with_status(state)
     return data
+
+
+def record_changed(user_record: dict, llm_record: dict) -> bool:
+    for field in sorted(set(llm_record) | set(user_record)):
+        if field == "node_no":
+            continue
+        if user_record.get(field) != llm_record.get(field):
+            return True
+    return False
+
+
+def changed_record_fields(user_record: dict, llm_record: dict, identity_fields: set[str]) -> dict:
+    fields = {}
+    for field in sorted(set(llm_record) | set(user_record)):
+        if field in identity_fields:
+            continue
+        llm_value = llm_record.get(field)
+        user_value = user_record.get(field)
+        if llm_value != user_value:
+            fields[field] = {"change_type": "modified", "value": user_value}
+    return fields
+
+
+def grouped_records(records: list[dict], key_field: str) -> dict:
+    grouped = {}
+    for record in records:
+        key = record.get(key_field)
+        grouped.setdefault(key, []).append(record)
+    return grouped
+
+
+def compact_record_group(records: list[dict], identity_fields: set[str]) -> list[dict]:
+    return [added_fields(record, identity_fields) for record in records]
+
+
+def changed_constituents(user_constituents: list[dict], llm_constituents: list[dict]) -> list[dict]:
+    changes = []
+    llm_by_ref = grouped_records(llm_constituents, "constituent_ref")
+    user_by_ref = grouped_records(user_constituents, "constituent_ref")
+    for constituent_ref in sorted(set(llm_by_ref) | set(user_by_ref), key=node_sort_key):
+        llm_group = llm_by_ref.get(constituent_ref, [])
+        user_group = user_by_ref.get(constituent_ref, [])
+        if not user_group:
+            changes.append({"constituent_ref": constituent_ref, "change_type": "deleted"})
+            continue
+        if not llm_group:
+            if len(user_group) == 1:
+                fields = added_fields(user_group[0], {"constituent_ref"})
+                changes.append({"constituent_ref": constituent_ref, "change_type": "added", **fields})
+            else:
+                changes.append(
+                    {
+                        "constituent_ref": constituent_ref,
+                        "change_type": "added",
+                        "value": compact_record_group(user_group, {"constituent_ref"}),
+                    }
+                )
+            continue
+        if len(llm_group) == 1 and len(user_group) == 1:
+            fields = changed_record_fields(user_group[0], llm_group[0], {"constituent_ref"})
+            if fields:
+                changes.append({"constituent_ref": constituent_ref, **fields})
+            continue
+        if user_group != llm_group:
+            changes.append(
+                {
+                    "constituent_ref": constituent_ref,
+                    "change_type": "modified",
+                    "value": compact_record_group(user_group, {"constituent_ref"}),
+                }
+            )
+    return changes
+
+
+def changed_fields(entity_type: str, user_record: dict, llm_record: dict) -> dict:
+    fields = {}
+    for field in sorted(set(llm_record) | set(user_record)):
+        if field == "node_no":
+            continue
+        llm_value = llm_record.get(field)
+        user_value = user_record.get(field)
+        if entity_type == "compositions" and field == "constituents":
+            constituent_changes = changed_constituents(user_value or [], llm_value or [])
+            if constituent_changes:
+                fields[field] = constituent_changes
+        elif llm_value != user_value:
+            fields[field] = {"change_type": "modified", "value": user_value}
+    return fields
+
+
+def compact_added_value(value):
+    if value is None:
+        return None
+    if isinstance(value, str):
+        return None if value.strip() in {"", "-"} else value
+    if isinstance(value, list):
+        values = [compact for item in value if (compact := compact_added_value(item)) is not None]
+        return values or None
+    if isinstance(value, dict):
+        values = {
+            field: compact
+            for field, item in value.items()
+            if (compact := compact_added_value(item)) is not None
+        }
+        return values or None
+    return value
+
+
+def added_fields(user_record: dict, identity_fields: set[str] | None = None) -> dict:
+    identity_fields = identity_fields or {"node_no"}
+    return {
+        field: compact
+        for field, value in user_record.items()
+        if field not in identity_fields and (compact := compact_added_value(value)) is not None
+    }
+
+
+def build_edit_log(
+    llm_state: AnnotationState,
+    user_state: AnnotationState,
+) -> dict:
+    summary = {
+        "original_nodes_unchanged": 0,
+        "original_nodes_modified": 0,
+        "original_nodes_deleted": 0,
+        "user_nodes_added": 0,
+    }
+    sections: dict[str, list[dict]] = {entity_type: [] for entity_type in ENTITY_ORDER}
+    baseline_numeric_ids: dict[int, str] = {}
+    for entity_type in ENTITY_ORDER:
+        for record in getattr(llm_state, entity_type):
+            if not isinstance(record.node_no, int):
+                raise ValueError(f"LLM baseline contains a user node identifier: {record.node_no}")
+            existing_type = baseline_numeric_ids.get(record.node_no)
+            if existing_type:
+                raise ValueError(f"LLM baseline contains duplicate original node identifier: {record.node_no}")
+            baseline_numeric_ids[record.node_no] = entity_type
+
+    for entity_type in ENTITY_ORDER:
+        llm_records = {record.node_no: record.model_dump() for record in getattr(llm_state, entity_type)}
+        user_records = {record.node_no: record.model_dump() for record in getattr(user_state, entity_type)}
+        for node_no, llm_record in sorted(llm_records.items(), key=lambda item: node_sort_key(item[0])):
+            user_record = user_records.get(node_no)
+            if user_record is None:
+                sections[entity_type].append({"node_no": node_no, "change_type": "deleted"})
+                summary["original_nodes_deleted"] += 1
+                continue
+            if entity_type == "measurements":
+                changed = record_changed(user_record, llm_record)
+                fields = {}
+            else:
+                fields = changed_fields(entity_type, user_record, llm_record)
+                changed = bool(fields)
+            if changed:
+                entry = {"node_no": node_no, "change_type": "modified"}
+                if fields:
+                    entry["fields"] = fields
+                sections[entity_type].append(entry)
+                summary["original_nodes_modified"] += 1
+            else:
+                summary["original_nodes_unchanged"] += 1
+
+        for node_no, user_record in sorted(user_records.items(), key=lambda item: node_sort_key(item[0])):
+            if isinstance(node_no, int):
+                if node_no not in llm_records:
+                    baseline_type = baseline_numeric_ids.get(node_no)
+                    detail = f" in {baseline_type}" if baseline_type else ""
+                    raise ValueError(f"User annotation contains unknown original node identifier {node_no}{detail}")
+                continue
+            sections[entity_type].append(
+                {
+                    "node_no": node_no,
+                    "change_type": "added",
+                    "fields": added_fields(user_record),
+                }
+            )
+            summary["user_nodes_added"] += 1
+
+    return {
+        "meta": {
+            "source_type": user_state.meta.source_type,
+            "source_id": user_state.meta.source_id,
+            "summary": summary,
+        },
+        **sections,
+    }
+
+
+def load_llm_baseline_state(raw_path: Path, baseline_path: Path) -> AnnotationState:
+    stat = baseline_path.stat()
+    key = (str(baseline_path.resolve()), stat.st_mtime_ns, stat.st_size)
+    with _lock:
+        cached = _llm_baseline_cache.get(key)
+    if cached:
+        return cached.model_copy(deep=True)
+
+    baseline_text = baseline_path.read_text(encoding="utf-8-sig")
+    baseline_raw = json.loads(baseline_text)
+    if not isinstance(baseline_raw, dict) or not any(entity_type in baseline_raw for entity_type in ENTITY_ORDER):
+        raise ValueError("LLM baseline does not contain top-level annotation sections")
+    state = parse_state(baseline_text, raw_path)
+    with _lock:
+        if len(_llm_baseline_cache) > 32:
+            _llm_baseline_cache.clear()
+        _llm_baseline_cache[key] = state.model_copy(deep=True)
+    return state
+
+
+def regenerate_edit_log(raw_path: Path, user_state: AnnotationState) -> tuple[Path | None, str | None]:
+    baseline_path = llm_baseline_path(raw_path)
+    out = edit_log_path(raw_path)
+    if not baseline_path.is_file():
+        out.unlink(missing_ok=True)
+        return None, f"Edit Log was not generated: {baseline_path.name} is missing."
+    try:
+        llm_state = load_llm_baseline_state(raw_path, baseline_path)
+        edit_log = build_edit_log(llm_state, user_state)
+        write_text_atomic(out, json.dumps(edit_log, indent=2, ensure_ascii=False))
+        return out, None
+    except (json.JSONDecodeError, ValidationError, ValueError) as exc:
+        out.unlink(missing_ok=True)
+        return None, f"Edit Log was not generated: {exc}"
 
 
 def export_schema(state: AnnotationState) -> dict:
@@ -1522,12 +1860,16 @@ def list_workspace_files(request: Request) -> list[dict]:
 def get_document(file_name: str, request: Request) -> DocumentPayload:
     path = raw_file_path(file_name, request_user(request))
     state, annotation_path = load_state(path)
+    baseline_path = llm_baseline_path(path)
+    current_edit_log_path = edit_log_path(path)
     return DocumentPayload(
         document_id=path.name,
         patent_id=patent_id_from_name(path),
         markdown=read_raw_markdown(path),
         state=state,
         annotation_path=str(annotation_path) if annotation_path else None,
+        llm_baseline_path=str(baseline_path) if baseline_path.is_file() else None,
+        edit_log_path=str(current_edit_log_path) if current_edit_log_path.is_file() else None,
         revision=document_revision(path),
     )
 
@@ -1541,11 +1883,35 @@ def save_annotations(file_name: str, state: AnnotationState, request: Request) -
     current_revision = document_revision(path)
     if expected_revision is not None and expected_revision != current_revision:
         raise HTTPException(status_code=409, detail="This document changed after you opened it. Refresh the file before saving again.")
-    state = normalize_node_numbers(normalize_compositions(normalize_measurements(state)))
+    try:
+        state = normalize_node_numbers(normalize_compositions(normalize_measurements(state)))
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
     out = save_path_for_status(path, state.status)
     write_text_atomic(out, json.dumps(serialize_saved_state(state), indent=2, ensure_ascii=False))
     remove_stale_annotation_files(path, out)
-    return {"state": state, "summary": file_summary(path), "path": str(out), "revision": document_revision(path)}
+    current_edit_log_path, edit_log_warning = regenerate_edit_log(path, state)
+    return {
+        "state": state,
+        "summary": file_summary(path),
+        "path": str(out),
+        "revision": document_revision(path),
+        "edit_log_path": str(current_edit_log_path) if current_edit_log_path else None,
+        "edit_log_warning": edit_log_warning,
+    }
+
+
+@app.get("/api/workspace/edit-logs/{file_name:path}")
+def download_edit_log(file_name: str, request: Request) -> dict:
+    path = raw_file_path(file_name, request_user(request))
+    out = edit_log_path(path)
+    if not out.is_file():
+        raise HTTPException(status_code=404, detail="Edit Log is not available for this document")
+    try:
+        edit_log = json.loads(out.read_text(encoding="utf-8-sig"))
+    except json.JSONDecodeError as exc:
+        raise HTTPException(status_code=500, detail=f"Edit Log is invalid: {out.name}") from exc
+    return {"path": str(out), "edit_log": edit_log}
 
 
 @app.post("/api/workspace/files/{file_name:path}/export")

@@ -271,6 +271,9 @@ body.panel-resizing .resize-handle { background: #cbd5e1; }
 .header-atmosphere .haze-b { top: 12px; height: 58px; }
 .source-header div, .annotation-header div { min-width: 0; flex: 1; display: grid; gap: 2px; }
 .source-export-button { flex: 0 0 auto; white-space: nowrap; }
+.edit-log-button { flex: 0 0 auto; white-space: nowrap; background: #0f766e; border-color: #0f766e; color: #fff; }
+.annotation-header .edit-log-button span { color: inherit; }
+.edit-log-button:disabled { opacity: 1; background: #eef2f7; border-color: #d5dde8; color: #94a3b8; }
 .logout-button { flex: 0 0 auto; }
 .source-header strong, .annotation-header strong { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
 .source-header span, .annotation-header span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #64748b; font-size: 11px; }
@@ -591,6 +594,7 @@ body.panel-resizing .resize-handle { background: #cbd5e1; }
   .file-row strong { grid-column: 2 / 4; grid-row: 1; }
   .file-row em { grid-column: 2; grid-row: 2; }
   .file-row span:last-child { grid-column: 3; grid-row: 2; }
+  .edit-log-button span { display: none; }
 }
 
 @keyframes headerSphereDrift {
