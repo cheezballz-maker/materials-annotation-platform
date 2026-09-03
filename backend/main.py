@@ -551,40 +551,21 @@ def remove_stale_annotation_files(raw_path: Path, keep: Path) -> None:
             candidate.unlink()
 
 
+# Keep this mapping byte-for-byte compatible with MACE's source renderer.
 MOJIBAKE_REPLACEMENTS = {
-    "âˆ’": "−",
-    "â€“": "–",
-    "â€”": "—",
-    "â€˜": "‘",
-    "â€™": "’",
-    "â€œ": "“",
-    "â€": "”",
-    "â€³": "″",
-    "â€²": "′",
-    "â‰¤": "≤",
-    "â‰¥": "≥",
-    "â‰ˆ": "≈",
-    "â‰": "≠",
-    "Ã—": "×",
-    "Â±": "±",
+    "Î¼": "μ",
+    "Âµ": "μ",
     "Â°": "°",
-    "Âµ": "µ",
-    "Â·": "·",
-    "Â": "",
-    "Î±": "α",
-    "Î²": "β",
-    "Î³": "γ",
-    "Î´": "δ",
-    "Î”": "Δ",
-    "Îµ": "ε",
-    "Ï": "ρ",
-    "Ï�": "ρ",
-    "Ïƒ": "σ",
-    "Ï‰": "ω",
-    "â€‰": " ",
-    "â€ƒ": " ",
-    "â€‚": " ",
-    "â€¯": " ",
+    "â€œ": '"',
+    "â€": '"',
+    "â€˜": "'",
+    "â€™": "'",
+    "â€“": "-",
+    "â€”": "-",
+    "âˆ’": "-",
+    "â‰¥": ">=",
+    "â‰¤": "<=",
+    "Ã—": "x",
     "\u00a0": " ",
 }
 
@@ -632,13 +613,10 @@ def looks_like_html_markup(text: str) -> bool:
 
 
 def looks_like_raw_patent_text(text: str, suffix: str) -> bool:
-    if looks_like_html_markup(text):
-        return True
-    if any(token in text for token in MOJIBAKE_REPLACEMENTS):
-        return True
-    if suffix.lower() == ".txt" and re.search(r"^\s*[A-Z][A-Z0-9 ,/&()'-]{5,}\s*$", text, flags=re.MULTILINE):
-        return True
-    return False
+    """Use MACE's raw-text decision; file extension must not shift offsets."""
+    del suffix
+    return looks_like_html_markup(text) or any(
+        token in text for token in MOJIBAKE_REPLACEMENTS)
 
 
 def htmlish_to_text(text: str) -> str:
@@ -656,6 +634,11 @@ def htmlish_to_text(text: str) -> str:
     text = re.sub(r"<\s*(?:div|tr)\b[^>]*(?:uspto-tr|class=['\"]?tr|role=['\"]?row)[^>]*>", "\n", text, flags=re.IGNORECASE)
     text = re.sub(r"<\s*(?:div|td|th)\b[^>]*(?:uspto-(?:l-)?td|class=['\"]?(?:td|th)|role=['\"]?cell)[^>]*>", "\t", text, flags=re.IGNORECASE)
     text = re.sub(r"<\s*/\s*(?:div|td|th|tr)\s*>", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"<\s*table\b[^>]*>", "\n", text, flags=re.IGNORECASE)
+    text = re.sub(r"<\s*tr\b[^>]*>", "\n", text, flags=re.IGNORECASE)
+    text = re.sub(r"<\s*(?:td|th)\b[^>]*>", "\t", text, flags=re.IGNORECASE)
+    text = re.sub(r"<\s*/\s*(?:td|th)\s*>", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"<\s*/\s*(?:tr|table)\s*>", "\n", text, flags=re.IGNORECASE)
     text = re.sub(r"<\s*/?\s*(?:sub|sup)\b[^>]*>", "", text, flags=re.IGNORECASE)
     text = re.sub(
         r"</?(?:a|article|b|body|br|div|em|h[1-6]|head|html|i|li|ol|p|script|section|span|style|sub|sup|table|td|th|tr|ul)\b[^>]*>",
@@ -1507,7 +1490,13 @@ def workspace_payload(path: Path | None, user: UserAccess | None = None) -> Work
 
 def export_evidence_spans(spans: list[EvidenceSpan]) -> list[dict]:
     return [
-        {"field": span.field, "text": span.text}
+        {
+            "field": span.field,
+            "text": span.text,
+            **({"start": span.start, "end": span.end}
+               if isinstance(span.start, int) and isinstance(span.end, int) else {}),
+            **({"primary": True} if span.primary else {}),
+        }
         for span in spans
         if span.text.strip() and span.text.strip() != "-"
     ]
