@@ -1375,6 +1375,7 @@ function App() {
   }
 
   function deleteRecord(type: EntityType, nodeNo: NodeId) {
+    if (!confirmSubstanceDeletionImpact(state, [{ type, nodeNo }])) return;
     markDirty(removeRecordsFromState(state, [{ type, nodeNo }]), { recordHistory: true });
     setActiveRecord(null);
     setEditingRecord(null);
@@ -1387,6 +1388,7 @@ function App() {
 
   function deleteGraphNodes(refs: GraphRef[]) {
     if (!refs.length) return;
+    if (!confirmSubstanceDeletionImpact(state, refs)) return;
     const next = removeRecordsFromState(state, refs);
     if (next === state) return;
     markDirty(next, { recordHistory: true });
@@ -3149,6 +3151,36 @@ function removeGraphLayoutNode(layout: GraphLayout, ref: GraphRef): GraphLayout 
   const next = { ...layout };
   delete next[graphId(ref)];
   return next;
+}
+
+function confirmSubstanceDeletionImpact(state: AnnotationState, refs: GraphRef[]) {
+  const deletedSubstanceNos = new Set(refs.filter((ref) => ref.type === "substances").map((ref) => ref.nodeNo));
+  if (!deletedSubstanceNos.size) return true;
+
+  const impactedCompositions = state.compositions
+    .map((composition) => {
+      const matchedRefs = [
+        ...new Set(
+          composition.constituents
+            .filter((entry) => deletedSubstanceNos.has(entry.constituent_ref))
+            .map((entry) => entry.constituent_ref)
+        )
+      ];
+      if (!matchedRefs.length) return null;
+      const usedRefs = matchedRefs.map((nodeNo) => nodeDisplayId("substances", nodeNo)).join(", ");
+      return `${nodeLabel(state, { type: "compositions", nodeNo: composition.node_no })} uses ${usedRefs}`;
+    })
+    .filter((item): item is string => Boolean(item));
+
+  if (!impactedCompositions.length) return true;
+
+  const subject = deletedSubstanceNos.size === 1 ? "This substance is" : "These substances are";
+  const listedCompositions = impactedCompositions.slice(0, 8).join("\n");
+  const hiddenCount = impactedCompositions.length - 8;
+  const hiddenText = hiddenCount > 0 ? `\n...and ${hiddenCount} more composition${hiddenCount === 1 ? "" : "s"}.` : "";
+  return window.confirm(
+    `${subject} used by ${impactedCompositions.length} composition${impactedCompositions.length === 1 ? "" : "s"}:\n\n${listedCompositions}${hiddenText}\n\nDeleting will remove the matching constituent link${deletedSubstanceNos.size === 1 ? "" : "s"} from the affected composition${impactedCompositions.length === 1 ? "" : "s"}. Continue?`
+  );
 }
 
 function removeRecordsFromState(state: AnnotationState, refs: GraphRef[]) {
