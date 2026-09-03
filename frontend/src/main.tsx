@@ -60,6 +60,7 @@ type AnnotationTarget = { field: string; label: string; kind: "text" | "stringAr
 type RelationshipEdge = { id: string; source: GraphRef; target: GraphRef; label: string };
 type GraphEdgeData = { siblingOffset?: number; sourceAnchorOffset?: number; targetAnchorOffset?: number; relationship: RelationshipEdge | null; onSelect?: (edge: RelationshipEdge | null) => void; simpleMode?: boolean; lowDetail?: boolean };
 type GraphNodeGroup = { type: EntityType; nodeNos: NodeId[] };
+type SubstanceDeleteImpact = { refs: GraphRef[]; fromGraph: boolean; impactedCompositions: string[]; substanceCount: number; compositionCount: number };
 type AnnotatedSpan = EvidenceSpan & { entityType: EntityType; nodeNo: NodeId; index: number; identity: boolean };
 type HighlightSpan = AnnotatedSpan | (EvidenceSpan & { entityType: "pending"; nodeNo: -1; index: -1; identity: false });
 type SpanInspector = { x: number; y: number; text: string; spans: AnnotatedSpan[] } | null;
@@ -486,6 +487,7 @@ function App() {
   const [nodeSearch, setNodeSearch] = React.useState("");
   const [nodeRelationshipFilters, setNodeRelationshipFilters] = React.useState<NodeRelationshipFilterState>({});
   const [saveState, setSaveState] = React.useState<SaveState>("Saved");
+  const [pendingDeleteImpact, setPendingDeleteImpact] = React.useState<SubstanceDeleteImpact | null>(null);
   const [error, setError] = React.useState("");
   const [notice, setNotice] = React.useState("");
   const [linkSource, setLinkSource] = React.useState<GraphRef | null>(null);
@@ -859,6 +861,7 @@ function App() {
       setGraphOpen(false);
       setSpanInspector(null);
       setSpanAdditionTarget(null);
+      setPendingDeleteImpact(null);
       updateSaveState(statesEqual(payload.state, normalized.state) ? "Saved" : "Unsaved changes");
       undoStackRef.current = [];
       editSessionRef.current = null;
@@ -972,6 +975,7 @@ function App() {
     setGraphOpen(false);
     setSpanInspector(null);
     setSpanAdditionTarget(null);
+    setPendingDeleteImpact(null);
     updateSaveState("Saved");
     undoStackRef.current = [];
     editSessionRef.current = null;
@@ -1375,20 +1379,20 @@ function App() {
   }
 
   function deleteRecord(type: EntityType, nodeNo: NodeId) {
-    if (!confirmSubstanceDeletionImpact(state, [{ type, nodeNo }])) return;
-    markDirty(removeRecordsFromState(state, [{ type, nodeNo }]), { recordHistory: true });
-    setActiveRecord(null);
-    setEditingRecord(null);
-    setDocumentSelectedRecord(null);
-    editSessionRef.current = null;
-    setSpanAdjustment(null);
-    setSpanAdditionTarget(null);
-    setSpanFocus(null);
+    requestDeleteRecords([{ type, nodeNo }]);
   }
 
-  function deleteGraphNodes(refs: GraphRef[]) {
+  function requestDeleteRecords(refs: GraphRef[], fromGraph = false) {
+    const impact = substanceDeletionImpact(state, refs, fromGraph);
+    if (impact) {
+      setPendingDeleteImpact(impact);
+      return;
+    }
+    applyDeleteRecords(refs, fromGraph);
+  }
+
+  function applyDeleteRecords(refs: GraphRef[], fromGraph = false) {
     if (!refs.length) return;
-    if (!confirmSubstanceDeletionImpact(state, refs)) return;
     const next = removeRecordsFromState(state, refs);
     if (next === state) return;
     markDirty(next, { recordHistory: true });
@@ -1399,9 +1403,27 @@ function App() {
     setSpanAdjustment(null);
     setSpanAdditionTarget(null);
     setSpanFocus(null);
-    setLinkSource(null);
-    setNotice(`Deleted ${refs.length} ${refs.length === 1 ? "node" : "nodes"}`);
-    window.setTimeout(() => setNotice(""), 2600);
+    setPendingDeleteImpact(null);
+    if (fromGraph) {
+      setLinkSource(null);
+      setNotice(`Deleted ${refs.length} ${refs.length === 1 ? "node" : "nodes"}`);
+      window.setTimeout(() => setNotice(""), 2600);
+    }
+  }
+
+  function deleteGraphNodes(refs: GraphRef[]) {
+    if (!refs.length) return;
+    requestDeleteRecords(refs, true);
+  }
+
+  function confirmPendingDeleteImpact() {
+    if (!pendingDeleteImpact) return;
+    const { refs, fromGraph } = pendingDeleteImpact;
+    applyDeleteRecords(refs, fromGraph);
+  }
+
+  function cancelPendingDeleteImpact() {
+    setPendingDeleteImpact(null);
   }
 
   function duplicateGraphNodes(refs: GraphRef[], step = 1) {
@@ -1629,6 +1651,7 @@ function App() {
   }
 
   return <div ref={workbenchShellRef} className="workbench-shell" style={{ "--source-width": `${leftWidthRef.current}%` } as React.CSSProperties}>
+    {pendingDeleteImpact && <SubstanceDeleteDialog impact={pendingDeleteImpact} onCancel={cancelPendingDeleteImpact} onConfirm={confirmPendingDeleteImpact}/>}
     <section className="source-panel">
       <header className="source-header">
         <MoleculeAtmosphere compact />
@@ -1914,6 +1937,37 @@ function Landing({ workspace, folderPath, setFolderPath, onOpenWorkspace, onRefr
 
 function Message({ tone, text, onClose }: { tone: "error" | "success"; text: string; onClose: () => void }) {
   return <div className={`app-message ${tone}`}><span>{text}</span><button onClick={onClose}><X size={13}/></button></div>;
+}
+
+function SubstanceDeleteDialog({ impact, onCancel, onConfirm }: {
+  impact: SubstanceDeleteImpact;
+  onCancel: () => void;
+  onConfirm: () => void;
+}) {
+  const hiddenCount = impact.impactedCompositions.length - 8;
+  return <div className="delete-dialog-backdrop" role="presentation">
+    <section className="delete-dialog" role="dialog" aria-modal="true" aria-labelledby="substance-delete-title">
+      <header>
+        <div>
+          <span className="delete-dialog-kicker">Linked substance</span>
+          <h2 id="substance-delete-title">Confirm deletion</h2>
+        </div>
+        <button type="button" className="icon-only" onClick={onCancel} aria-label="Cancel deletion"><X size={15}/></button>
+      </header>
+      <p>
+        {impact.substanceCount === 1 ? "This substance is" : "These substances are"} used by {impact.compositionCount} composition{impact.compositionCount === 1 ? "" : "s"}.
+        Deleting will remove the matching constituent link{impact.substanceCount === 1 ? "" : "s"} from the affected composition{impact.compositionCount === 1 ? "" : "s"}.
+      </p>
+      <ul>
+        {impact.impactedCompositions.slice(0, 8).map((item) => <li key={item}>{item}</li>)}
+        {hiddenCount > 0 && <li>...and {hiddenCount} more composition{hiddenCount === 1 ? "" : "s"}.</li>}
+      </ul>
+      <footer>
+        <button type="button" onClick={onCancel}>Cancel</button>
+        <button type="button" className="danger-button" onClick={onConfirm}><Trash2 size={14}/> Delete anyway</button>
+      </footer>
+    </section>
+  </div>;
 }
 
 function SelectionPopover({ selection, activeRecord, onCreate, onDismiss }: {
@@ -3153,63 +3207,62 @@ function removeGraphLayoutNode(layout: GraphLayout, ref: GraphRef): GraphLayout 
   return next;
 }
 
-function confirmSubstanceDeletionImpact(state: AnnotationState, refs: GraphRef[]) {
-  const deletedSubstanceNos = new Set(refs.filter((ref) => ref.type === "substances").map((ref) => ref.nodeNo));
-  if (!deletedSubstanceNos.size) return true;
+function substanceDeletionImpact(state: AnnotationState, refs: GraphRef[], fromGraph = false): SubstanceDeleteImpact | null {
+  const deletedSubstanceKeys = new Set(refs.filter((ref) => ref.type === "substances").map((ref) => nodeIdKey(ref.nodeNo)));
+  if (!deletedSubstanceKeys.size) return null;
+  const deletedCompositionKeys = new Set(refs.filter((ref) => ref.type === "compositions").map((ref) => nodeIdKey(ref.nodeNo)));
 
   const impactedCompositions = state.compositions
+    .filter((composition) => !deletedCompositionKeys.has(nodeIdKey(composition.node_no)))
     .map((composition) => {
-      const matchedRefs = [
-        ...new Set(
-          composition.constituents
-            .filter((entry) => deletedSubstanceNos.has(entry.constituent_ref))
-            .map((entry) => entry.constituent_ref)
-        )
-      ];
-      if (!matchedRefs.length) return null;
-      const usedRefs = matchedRefs.map((nodeNo) => nodeDisplayId("substances", nodeNo)).join(", ");
+      const matchedRefs = new Map<string, NodeId>();
+      composition.constituents.forEach((entry) => {
+        const key = nodeIdKey(entry.constituent_ref);
+        if (deletedSubstanceKeys.has(key)) matchedRefs.set(key, entry.constituent_ref);
+      });
+      if (!matchedRefs.size) return null;
+      const usedRefs = [...matchedRefs.values()].map((nodeNo) => nodeDisplayId("substances", nodeNo)).join(", ");
       return `${nodeLabel(state, { type: "compositions", nodeNo: composition.node_no })} uses ${usedRefs}`;
     })
     .filter((item): item is string => Boolean(item));
 
-  if (!impactedCompositions.length) return true;
-
-  const subject = deletedSubstanceNos.size === 1 ? "This substance is" : "These substances are";
-  const listedCompositions = impactedCompositions.slice(0, 8).join("\n");
-  const hiddenCount = impactedCompositions.length - 8;
-  const hiddenText = hiddenCount > 0 ? `\n...and ${hiddenCount} more composition${hiddenCount === 1 ? "" : "s"}.` : "";
-  return window.confirm(
-    `${subject} used by ${impactedCompositions.length} composition${impactedCompositions.length === 1 ? "" : "s"}:\n\n${listedCompositions}${hiddenText}\n\nDeleting will remove the matching constituent link${deletedSubstanceNos.size === 1 ? "" : "s"} from the affected composition${impactedCompositions.length === 1 ? "" : "s"}. Continue?`
-  );
+  if (!impactedCompositions.length) return null;
+  return {
+    refs,
+    fromGraph,
+    impactedCompositions,
+    substanceCount: deletedSubstanceKeys.size,
+    compositionCount: impactedCompositions.length
+  };
 }
 
 function removeRecordsFromState(state: AnnotationState, refs: GraphRef[]) {
   if (!refs.length) return state;
   const grouped = refs.reduce((acc, ref) => {
-    acc[ref.type].add(ref.nodeNo);
+    acc[ref.type].add(nodeIdKey(ref.nodeNo));
     return acc;
   }, {
-    substances: new Set<NodeId>(),
-    compositions: new Set<NodeId>(),
-    properties: new Set<NodeId>(),
-    measurements: new Set<NodeId>()
-  } as Record<EntityType, Set<NodeId>>);
-  const removedNodeNos = new Set(refs.map((ref) => ref.nodeNo));
+    substances: new Set<string>(),
+    compositions: new Set<string>(),
+    properties: new Set<string>(),
+    measurements: new Set<string>()
+  } as Record<EntityType, Set<string>>);
+  const removedNodeNos = new Set(refs.map((ref) => nodeIdKey(ref.nodeNo)));
   return {
     ...state,
-    substances: state.substances.filter((item) => !grouped.substances.has(item.node_no)),
+    substances: state.substances.filter((item) => !grouped.substances.has(nodeIdKey(item.node_no))),
     compositions: state.compositions
-      .filter((item) => !grouped.compositions.has(item.node_no))
-      .map((item) => ({ ...item, constituents: item.constituents.filter((entry) => !removedNodeNos.has(entry.constituent_ref)) })),
+      .filter((item) => !grouped.compositions.has(nodeIdKey(item.node_no)))
+      .map((item) => ({ ...item, constituents: item.constituents.filter((entry) => !removedNodeNos.has(nodeIdKey(entry.constituent_ref))) })),
     properties: state.properties
-      .filter((item) => !grouped.properties.has(item.node_no))
-      .map((item) => ({ ...item, target_ref: removedNodeNos.has(item.target_ref) ? 0 : item.target_ref })),
+      .filter((item) => !grouped.properties.has(nodeIdKey(item.node_no)))
+      .map((item) => ({ ...item, target_ref: removedNodeNos.has(nodeIdKey(item.target_ref)) ? 0 : item.target_ref })),
     measurements: state.measurements
-      .filter((item) => !grouped.measurements.has(item.node_no))
-      .map((item) => removedNodeNos.has(item.property_ref) ? { ...item, property_ref: 0 } : item),
+      .filter((item) => !grouped.measurements.has(nodeIdKey(item.node_no)))
+      .map((item) => removedNodeNos.has(nodeIdKey(item.property_ref)) ? { ...item, property_ref: 0 } : item),
     graph_layout: Object.fromEntries(Object.entries(state.graph_layout || {}).filter(([id]) => {
       const ref = parseGraphNode(id);
-      return !ref || !removedNodeNos.has(ref.nodeNo);
+      return !ref || !removedNodeNos.has(nodeIdKey(ref.nodeNo));
     }))
   };
 }
@@ -4823,6 +4876,22 @@ function isUserNodeId(value: NodeId): value is string {
   return typeof value === "string" && /^U[1-9]\d*$/.test(value);
 }
 
+function numericNodeId(value: NodeId) {
+  if (typeof value === "number") return Number.isInteger(value) && value > 0 ? value : null;
+  const numeric = Number(value);
+  return Number.isInteger(numeric) && numeric > 0 ? numeric : null;
+}
+
+function nodeIdKey(value: NodeId) {
+  if (isUserNodeId(value)) return value;
+  const numeric = numericNodeId(value);
+  return numeric ? String(numeric) : String(value ?? "");
+}
+
+function sameNodeId(a: NodeId, b: NodeId) {
+  return nodeIdKey(a) === nodeIdKey(b);
+}
+
 function userNodeIndex(value: NodeId) {
   return isUserNodeId(value) ? Number(value.slice(1)) : 0;
 }
@@ -4836,7 +4905,7 @@ function compareNodeIds(a: NodeId, b: NodeId) {
 }
 
 function hasNodeRef(value: NodeId) {
-  return isUserNodeId(value) || (typeof value === "number" && value > 0);
+  return isUserNodeId(value) || numericNodeId(value) !== null;
 }
 
 function parseNodeId(value: string): NodeId | null {

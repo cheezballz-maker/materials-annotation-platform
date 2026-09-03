@@ -91,6 +91,15 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .folder-form button, .annotation-header button:last-child, .confirm-button { background: #172033; color: #fff; border-color: #172033; }
 .danger-button { background: #991b1b; color: #fff; border-color: #991b1b; }
 .danger-button:hover:not(:disabled) { background: #7f1d1d; border-color: #7f1d1d; }
+.delete-dialog-backdrop { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 24px; background: rgba(15,23,42,.22); }
+.delete-dialog { width: min(520px, 100%); padding: 18px; border: 1px solid #d6e0ef; border-radius: 8px; background: #fff; box-shadow: 0 24px 70px rgba(31,41,55,.22); }
+.delete-dialog header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+.delete-dialog h2 { margin: 2px 0 0; font-size: 18px; line-height: 1.2; letter-spacing: 0; }
+.delete-dialog-kicker { color: #d97706; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+.delete-dialog p { margin: 0 0 12px; color: #42526e; line-height: 1.45; }
+.delete-dialog ul { max-height: 190px; margin: 0; padding: 10px 10px 10px 26px; overflow: auto; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc; color: #172033; }
+.delete-dialog li + li { margin-top: 6px; }
+.delete-dialog footer { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
 .folder-form input { height: 44px; border-radius: 13px; padding: 0 14px; background: rgba(255,255,255,.92); }
 .folder-form button { height: 44px; border-radius: 13px; padding: 0 16px; box-shadow: 0 10px 18px rgba(15,23,42,.08); }
 .folder-form button.secondary-folder-button { background: rgba(255,255,255,.78); color: #172033; border-color: #cbd5e1; box-shadow: none; }
