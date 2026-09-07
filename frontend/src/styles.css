@@ -455,6 +455,7 @@ body.panel-resizing .resize-handle { background: #cbd5e1; }
 .candidate-row { width: 100%; display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(86px, auto); gap: 8px; align-items: center; justify-content: stretch; text-align: left; padding: 6px 8px; border-radius: 10px; }
 .candidate-row strong { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
 .candidate-row em { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-style: normal; color: #64748b; font-size: 11px; text-align: right; }
+.candidate-badge-stack { display: inline-flex; align-items: center; gap: 4px; flex-wrap: wrap; max-width: 62px; }
 .candidate-node-pill { display: inline-flex; align-items: center; justify-content: center; min-width: 34px; padding: 2px 7px; border-radius: 999px; font-size: 11px; font-weight: 800; }
 .candidate-node-pill.substances { background: #dcfce7; color: #166534; }
 .candidate-node-pill.compositions { background: #cffafe; color: #0e7490; }

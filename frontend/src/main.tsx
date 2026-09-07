@@ -74,7 +74,7 @@ type GraphViewport = Viewport;
 type GraphFilterState = Record<EntityType, boolean>;
 type NodeRelationshipFilterKey = "default" | "measurementUnlinked" | "targetUnlinked";
 type NodeRelationshipFilterState = Partial<Record<EntityType, Partial<Record<NodeRelationshipFilterKey, boolean>>>>;
-type LinkCandidate = { type: EntityType; nodeNo: NodeId; title: string; meta?: string };
+type LinkCandidate = { type: EntityType; nodeNo: NodeId; title: string; meta?: string; sections?: DocumentSectionKey[] };
 type PendingFieldCommit = () => void;
 type PendingFieldCommitRegistry = { register: (id: string, commit: PendingFieldCommit | null) => void; markDirty: () => void };
 type RecordPatch = Record<string, unknown> | ((record: AnyRecord) => Record<string, unknown>);
@@ -2129,7 +2129,7 @@ function NodeAccordion({ type, state, markdown, activeRecord, editingRecord, sel
       {active && <div className={`node-details ${editing ? "editing-details" : "readonly-details"}`}>
         {editing ? <>
           {type === "substances" && <SubstanceForm record={record as SubstanceRecord} selectionMenu={selectionMenu} editing={editing} onAnnotate={onAnnotateItem} onUpdate={(patch) => onUpdate(type, record.node_no, patch)}/>}
-          {type === "compositions" && <CompositionForm record={record as CompositionRecord} state={state} selectionMenu={selectionMenu} editing={editing} onAnnotate={onAnnotateItem} onUpdate={(patch) => onUpdate(type, record.node_no, patch)}/>}
+          {type === "compositions" && <CompositionForm record={record as CompositionRecord} state={state} markdown={markdown} selectionMenu={selectionMenu} editing={editing} onAnnotate={onAnnotateItem} onUpdate={(patch) => onUpdate(type, record.node_no, patch)}/>}
           {type === "properties" && <PropertyForm record={record as PropertyRecord} state={state} selectionMenu={selectionMenu} editing={editing} onAnnotate={onAnnotateItem} onUpdate={(patch) => onUpdate(type, record.node_no, patch)}/>}
           {type === "measurements" && <MeasurementForm record={record as MeasurementRecord} state={state} selectionMenu={selectionMenu} editing={editing} onAnnotate={onAnnotateItem} onUpdate={(patch) => onUpdate(type, record.node_no, patch)}/>}
           <EvidencePanel record={record} type={type} editing addingSpan={spanAdditionTarget?.type === type && spanAdditionTarget.nodeNo === record.node_no} adjustingSpan={spanAdjustment} onAddSpan={() => onAddEvidenceSpan(type, record.node_no)} onAdjustSpan={(field, index) => onAdjustSpan(type, record.node_no, field, index)}/>
@@ -2252,9 +2252,10 @@ function SubstanceForm({ record, selectionMenu, editing, onAnnotate, onUpdate }:
   </div>;
 }
 
-function CompositionForm({ record, state, selectionMenu, editing, onAnnotate, onUpdate }: { record: CompositionRecord; state: AnnotationState; selectionMenu: SelectionMenu; editing: boolean; onAnnotate: (target: AnnotationTarget) => void; onUpdate: (patch: RecordPatch) => void }) {
+function CompositionForm({ record, state, markdown, selectionMenu, editing, onAnnotate, onUpdate }: { record: CompositionRecord; state: AnnotationState; markdown: string; selectionMenu: SelectionMenu; editing: boolean; onAnnotate: (target: AnnotationTarget) => void; onUpdate: (patch: RecordPatch) => void }) {
   const updateConstituent = (index: number, patch: Partial<ConstituentRecord>) => onUpdate((current) => ({ constituents: (current as CompositionRecord).constituents.map((item, itemIndex) => itemIndex === index ? normalizeConstituent({ ...item, ...patch }) : item) }));
-  const constituentCandidates = React.useMemo(() => compositionConstituentCandidates(state, record), [record, state]);
+  const sectionRanges = React.useMemo(() => documentSectionRanges(markdown), [markdown]);
+  const constituentCandidates = React.useMemo(() => compositionConstituentCandidates(state, record, sectionRanges, markdown), [markdown, record, sectionRanges, state]);
   const addConstituent = (candidate: LinkCandidate) => {
     onUpdate((current) => ({
       constituents: [defaultConstituent(candidate.nodeNo), ...(current as CompositionRecord).constituents]
@@ -2409,7 +2410,13 @@ function LinkCandidatePicker({ label, placeholder, candidates, empty, onPick }: 
             setOpen(false);
           }}
         >
-          <span className={`candidate-node-pill ${candidate.type}`}>{nodeDisplayId(candidate.type, candidate.nodeNo)}</span>
+          <span className="candidate-badge-stack">
+            <span className={`candidate-node-pill ${candidate.type}`}>{nodeDisplayId(candidate.type, candidate.nodeNo)}</span>
+            {candidate.sections?.map((sectionKey) => {
+              const section = DOCUMENT_SECTION_DEFINITIONS.find((item) => item.key === sectionKey);
+              return section ? <span key={section.key} className={`section-pill ${section.key}`} title={section.label}>{section.shortLabel}</span> : null;
+            })}
+          </span>
           <strong>{candidate.title}</strong>
           <em>{candidate.meta || singular(candidate.type)}</em>
         </button>)}
@@ -4643,7 +4650,7 @@ function isUnlinkedNode(type: EntityType, record: AnyRecord, state: AnnotationSt
   return false;
 }
 
-function compositionConstituentCandidates(state: AnnotationState, record: CompositionRecord): LinkCandidate[] {
+function compositionConstituentCandidates(state: AnnotationState, record: CompositionRecord, sectionRanges: DocumentSectionRange[] = [], markdown = ""): LinkCandidate[] {
   const linked = new Set(record.constituents.map((entry) => entry.constituent_ref));
   const substanceCandidates = state.substances
     .filter((item) => !linked.has(item.node_no))
@@ -4651,7 +4658,8 @@ function compositionConstituentCandidates(state: AnnotationState, record: Compos
       type: "substances" as EntityType,
       nodeNo: item.node_no,
       title: recordTitleText("substances", item, state),
-      meta: item.substance_type
+      meta: item.substance_type,
+      sections: recordDocumentSections(item, sectionRanges, markdown)
     }));
   const compositionCandidates = state.compositions
     .filter((item) => item.node_no !== record.node_no)
@@ -4661,7 +4669,8 @@ function compositionConstituentCandidates(state: AnnotationState, record: Compos
       type: "compositions" as EntityType,
       nodeNo: item.node_no,
       title: recordTitleText("compositions", item, state),
-      meta: item.composition_type || "-"
+      meta: item.composition_type || "-",
+      sections: recordDocumentSections(item, sectionRanges, markdown)
     }));
   return [...substanceCandidates, ...compositionCandidates].sort(compareLinkCandidates);
 }
