@@ -26,6 +26,8 @@ import "./styles.css";
 
 type Status = "Unannotated" | "Partially complete" | "Completed";
 type DocumentStatusFilter = "all" | "partial" | "completed";
+type DocumentSectionKey = "title" | "abstract" | "description" | "claims";
+type NodeSectionFilter = "all" | DocumentSectionKey;
 type AuthSession = { authenticated: boolean; username: string | null; mode: "session" | "basic" | "none" };
 type EntityType = "substances" | "compositions" | "properties" | "measurements";
 type SourceType = "patent" | "paper";
@@ -61,6 +63,7 @@ type RelationshipEdge = { id: string; source: GraphRef; target: GraphRef; label:
 type GraphEdgeData = { siblingOffset?: number; sourceAnchorOffset?: number; targetAnchorOffset?: number; relationship: RelationshipEdge | null; onSelect?: (edge: RelationshipEdge | null) => void; simpleMode?: boolean; lowDetail?: boolean };
 type GraphNodeGroup = { type: EntityType; nodeNos: NodeId[] };
 type SubstanceDeleteImpact = { refs: GraphRef[]; fromGraph: boolean; impactedCompositions: string[]; substanceCount: number; compositionCount: number };
+type DocumentSectionRange = { key: DocumentSectionKey; start: number; end: number };
 type AnnotatedSpan = EvidenceSpan & { entityType: EntityType; nodeNo: NodeId; index: number; identity: boolean };
 type HighlightSpan = AnnotatedSpan | (EvidenceSpan & { entityType: "pending"; nodeNo: -1; index: -1; identity: false });
 type SpanInspector = { x: number; y: number; text: string; spans: AnnotatedSpan[] } | null;
@@ -105,6 +108,13 @@ const labels: Record<EntityType, string> = {
   properties: "Properties",
   measurements: "Measurements"
 };
+
+const DOCUMENT_SECTION_DEFINITIONS: Array<{ key: DocumentSectionKey; label: string; shortLabel: string }> = [
+  { key: "title", label: "Title", shortLabel: "T" },
+  { key: "abstract", label: "Abstract", shortLabel: "A" },
+  { key: "description", label: "Description", shortLabel: "D" },
+  { key: "claims", label: "Claims", shortLabel: "C" }
+];
 
 const PendingFieldCommitContext = React.createContext<PendingFieldCommitRegistry>({ register: () => {}, markDirty: () => {} });
 
@@ -486,6 +496,8 @@ function App() {
   const [fileStatusFilter, setFileStatusFilter] = React.useState<DocumentStatusFilter>("all");
   const [nodeSearch, setNodeSearch] = React.useState("");
   const [nodeRelationshipFilters, setNodeRelationshipFilters] = React.useState<NodeRelationshipFilterState>({});
+  const [nodeSectionFilters, setNodeSectionFilters] = React.useState<Partial<Record<EntityType, NodeSectionFilter>>>({});
+  const [duplicateSubstanceNamesOnly, setDuplicateSubstanceNamesOnly] = React.useState(false);
   const [saveState, setSaveState] = React.useState<SaveState>("Saved");
   const [pendingDeleteImpact, setPendingDeleteImpact] = React.useState<SubstanceDeleteImpact | null>(null);
   const [error, setError] = React.useState("");
@@ -855,6 +867,8 @@ function App() {
       setEditingRecord(null);
       setDocumentSelectedRecord(null);
       setNodeSearch("");
+      setNodeSectionFilters({});
+      setDuplicateSubstanceNamesOnly(false);
       setSelectionMenu(null);
       setSpanFocus(null);
       setLinkSource(null);
@@ -969,6 +983,8 @@ function App() {
     setEditingRecord(null);
     setDocumentSelectedRecord(null);
     setNodeSearch("");
+    setNodeSectionFilters({});
+    setDuplicateSubstanceNamesOnly(false);
     setSelectionMenu(null);
     setSpanFocus(null);
     setLinkSource(null);
@@ -1691,7 +1707,7 @@ function App() {
       </nav>
       <section className="annotation-workspace">
       <PendingFieldCommitContext.Provider value={pendingFieldCommitContext}>
-        <NodeAccordion type={activeTab} state={state} activeRecord={activeRecord} editingRecord={editingRecord} selectionMenu={selectionMenu} spanAdjustment={spanAdjustment} spanAdditionTarget={spanAdditionTarget} search={nodeSearch} relationshipFilters={nodeRelationshipFilters[activeTab] || {}} onSearchChange={setNodeSearch} onRelationshipFilterChange={(key, value) => setNodeRelationshipFilters((current) => ({ ...current, [activeTab]: { ...(current[activeTab] || {}), [key]: value } }))} onSelect={selectRecord} onEdit={(type, nodeNo, editing) => editing ? finalizeRecord(type, nodeNo) : beginEditing(type, nodeNo)} onDelete={deleteRecord} onDuplicate={duplicateRecord} onUpdate={updateRecord} onAnnotateItem={annotateActiveItem} onAddEvidenceSpan={addEvidenceSpan} onDone={finalizeRecord} onCollapse={collapseRecord} onCreateComposition={createCompositionWithoutSelection} onAdjustSpan={beginSpanAdjustment}/>
+        <NodeAccordion type={activeTab} state={state} markdown={activeDoc.markdown} activeRecord={activeRecord} editingRecord={editingRecord} selectionMenu={selectionMenu} spanAdjustment={spanAdjustment} spanAdditionTarget={spanAdditionTarget} search={nodeSearch} sectionFilter={nodeSectionFilters[activeTab] || "all"} duplicateSubstanceNamesOnly={duplicateSubstanceNamesOnly} relationshipFilters={nodeRelationshipFilters[activeTab] || {}} onSearchChange={setNodeSearch} onSectionFilterChange={(value) => setNodeSectionFilters((current) => ({ ...current, [activeTab]: value }))} onDuplicateSubstanceNamesOnlyChange={setDuplicateSubstanceNamesOnly} onRelationshipFilterChange={(key, value) => setNodeRelationshipFilters((current) => ({ ...current, [activeTab]: { ...(current[activeTab] || {}), [key]: value } }))} onSelect={selectRecord} onEdit={(type, nodeNo, editing) => editing ? finalizeRecord(type, nodeNo) : beginEditing(type, nodeNo)} onDelete={deleteRecord} onDuplicate={duplicateRecord} onUpdate={updateRecord} onAnnotateItem={annotateActiveItem} onAddEvidenceSpan={addEvidenceSpan} onDone={finalizeRecord} onCollapse={collapseRecord} onCreateComposition={createCompositionWithoutSelection} onAdjustSpan={beginSpanAdjustment}/>
       </PendingFieldCommitContext.Provider>
       </section>
     </aside>
@@ -1988,17 +2004,22 @@ function SelectionPopover({ selection, activeRecord, onCreate, onDismiss }: {
   </div>;
 }
 
-function NodeAccordion({ type, state, activeRecord, editingRecord, selectionMenu, spanAdjustment, spanAdditionTarget, search, relationshipFilters, onSearchChange, onRelationshipFilterChange, onSelect, onEdit, onDelete, onDuplicate, onUpdate, onAnnotateItem, onAddEvidenceSpan, onDone, onCollapse, onCreateComposition, onAdjustSpan }: {
+function NodeAccordion({ type, state, markdown, activeRecord, editingRecord, selectionMenu, spanAdjustment, spanAdditionTarget, search, sectionFilter, duplicateSubstanceNamesOnly, relationshipFilters, onSearchChange, onSectionFilterChange, onDuplicateSubstanceNamesOnlyChange, onRelationshipFilterChange, onSelect, onEdit, onDelete, onDuplicate, onUpdate, onAnnotateItem, onAddEvidenceSpan, onDone, onCollapse, onCreateComposition, onAdjustSpan }: {
   type: EntityType;
   state: AnnotationState;
+  markdown: string;
   activeRecord: ActiveRecord;
   editingRecord: ActiveRecord;
   selectionMenu: SelectionMenu;
   spanAdjustment: SpanAdjustment;
   spanAdditionTarget: ActiveRecord;
   search: string;
+  sectionFilter: NodeSectionFilter;
+  duplicateSubstanceNamesOnly: boolean;
   relationshipFilters: Partial<Record<NodeRelationshipFilterKey, boolean>>;
   onSearchChange: (value: string) => void;
+  onSectionFilterChange: (value: NodeSectionFilter) => void;
+  onDuplicateSubstanceNamesOnlyChange: (value: boolean) => void;
   onRelationshipFilterChange: (key: NodeRelationshipFilterKey, value: boolean) => void;
   onSelect: (type: EntityType, nodeNo: NodeId) => void;
   onEdit: (type: EntityType, nodeNo: NodeId, editing: boolean) => void;
@@ -2015,10 +2036,25 @@ function NodeAccordion({ type, state, activeRecord, editingRecord, selectionMenu
   const records = state[type] as AnyRecord[];
   const query = search.trim().toLowerCase();
   const relationshipFilterOptions = relationshipFilterDefinitions(type);
+  const supportsSectionFilter = type === "substances" || type === "compositions";
+  const sectionRanges = React.useMemo(() => documentSectionRanges(markdown), [markdown]);
+  const recordSections = React.useMemo(() => new Map(records.map((record) => [
+    nodeIdKey(record.node_no),
+    recordDocumentSections(record, sectionRanges, markdown)
+  ])), [markdown, records, sectionRanges]);
+  const duplicateSubstanceNameKeys = React.useMemo(
+    () => type === "substances" ? repeatedSubstanceNameKeys(records as SubstanceRecord[]) : new Set<string>(),
+    [records, type]
+  );
   const filteredRecords = React.useMemo(() => records.filter((record) => {
     if (!recordMatchesRelationshipFilters(type, record, state, relationshipFilters)) return false;
+    if (supportsSectionFilter && sectionFilter !== "all" && !recordSections.get(nodeIdKey(record.node_no))?.includes(sectionFilter)) return false;
+    if (type === "substances" && duplicateSubstanceNamesOnly) {
+      const duplicateKey = normalizedSubstanceName((record as SubstanceRecord).substance_name);
+      if (!duplicateKey || !duplicateSubstanceNameKeys.has(duplicateKey)) return false;
+    }
     return !query || recordTitleText(type, record, state).toLowerCase().includes(query);
-  }), [records, relationshipFilters, query, state, type]);
+  }), [duplicateSubstanceNameKeys, duplicateSubstanceNamesOnly, records, recordSections, relationshipFilters, query, sectionFilter, state, supportsSectionFilter, type]);
   if (!records.length) return <section className="node-workspace">
     <div className="node-workspace-header">
       <strong>{labels[type]}</strong>
@@ -2041,6 +2077,19 @@ function NodeAccordion({ type, state, activeRecord, editingRecord, selectionMenu
       <strong>{labels[type]}</strong>
       <div className="node-workspace-tools">
         {type === "compositions" && <button type="button" className="node-inline-action" onClick={onCreateComposition}>Create composition</button>}
+        {supportsSectionFilter && <div className="node-section-filter" aria-label="Filter by document section">
+          <button type="button" className={sectionFilter === "all" ? "active" : ""} onClick={() => onSectionFilterChange("all")}>All</button>
+          {DOCUMENT_SECTION_DEFINITIONS.map((section) => (
+            <button
+              type="button"
+              key={section.key}
+              className={sectionFilter === section.key ? "active" : ""}
+              title={section.label}
+              onClick={() => onSectionFilterChange(section.key)}
+            >{section.shortLabel}</button>
+          ))}
+        </div>}
+        {type === "substances" && <button type="button" className={`node-filter-toggle ${duplicateSubstanceNamesOnly ? "active" : ""}`} onClick={() => onDuplicateSubstanceNamesOnlyChange(!duplicateSubstanceNamesOnly)}>Duplicate names</button>}
         {relationshipFilterOptions.map((option) => {
           const active = Boolean(relationshipFilters[option.key]);
           return <button type="button" key={option.key} className={`node-filter-toggle ${active ? "active" : ""}`} onClick={() => onRelationshipFilterChange(option.key, !active)}>{option.label}</button>;
@@ -2049,14 +2098,21 @@ function NodeAccordion({ type, state, activeRecord, editingRecord, selectionMenu
         <span>{filteredRecords.length === records.length ? `${records.length} nodes. Click a node to expand details.` : `${filteredRecords.length} of ${records.length} nodes`}</span>
       </div>
     </div>
-    {!filteredRecords.length && <div className="empty-state">No {labels[type].toLowerCase()} match "{search}".</div>}
+    {!filteredRecords.length && <div className="empty-state">No {labels[type].toLowerCase()} match the active filters{search.trim() ? ` and "${search}"` : ""}.</div>}
     <div className="record-list">{filteredRecords.map((record) => {
     const active = activeRecord?.type === type && activeRecord.nodeNo === record.node_no;
     const editing = editingRecord?.type === type && editingRecord.nodeNo === record.node_no;
+    const sections = recordSections.get(nodeIdKey(record.node_no)) || [];
     return <article className={`record-summary-card ${active ? "active expanded" : ""} ${active ? (editing ? "editing" : "inspecting") : ""}`} data-record-type={type} data-record-node={record.node_no} key={record.node_no}>
       <div className="record-summary-top">
         <button className="record-main-button" onClick={() => onSelect(type, record.node_no)}>
-          <span className="node-pill">{nodeDisplayId(type, record.node_no)}</span>
+          <span className="record-badge-stack">
+            <span className="node-pill">{nodeDisplayId(type, record.node_no)}</span>
+            {supportsSectionFilter && sections.map((sectionKey) => {
+              const section = DOCUMENT_SECTION_DEFINITIONS.find((item) => item.key === sectionKey);
+              return section ? <span key={section.key} className={`section-pill ${section.key}`} title={section.label}>{section.shortLabel}</span> : null;
+            })}
+          </span>
           <strong className={`record-title ${type === "measurements" ? "measurement-record-title" : ""}`}>
             {renderRecordTitle(type, record, state)}
             {isUnlinkedNode(type, record, state) && <span className="unlinked-node-indicator">Unlinked</span>}
@@ -2970,6 +3026,86 @@ function renderInline(text: string, offset: number, state: AnnotationState, span
 
 function collectHighlightSpans(state: AnnotationState): AnnotatedSpan[] {
   return (Object.keys(labels) as EntityType[]).flatMap((type) => (state[type] as AnyRecord[]).flatMap((record) => record.evidence_spans.map((span, index) => ({ ...span, entityType: type, nodeNo: record.node_no, index, identity: isMainEvidenceSpan(type, record, index) }))));
+}
+
+function documentSectionRanges(markdown: string): DocumentSectionRange[] {
+  const headings: Array<{ key: DocumentSectionKey; start: number }> = [];
+  const headingPattern = /^(#{1,4})\s+(.+)$/gm;
+  let titleSeen = false;
+  let match: RegExpExecArray | null;
+  while ((match = headingPattern.exec(markdown))) {
+    const level = match[1].length;
+    const text = match[2].replace(/#+\s*$/, "").trim();
+    if (level === 1 && !titleSeen) {
+      headings.push({ key: "title", start: match.index });
+      titleSeen = true;
+      continue;
+    }
+    const sectionKey = documentSectionKeyFromHeading(text);
+    if (sectionKey) headings.push({ key: sectionKey, start: match.index });
+  }
+  return headings
+    .sort((a, b) => a.start - b.start)
+    .map((heading, index, list) => ({
+      key: heading.key,
+      start: heading.start,
+      end: list[index + 1]?.start ?? markdown.length
+    }))
+    .filter((range) => range.end > range.start);
+}
+
+function documentSectionKeyFromHeading(text: string): DocumentSectionKey | null {
+  const normalized = text.replace(/[:：]+$/g, "").trim().toLowerCase();
+  if (normalized === "abstract") return "abstract";
+  if (normalized === "description") return "description";
+  if (normalized === "claims" || normalized === "claim") return "claims";
+  return null;
+}
+
+function recordDocumentSections(record: AnyRecord, ranges: DocumentSectionRange[], markdown: string): DocumentSectionKey[] {
+  if (!ranges.length) return [];
+  const sectionKeys = new Set<DocumentSectionKey>();
+  record.evidence_spans
+    .filter((span) => span.text?.trim() && span.text.trim() !== "-")
+    .forEach((span) => spanDocumentSections(span, ranges, markdown).forEach((key) => sectionKeys.add(key)));
+  if (!sectionKeys.size && record.evidence_text?.trim() && record.evidence_text.trim() !== "-") {
+    spanDocumentSections({ text: record.evidence_text }, ranges, markdown).forEach((key) => sectionKeys.add(key));
+  }
+  return DOCUMENT_SECTION_DEFINITIONS.map((section) => section.key).filter((key) => sectionKeys.has(key));
+}
+
+function spanDocumentSections(span: Pick<EvidenceSpan, "text" | "start" | "end">, ranges: DocumentSectionRange[], markdown: string): DocumentSectionKey[] {
+  const spanStart = typeof span.start === "number" ? span.start : textOffsetInMarkdown(markdown, span.text || "");
+  if (spanStart === null) return [];
+  const spanEnd = typeof span.end === "number" && span.end > spanStart
+    ? span.end
+    : spanStart + Math.max(1, (span.text || "").length);
+  return ranges
+    .filter((range) => spanStart < range.end && spanEnd > range.start)
+    .map((range) => range.key);
+}
+
+function textOffsetInMarkdown(markdown: string, text: string) {
+  const needle = text.trim();
+  if (!needle) return null;
+  const exact = markdown.indexOf(needle);
+  if (exact >= 0) return exact;
+  const folded = markdown.toLowerCase().indexOf(needle.toLowerCase());
+  return folded >= 0 ? folded : null;
+}
+
+function normalizedSubstanceName(name: string) {
+  const normalized = name.replace(/\s+/g, "").toLowerCase();
+  return normalized && normalized !== "-" ? normalized : "";
+}
+
+function repeatedSubstanceNameKeys(records: SubstanceRecord[]) {
+  const counts = new Map<string, number>();
+  records.forEach((record) => {
+    const key = normalizedSubstanceName(record.substance_name);
+    if (key) counts.set(key, (counts.get(key) || 0) + 1);
+  });
+  return new Set([...counts.entries()].filter(([, count]) => count > 1).map(([key]) => key));
 }
 
 function isAnnotatedSpan(span: HighlightSpan): span is AnnotatedSpan {
