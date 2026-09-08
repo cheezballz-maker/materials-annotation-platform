@@ -1171,7 +1171,7 @@ function App() {
     if (!selectionMenu) return;
     const node_no = nextNodeNo();
     const span = makeEvidence(selectionMenu, type === "measurements" ? "evidence_text" : identityField(type), true);
-    const base = { node_no, evidence_text: "-", evidence_spans: [span] };
+    const base = { node_no, evidence_text: summarizeEvidenceText([span]), evidence_spans: [span] };
     const next = { ...state };
     let createdRecord: AnyRecord | null = null;
     if (type === "substances") {

@@ -1053,6 +1053,24 @@ def normalize_compositions(state: AnnotationState) -> AnnotationState:
     return state
 
 
+def summarize_evidence_spans(spans: list[EvidenceSpan]) -> str:
+    values: list[str] = []
+    for span in spans:
+        text = span.text.strip()
+        if text and text != "-" and text not in values:
+            values.append(text)
+    return " | ".join(values) if values else "-"
+
+
+def synchronize_evidence_text(state: AnnotationState) -> AnnotationState:
+    """Keep the legacy summary field aligned with authoritative evidence spans."""
+    for records in (state.substances, state.compositions, state.properties, state.measurements):
+        for record in records:
+            if record.evidence_spans:
+                record.evidence_text = summarize_evidence_spans(record.evidence_spans)
+    return state
+
+
 def is_user_node_id(value: NodeId | NodeRef) -> bool:
     return isinstance(value, str) and bool(USER_NODE_ID_PATTERN.fullmatch(value))
 
@@ -1366,7 +1384,7 @@ def migrate_legacy_state(raw: dict, raw_path: Path) -> AnnotationState:
 def parse_state(text: str, raw_path: Path) -> AnnotationState:
     raw = json.loads(text)
     if {"components", "formulations", "performances"} & set(raw):
-        return normalize_node_numbers(normalize_compositions(normalize_measurements(migrate_legacy_state(raw, raw_path))))
+        return synchronize_evidence_text(normalize_node_numbers(normalize_compositions(normalize_measurements(migrate_legacy_state(raw, raw_path)))))
     raw = migrate_raw_schema(raw)
     raw.setdefault("document_id", raw_path.name)
     raw.setdefault("patent_id", patent_id_from_name(raw_path))
@@ -1378,7 +1396,7 @@ def parse_state(text: str, raw_path: Path) -> AnnotationState:
         state.patent_id = patent_id_from_name(raw_path)
     if not state.meta.source_id or state.meta.source_id == "-":
         state.meta.source_id = state.patent_id or patent_id_from_name(raw_path)
-    return normalize_node_numbers(normalize_compositions(normalize_measurements(state)))
+    return synchronize_evidence_text(normalize_node_numbers(normalize_compositions(normalize_measurements(state))))
 
 
 def load_state(raw_path: Path) -> tuple[AnnotationState, Path | None]:
@@ -1746,7 +1764,7 @@ def regenerate_edit_log(raw_path: Path, user_state: AnnotationState) -> tuple[Pa
 
 
 def export_schema(state: AnnotationState) -> dict:
-    state = normalize_node_numbers(normalize_compositions(normalize_measurements(state)))
+    state = synchronize_evidence_text(normalize_node_numbers(normalize_compositions(normalize_measurements(state))))
     return {
         "meta": meta_with_status(state),
         "substances": [strip_internal(item) for item in state.substances],
@@ -1873,7 +1891,7 @@ def save_annotations(file_name: str, state: AnnotationState, request: Request) -
     if expected_revision is not None and expected_revision != current_revision:
         raise HTTPException(status_code=409, detail="This document changed after you opened it. Refresh the file before saving again.")
     try:
-        state = normalize_node_numbers(normalize_compositions(normalize_measurements(state)))
+        state = synchronize_evidence_text(normalize_node_numbers(normalize_compositions(normalize_measurements(state))))
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     out = save_path_for_status(path, state.status)
